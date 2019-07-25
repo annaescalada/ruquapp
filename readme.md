@@ -1,6 +1,5 @@
 RUQU
-Description
-Describe your project in one/two lines.
+Has your dog been lost? Have you found a dog and you want to find the owner? With Ruqus - lost and found you can register a lost dog and the app will notify you if there is a match with a found dog, or vice versa!
 
 User Stories
 404 - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault
@@ -8,98 +7,298 @@ User Stories
 homepage - As a user I want to be able to access the homepage so that I see what the app is about and login and signup
 sign up - As a user I want to sign up on the webpage so that I can see all the events that I could attend
 login - As a user I want to be able to log in on the webpage so that I can get back to my account
-logout - As a user I want to be able to log out from the webpage so that I can make sure no one will access my account
-events list - As a user I want to see all the events available so that I can choose which ones I want to attend
-events create - As a user I want to create an event so that I can invite others to attend
-events detail - As a user I want to see the event details and attendee list of one event so that I can decide if I want to attend
-event attend - As a user I want to be able to attend to event so that the organizers can count me in
+dashboard - As a user I want to be able to acces my dashboard so that I can see a list of my lost or found pets.
+dashboard - As a user I want to be able to add a new lost or found pet so that I can see the list on the dashboard.
+add new pet - As a user I want to be able to select if I have lost or found a pet so that I can update the information in my dashboard.
+add new pet - As a user who has lost a pet I want to be able to describe my lost pet so that it can match othe pets that have been found.
+add new pet - As a user who has found a pet I want to be able to describe it (indicating only the information I am sure about) so that it can match other pets that have been lost.
+dashboard - As a user I want to be able to edit, delete, turn off notifications so that I can make sure that my list of pets is updated.
+daschboard - As an owner of a lost pet kind of user I want to be able to set my pet as found so that the lost pet won't appear in my list anymore.
+my account - As a user I want to be able to access my pofile from the dashboard so that I can edit my data or log out.
+matches - As a user I want to be able to see a list of pets that match my lost or found pet so that I find the owner of the pet or my own pet.
+matches - As an owner of a lost pet kind of user I want to be able to discard matches so that I can make sure that the list of matches is correct.
+matches - As a user I want to be able to see a short description of the pet that I have found or lost so that I can make sure it's correct in the match page.
+matches - As a user I want to be able to edit my lost or found pet in the match page so that I can correct any errors.
+
 Backlog
-List of other features outside of the MVPs scope
+map - As a user I want be able to see the lost or found pets that match mine in a map so that I can see which matches are close to me.
+matches - As a user I want to see a % of compatibility in the match list so that I can see the pets that are more likely to match mine.
+dashboard - As a user I want to be able to see the a new matches notifications everytime I acces my dashboard so that I can know how many new matches have been found from my last visit.
 
 User profile:
 
-see my profile
-upload my profile picture
-see other users profile
-list of events created by the user
-list events the user is attending
-Geo Location:
-
-add geolocation to events when creating
-show event in a map in event detail page
-show all events in a map in the event list page
-Homepage
+sign up and log in
+add lost or found pet
+edit pet
+delete pet
+set pet as found
+turn on and off notifications
+access dashboard
+view matches
+send contact information
+discard match
+view matches in map
+edit profile
+log out
 
 ...
 ROUTES:
 GET /
 
-renders the homepage
+  redirects to /dashboard if user logged in
+  renders the homepage
+
 GET /auth/signup
 
-redirects to / if user logged in
-renders the signup form (with flash msg)
+  redirects to /dashboard if user logged in
+  renders the signup form (with flash msg if form is incorrect)
+
 POST /auth/signup
 
-redirects to / if user logged in
-body:
-username
-email
-password
+  redirects to /dashboard if user logged in
+  body:
+  name*
+  surname*
+  telf*
+  email* unique
+  password*
+
+  redirects to /add
+
 GET /auth/login
 
-redirects to / if user logged in
-renders the login form (with flash msg)
+  redirects to /dashboard if user logged in
+  renders the login form (with flash msg if form is incorrect)
+
 POST /auth/login
 
-redirects to / if user logged in
+  redirects to /dashboard if user logged in
+  body:
+  email
+  password
+
+  redirects to dashboard
+
+GET /dashboard:
+
+redirects to / if not logged in
+
+renders the dashboard view
+
+GET /add:
+
+redirects to / if not logged in
+renders lost or found buttons
+
+GET /add/lost:
+
+redirects to / if not logged in
+renders lost pet form (with flash msg if form is incorrect)
+
+POST /add/lost:
+
+redirects to / if not logged in
+
 body:
-username
-password
+name*
+color*
+size*
+breed*
+ears*
+tail*
+hair*
+picture
+day*
+month*
+year*
+hour*
+location*
+
+redirection to dashboard
+
+GET /add/found
+
+redirects to / if not logged in
+renders found pet form (with flash msg if form is incorrect)
+
+POST /add/found
+
+  redirects to / if not logged in
+
+  body:
+  name
+  color (not required but if empty used in match logic)
+  size (not required but if empty used in match logic)
+  breed
+  ears
+  tail
+  hair
+  picture
+  day*
+  month*
+  year*
+  hour*
+  location*
+
+  redirection to dashboard
+
+GET /my-profile
+
+  redirects to / if not logged in
+  renders profile page
+  button edit (/my-profile/edit) and logout (/)
+
 POST /auth/logout
 
-body: (empty)
-GET /events
+  body: (empty)
+  redirects to /
 
-renders the event list + the create form
-POST /events/create
+GET /my-profile/edit:
 
-redirects to / if user is anonymous
+  redirects to / if not logged in
+  renders edit profile form (filled)
+
+  POST /my-profile/edit
+
+  body:
+  name
+  surname
+  telf
+
+  redirects to dashboard
+
+GET /:dogID/matches:
+
+  renders matches view
+
+GET /edit/lost:
+
+redirects to / if not logged in
+renders lost pet form filled
+
+POST /edit/lost:
+
+redirects to / if not logged in
+
 body:
-name
-date
-location
-description
-GET /events/:id
+name*
+color*
+size*
+breed*
+ears*
+tail*
+hair*
+picture
+day*
+hour*
+location*
 
-renders the event detail page
-includes the list of attendees
-attend button if user not attending yet
-POST /events/:id/attend
+redirection to dashboard
 
-redirects to / if user is anonymous
-body: (empty - the user is already stored in the session)
+GET /edit/found
+
+redirects to / if not logged in
+renders found pet form filled
+
+POST /edit/found
+
+  redirects to / if not logged in
+
+  body:
+  name
+  color
+  size
+  breed
+  ears
+  tail
+  hair
+  picture
+  day*
+  hour*
+  location*
+
+  redirection to dashboard
+
+  
+GET /:dogID/map
+
+  redirects to / if not logged in
+  render of map
+
 Models
-User model
 
-username: String
-password: String
-Event model
+  User
 
-owner: ObjectId<User>
-name: String
-description: String
-date: Date
-location: String
-attendees: [ObjectId<User>]
+    name: String
+    surname: String
+    telf: String
+    mail: String
+    password: String
+    
+  Lost dog
+
+    name*: String
+    color*: []
+    size*: String
+    breed*: String
+    ears*: String
+    tail*: String
+    hair*: String
+    picture: String
+    day*
+    month*
+    year*: Number
+    month*: Number
+    year*: Number
+    hour*: Number
+    location*: String
+    timestamp
+    userID: objectID
+    notification: Boolean
+    status: String (lost or found)
+    discards: []
+
+  Found dog
+
+    name: String
+    color: []
+    size: String
+    breed: String
+    ears: String
+    tail: String
+    hair: String
+    picture: String
+    day*
+    month*
+    year*: Number
+    month*: Number
+    year*: Number
+    hour*: Number
+    location*: String
+    timestamp
+    userID: objectID
+    notification: Boolean
+    status: String (lost or found)
+    discards: []
+
+  Match
+    idLostPet: objectID
+    idFoundPet: objectID
+    comunAttributes: Object
+    compatibility: Number
+    new: Boolean
+    message: Boolean
+
+
 Links
 Trello
-Link to your trello board or picture of your physical board
+https://trello.com/b/f4nr4P18/ruqu
 
 Git
 The url to your repository and to your deployed project
 
 Repository Link
+https://github.com/annaescalada/ruquapp
 
 Deploy Link
 
