@@ -67,11 +67,6 @@ POST /auth/signup
 
   redirects to /add
 
-GET /auth/login
-
-  redirects to /dashboard if user logged in
-  renders the login form (with flash msg if form is incorrect)
-
 POST /auth/login
 
   redirects to /dashboard if user logged in
@@ -92,12 +87,12 @@ GET /pet/add:
 redirects to / if not logged in
 renders lost or found buttons
 
-GET /pet/add/lost:
+GET /pet/add/:status
 
 redirects to / if not logged in
-renders lost pet form (with flash msg if form is incorrect)
+renders add pet form (with flash msg if form is incorrect)
 
-POST /pet/add/lost:
+POST /pet/add
 
 redirects to / if not logged in
 
@@ -118,42 +113,11 @@ location*
 
 redirection to dashboard
 
-GET /pet/add/found
-
-redirects to / if not logged in
-renders found pet form (with flash msg if form is incorrect)
-
-POST /pet/add/found
-
-  redirects to / if not logged in
-
-  body:
-  name
-  color (not required but if empty used in match logic)
-  size (not required but if empty used in match logic)
-  breed
-  ears
-  tail
-  hair
-  picture
-  day*
-  month*
-  year*
-  hour*
-  location*
-
-  redirection to dashboard
-
 GET /profile
 
   redirects to / if not logged in
   renders profile page
   button edit (/my-profile/edit) and logout (/)
-
-POST /auth/logout
-
-  body: (empty)
-  redirects to /
 
 GET /profile/edit:
 
@@ -169,14 +133,20 @@ GET /profile/edit:
 
   redirects to dashboard
 
+POST /profile/logout
+
+  body: (empty)
+  redirects to /
+
 GET /pet/:dogID/matches
 
   renders matches view
 
-GET /pet/edit/:status/:dogID
+GET /pet/edit/:dogID
 
 redirects to / if not logged in
 renders lost pet form filled
+red
 
 POST /pet/edit/:status/:dogID
 
@@ -197,7 +167,7 @@ location*
 
 redirection to dashboard
 
-GET /pet/edit/:status/:dogID
+GET /pet/edit/:dogID
 
 redirects to / if not logged in
 renders found pet form filled
@@ -238,33 +208,13 @@ Models
     password: String
     timestamps
     
-  Lost dog
+  Dog
 
-    day*: Number
-    month*: Number
-    year*: Number
-    hour*: Number
-    location*: String
-    name*: String
-    color*: []
-    size*: String
-    breed*: String
-    ears*: String
-    tail*: String
-    hair*: String
-    picture: String
-    userID: objectID
-    notification: Boolean
-    status: String (lost or found)
-    timestamp
-
-  Found dog
-
-    day*: Number
-    month*: Number
-    year*: Number
-    hour*: Number
-    location*: String
+    day: Number
+    month: Number
+    year: Number
+    hour: Number
+    location: String
     name: String
     color: []
     size: String
@@ -279,6 +229,7 @@ Models
     timestamp
 
   Match
+
     idLostDog: objectID
     idFoundDog: objectID
     commonAttributes: Object

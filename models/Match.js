@@ -7,26 +7,33 @@ const ObjectId = Schema.Types.ObjectId;
 const matchSchema = new Schema({
   idLostDog: {
     type: ObjectId,
-    ref: 'LostDog'
+    ref: 'Dog',
+    required: true
   },
   idFoundDog: {
     type: ObjectId,
-    ref: 'FoundDog'
+    ref: 'Dog',
+    required: true
   },
   commonAttributes: {
-    type: Object
+    type: Object,
+    required: true
   },
   compatibility: {
-    type: Number
+    type: Number,
+    required: true
   },
   new: {
-    type: Boolean
+    type: Boolean,
+    required: true
   },
   message: {
-    type: Boolean
+    type: Boolean,
+    required: true
   },
   messageRead: {
-    type: Boolean
+    type: Boolean,
+    required: true
   }
 }, {
   timestamps: true
