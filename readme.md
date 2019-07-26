@@ -167,16 +167,16 @@ GET /my-profile/edit:
 
   redirects to dashboard
 
-GET /:dogID/matches:
+GET /:dogID/matches
 
   renders matches view
 
-GET /edit/lost:
+GET /edit/:status/:dogID
 
 redirects to / if not logged in
 renders lost pet form filled
 
-POST /edit/lost:
+POST /edit/:status/:dogID
 
 redirects to / if not logged in
 
@@ -195,12 +195,12 @@ location*
 
 redirection to dashboard
 
-GET /edit/found
+GET /edit/:status/:dogID
 
 redirects to / if not logged in
 renders found pet form filled
 
-POST /edit/found
+POST /edit/:status(:dogID)
 
   redirects to / if not logged in
 
@@ -288,6 +288,7 @@ Models
     compatibility: Number
     new: Boolean
     message: Boolean
+    messageRead: Boolean
 
 
 Links
