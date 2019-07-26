@@ -10,13 +10,15 @@ login - As a user I want to be able to log in on the webpage so that I can get b
 dashboard - As a user I want to be able to acces my dashboard so that I can see a list of my lost or found pets.
 dashboard - As a user I want to be able to add a new lost or found pet so that I can see the list on the dashboard.
 add new pet - As a user I want to be able to select if I have lost or found a pet so that I can update the information in my dashboard.
-add new pet - As a user who has lost a pet I want to be able to describe my lost pet so that it can match othe pets that have been found.
+add new pet - As a user who has lost a pet I want to be able to describe my lost pet so that it can match other pets that have been found.
 add new pet - As a user who has found a pet I want to be able to describe it (indicating only the information I am sure about) so that it can match other pets that have been lost.
 dashboard - As a user I want to be able to edit, delete, turn off notifications so that I can make sure that my list of pets is updated.
 daschboard - As an owner of a lost pet kind of user I want to be able to set my pet as found so that the lost pet won't appear in my list anymore.
+dashboard - As a user I want to be able to see any new matches or messages in my dasboard so that I can check any updates in the moment.
 my account - As a user I want to be able to access my pofile from the dashboard so that I can edit my data or log out.
 matches - As a user I want to be able to see a list of pets that match my lost or found pet so that I find the owner of the pet or my own pet.
 matches - As an owner of a lost pet kind of user I want to be able to discard matches so that I can make sure that the list of matches is correct.
+matches - As an owner of a lost pet kind of user I want to be able to send my contact information to the person who have found the pet.
 matches - As a user I want to be able to see a short description of the pet that I have found or lost so that I can make sure it's correct in the match page.
 matches - As a user I want to be able to edit my lost or found pet in the match page so that I can correct any errors.
 
@@ -85,17 +87,17 @@ redirects to / if not logged in
 
 renders the dashboard view
 
-GET /add:
+GET /pet/add:
 
 redirects to / if not logged in
 renders lost or found buttons
 
-GET /add/lost:
+GET /pet/add/lost:
 
 redirects to / if not logged in
 renders lost pet form (with flash msg if form is incorrect)
 
-POST /add/lost:
+POST /pet/add/lost:
 
 redirects to / if not logged in
 
@@ -116,12 +118,12 @@ location*
 
 redirection to dashboard
 
-GET /add/found
+GET /pet/add/found
 
 redirects to / if not logged in
 renders found pet form (with flash msg if form is incorrect)
 
-POST /add/found
+POST /pet/add/found
 
   redirects to / if not logged in
 
@@ -142,7 +144,7 @@ POST /add/found
 
   redirection to dashboard
 
-GET /my-profile
+GET /profile
 
   redirects to / if not logged in
   renders profile page
@@ -153,12 +155,12 @@ POST /auth/logout
   body: (empty)
   redirects to /
 
-GET /my-profile/edit:
+GET /profile/edit:
 
   redirects to / if not logged in
   renders edit profile form (filled)
 
-  POST /my-profile/edit
+  POST /profile/edit
 
   body:
   name
@@ -167,16 +169,16 @@ GET /my-profile/edit:
 
   redirects to dashboard
 
-GET /:dogID/matches
+GET /pet/:dogID/matches
 
   renders matches view
 
-GET /edit/:status/:dogID
+GET /pet/edit/:status/:dogID
 
 redirects to / if not logged in
 renders lost pet form filled
 
-POST /edit/:status/:dogID
+POST /pet/edit/:status/:dogID
 
 redirects to / if not logged in
 
@@ -195,12 +197,12 @@ location*
 
 redirection to dashboard
 
-GET /edit/:status/:dogID
+GET /pet/edit/:status/:dogID
 
 redirects to / if not logged in
 renders found pet form filled
 
-POST /edit/:status(:dogID)
+POST /pet/edit/:status(:dogID)
 
   redirects to / if not logged in
 
@@ -220,7 +222,7 @@ POST /edit/:status(:dogID)
   redirection to dashboard
 
   
-GET /:dogID/map
+GET /pet/:dogID/map
 
   redirects to / if not logged in
   render of map
@@ -231,12 +233,18 @@ Models
 
     name: String
     surname: String
-    telf: String
+    phone: String
     mail: String
     password: String
+    timestamps
     
   Lost dog
 
+    day*: Number
+    month*: Number
+    year*: Number
+    hour*: Number
+    location*: String
     name*: String
     color*: []
     size*: String
@@ -245,21 +253,18 @@ Models
     tail*: String
     hair*: String
     picture: String
-    day*
-    month*
-    year*: Number
+    userID: objectID
+    notification: Boolean
+    status: String (lost or found)
+    timestamp
+
+  Found dog
+
+    day*: Number
     month*: Number
     year*: Number
     hour*: Number
     location*: String
-    timestamp
-    userID: objectID
-    notification: Boolean
-    status: String (lost or found)
-    discards: []
-
-  Found dog
-
     name: String
     color: []
     size: String
@@ -268,27 +273,20 @@ Models
     tail: String
     hair: String
     picture: String
-    day*
-    month*
-    year*: Number
-    month*: Number
-    year*: Number
-    hour*: Number
-    location*: String
-    timestamp
     userID: objectID
     notification: Boolean
     status: String (lost or found)
-    discards: []
+    timestamp
 
   Match
-    idLostPet: objectID
-    idFoundPet: objectID
-    comunAttributes: Object
+    idLostDog: objectID
+    idFoundDog: objectID
+    commonAttributes: Object
     compatibility: Number
     new: Boolean
     message: Boolean
     messageRead: Boolean
+    timestamps
 
 
 Links
