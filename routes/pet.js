@@ -10,7 +10,7 @@ router.get('/add', isNotLoggedIn, (req, res, next) => {
   res.render('addPet');
 });
 
-router.post('/add', isNotLoggedIn (req, res, next) => {
+router.post('/add', isNotLoggedIn, (req, res, next) => {
   //
 });
 

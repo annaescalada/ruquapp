@@ -2,9 +2,10 @@
 <img src="" class="logo" alt="Ruqu lost and found logo">
 
 <form action="/addPet" method="POST">
-  <label for="name">Name</label>
+  <label for="status">Have you lost or found a dog?</label>
   <input type="radio" name="status" value="lost" checked><span>Lost</span>
   <input type="radio" name="status" value="found"><span>Found</span>
+  
   <select name="day" id="day">
     <option value="" disabled selected>--Select day--</option>
     <option value="1">1</option>
@@ -54,7 +55,6 @@
     <option value="11">November</option>
     <option value="12">December</option>
   </select>
-
   <input type="text" id="year" name="year" placeholder="--Insert year--">
 
   <select name="hour" id="hour">
@@ -85,8 +85,13 @@
     <option value="23">23:00</option>
   </select>
 
+  <label for="location">Where did you lose or find the dog?</label>
   <input type="text" id="location" name="location" placeholder="C/Balmes, Barcelona, 08026">
+
+  <label for="name">Name of the dog</label>  
   <input type="text" id="name" name="name" placeholder="Ruqu">
+
+  <label for="color">What color/s is the dog?</label>
   <input type="checkbox" name="color1" value="white"><span>White</span>
   <input type="checkbox" name="color2" value="grey"><span>Grey</span>
   <input type="checkbox" name="color3" value="black"><span>Black</span>
@@ -94,10 +99,12 @@
   <input type="checkbox" name="color5" value="lightbrown"><span>LightBrown</span>
   <input type="checkbox" name="color6" value="red"><span>Red</span>
   
+  <label for="size">How big is the dog?</label>
   <input type="radio" name="size" value="small" checked><span>Small</span>
   <input type="radio" name="size" value="medium"><span>Medium</span>
   <input type="radio" name="size" value="large"><span>Large</span>
 
+  <label for="breed">What breed is the dog?</label>
   <select name="breed" id="breed">
     <option value="" disabled selected>--Select breed--</option>
     <option value="default">Mixed breed</option>
@@ -115,16 +122,20 @@
     <option value="dalmata">Dalmata</option>
   </select>
 
+  <label for="ears">What kind of ears does the dog have?</label>
   <input type="radio" name="ears" value="up" checked><span>Up</span>
   <input type="radio" name="ears" value="down"><span>Down</span>
 
+  <label for="tail">What kind of tail does the dog have?</label>
   <input type="radio" name="tail" value="long" checked><span>Long</span>
   <input type="radio" name="tail" value="longHairy"><span>Hairy</span>
   <input type="radio" name="tail" value="short"><span>Short</span>
 
+  <label for="hair">What kind of hair does the dog have?</label>
   <input type="radio" name="hair" value="short" checked><span>Short hair</span>
   <input type="radio" name="hair" value="long"><span>Long hair</span>
 
+  <label for="photo">Upload an image if you have any</label>
   <input type="file" name="photo" />
 
   <button type="submit">Add dog</button>
