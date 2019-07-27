@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const ObjectId = Schema.Types.ObjectId;
 
-const lostDogSchema = new Schema({
+const DogSchema = new Schema({
   status: {
     type: String,
     enum: ['lost', 'found'],
@@ -66,49 +66,49 @@ const lostDogSchema = new Schema({
   },
   breed: {
     type: String,
-    enum: ['Golden Retriever', 'Boxer', 'Bulldog', 'Beagle', 'Rottweilers', 'Chihuahua', 'Border Collie', 'Labrador', 'Border Terrier', 'German Shepherd', 'Dobermann', 'Dalmata', 'Mixed breed'],
+    enum: ['retriever', 'boxer', 'bulldog', 'beagle', 'rottweiler', 'chihuahua', 'collie', 'labrador', 'terrier', 'shepherd', 'dobermann', 'dalmata', 'default'],
     required: function () {
       return this.type === 'lost';
     },
-    default:'Mixed breed';
+    default: 'Mixed breed'
   },
   ears: {
-    type: String,
+    type: Object,
     required: function () {
       return this.type === 'lost';
     },
     default:
       {
         up: true,
-        down: true,
-      } 
-    },
+        down: true
+      }
+  },
   tail: {
-    type: String,
+    type: Object,
     required: function () {
       return this.type === 'lost';
     },
     default:
       {
-        long: true,
+        longTail: true,
         longHairy: true,
-        short: true
-      } 
+        shortTail: true
+      }
   },
   hair: {
-    type: String,
+    type: Object,
     required: function () {
       return this.type === 'lost';
     },
     default:
       {
         short: true,
-        long: true,
-      } 
-    },
-  picture: {
+        long: true
+      }
+  },
+  photo: {
     type: String,
-    default: ''
+    default: '/images/dog-default.png'
   },
   userID: {
     type: ObjectId,
@@ -123,6 +123,6 @@ const lostDogSchema = new Schema({
   timestamps: true
 });
 
-const LostDog = mongoose.model('LostDog', lostDogSchema);
+const Dog = mongoose.model('LostDog', DogSchema);
 
-module.exports = LostDog;
+module.exports = Dog;

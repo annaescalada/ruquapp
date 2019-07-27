@@ -30,11 +30,6 @@ router.post('/signup', isLoggedIn, isSignUpFormFilled, async (req, res, next) =>
 
     const salt = bcrypt.genSaltSync(saltRounds);
     const hashedPassword = bcrypt.hashSync(password, salt);
-
-    // const user = await User.findOne({ email });
-    // if (user) {
-    //   return res.redirect('/auth/signup');
-    // }
     const newUser = await User.create({
       name,
       surname,

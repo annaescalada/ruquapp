@@ -1,7 +1,7 @@
 <a href="/dashboard"><</a>
 <img src="" class="logo" alt="Ruqu lost and found logo">
 
-<form action="/addPet" method="POST">
+<form action="/pet/add" method="POST" enctype="multipart/form-data">
   <label for="status">Have you lost or found a dog?</label>
   <input type="radio" name="status" value="lost" checked><span>Lost</span>
   <input type="radio" name="status" value="found"><span>Found</span>
@@ -92,22 +92,21 @@
   <input type="text" id="name" name="name" placeholder="Ruqu">
 
   <label for="color">What color/s is the dog?</label>
-  <input type="checkbox" name="color1" value="white"><span>White</span>
-  <input type="checkbox" name="color2" value="grey"><span>Grey</span>
-  <input type="checkbox" name="color3" value="black"><span>Black</span>
-  <input type="checkbox" name="color4" value="darkbrown"><span>DarkBrown</span>
-  <input type="checkbox" name="color5" value="lightbrown"><span>LightBrown</span>
-  <input type="checkbox" name="color6" value="red"><span>Red</span>
+  <input type="checkbox" name="white" value="white"><span>White</span>
+  <input type="checkbox" name="grey" value="grey"><span>Grey</span>
+  <input type="checkbox" name="black" value="black"><span>Black</span>
+  <input type="checkbox" name="darkBrown" value="darkbrown"><span>Dark brown</span>
+  <input type="checkbox" name="lightBrown" value="lightbrown"><span>Light brown</span>
+  <input type="checkbox" name="red" value="red"><span>Red</span>
   
-  <label for="size">How big is the dog?</label>
-  <input type="radio" name="size" value="small" checked><span>Small</span>
+  <label>How big is the dog?</label>
+  <input type="radio" name="size" value="small"><span>Small</span>
   <input type="radio" name="size" value="medium"><span>Medium</span>
   <input type="radio" name="size" value="large"><span>Large</span>
 
   <label for="breed">What breed is the dog?</label>
   <select name="breed" id="breed">
-    <option value="" disabled selected>--Select breed--</option>
-    <option value="default">Mixed breed</option>
+    <option value="default" selected>Mixed breed</option>
     <option value="golden">Golden Retriever</option>
     <option value="boxer">Boxer</option>
     <option value="bulldog">Bulldog</option>
@@ -122,17 +121,17 @@
     <option value="dalmata">Dalmata</option>
   </select>
 
-  <label for="ears">What kind of ears does the dog have?</label>
-  <input type="radio" name="ears" value="up" checked><span>Up</span>
+  <label>What kind of ears does the dog have?</label>
+  <input type="radio" name="ears" value="up"><span>Up</span>
   <input type="radio" name="ears" value="down"><span>Down</span>
 
   <label for="tail">What kind of tail does the dog have?</label>
-  <input type="radio" name="tail" value="long" checked><span>Long</span>
+  <input type="radio" name="tail" value="longTail"><span>Long</span>
   <input type="radio" name="tail" value="longHairy"><span>Hairy</span>
-  <input type="radio" name="tail" value="short"><span>Short</span>
+  <input type="radio" name="tail" value="shortTail"><span>Short</span>
 
   <label for="hair">What kind of hair does the dog have?</label>
-  <input type="radio" name="hair" value="short" checked><span>Short hair</span>
+  <input type="radio" name="hair" value="short"><span>Short hair</span>
   <input type="radio" name="hair" value="long"><span>Long hair</span>
 
   <label for="photo">Upload an image if you have any</label>

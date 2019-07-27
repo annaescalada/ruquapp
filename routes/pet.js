@@ -3,15 +3,109 @@
 const express = require('express');
 const router = express.Router();
 
-const { isNotLoggedIn, isLogInFormFilled } = require('../middlewares/authMiddlewares');
+const { isNotLoggedIn } = require('../middlewares/authMiddlewares');
+// const { isAddPetFormFilled } = require('../middlewares/petMiddlewares');
+const Dog = require('../models/Dog');
+const parser = require('../config/cloudinary');
 
 /* GET home page. */
 router.get('/add', isNotLoggedIn, (req, res, next) => {
   res.render('addPet');
 });
 
-router.post('/add', isNotLoggedIn, (req, res, next) => {
-  //
+router.post('/add', isNotLoggedIn, /* isAddPetFormFilled, */ parser.single('photo'), async (req, res, next) => {
+  try {
+    const { status, day, month, year, hour, location, name, white, grey, black, darkBrown, lightBrown, red, size, breed, ears, tail, hair, photo } = req.body;
+    const sizeObj = {};
+    const tailObj = {};
+    const earsObj = {};
+    const hairObj = {};
+
+    switch (size) {
+    case 'large':
+      sizeObj.large = true;
+      break;
+    case 'medium':
+      sizeObj.medium = true;
+      break;
+    case 'small':
+      sizeObj.small = true;
+      break;
+    default:
+      sizeObj.small = true;
+      sizeObj.medium = true;
+      sizeObj.large = true;
+    }
+
+    switch (tail) {
+    case 'longTail':
+      tailObj.longTail = true;
+      break;
+    case 'longHairy':
+      tailObj.longHairy = true;
+      break;
+    case 'shortTail':
+      tailObj.shortTail = true;
+      break;
+    default:
+      tailObj.longTail = true;
+      tailObj.longHairy = true;
+      tailObj.shortTail = true;
+    }
+
+    switch (ears) {
+    case 'up':
+      earsObj.up = true;
+      break;
+    case 'down':
+      earsObj.down = true;
+      break;
+    default:
+      earsObj.up = true;
+      earsObj.down = true;
+    }
+
+    switch (hair) {
+    case 'short':
+      hairObj.short = true;
+      break;
+    case 'long':
+      hairObj.long = true;
+      break;
+    default:
+      hairObj.short = true;
+      hairObj.long = true;
+    }
+
+    await Dog.create({
+      notification: true,
+      userID: req.session.currentUser._id,
+      status,
+      day,
+      month,
+      year,
+      hour,
+      location,
+      name,
+      color: {
+        white,
+        grey,
+        black,
+        darkBrown,
+        lightBrown,
+        red
+      },
+      size: sizeObj,
+      breed,
+      ears: earsObj,
+      tail: tailObj,
+      hair: hairObj,
+      photo: req.file.secure_url
+
+    });
+  } catch (error) {
+    next(error);
+  }
 });
 
 module.exports = router;
