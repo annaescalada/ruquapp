@@ -46,11 +46,12 @@ router.post('/signup', isLoggedIn, async (req, res, next) => {
   }
 });
 
-router.post('/login', isLoggedIn, async (req, res, next) => {
+router.post('/login', isLoggedIn, isLogInFormFilled, async (req, res, next) => {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email });
     if (!user) {
+      req.flash('noEmailInDB', 'Your email account is not registered. Please sign up.');
       return res.redirect('/');
     }
     if (bcrypt.compareSync(password /* provided password */, user.password/* hashed password */)) {
@@ -59,7 +60,7 @@ router.post('/login', isLoggedIn, async (req, res, next) => {
       console.log('password ok');
       res.redirect('/dashboard');
     } else {
-      // req.flash('wrongPassword', 'Wrong password');
+      req.flash('wrongPassword', 'Incorrect password.');
       res.redirect('/');
     }
   } catch (error) {
