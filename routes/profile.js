@@ -3,12 +3,16 @@
 const express = require('express');
 const router = express.Router();
 
+const { isNotLoggedIn, isLogInFormFilled } = require('../middlewares/authMiddlewares');
+
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 const User = require('../models/User');
+
 /* GET home page. */
-router.get('/', (req, res, next) => {
+
+router.get('/', isNotLoggedIn, (req, res, next) => {
   const user = req.session.currentUser;
   res.render('profile', user);
 });
@@ -18,7 +22,7 @@ router.post('/logout', (req, res, next) => {
   res.redirect('/');
 });
 
-router.post('/edit', async (req, res, next) => {
+router.post('/edit', isNotLoggedIn, async (req, res, next) => {
   try {
     const { name, surname, phone } = req.body;
     const currentUserID = req.session.currentUser._id;
@@ -31,7 +35,7 @@ router.post('/edit', async (req, res, next) => {
   }
 });
 
-router.post('/edit-password', async (req, res, next) => {
+router.post('/edit-password', isNotLoggedIn, async (req, res, next) => {
   try {
     const { password } = req.body;
     const currentUserID = req.session.currentUser._id;

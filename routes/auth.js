@@ -3,13 +3,16 @@
 const express = require('express');
 const router = express.Router();
 
+const { isLoggedIn, isLogInFormFilled } = require('../middlewares/authMiddlewares');
+
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 const User = require('../models/User.js');
 
 /* GET home page. */
-router.get('/signup', (req, res, next) => {
+
+router.get('/signup', isLoggedIn, (req, res, next) => {
   // const data = {
   //   messages: req.flash('errorFormNotFilled'),
   //   formData: req.flash('errorDataForm')
@@ -18,7 +21,7 @@ router.get('/signup', (req, res, next) => {
   res.render('signup');
 });
 
-router.post('/signup', async (req, res, next) => {
+router.post('/signup', isLoggedIn, async (req, res, next) => {
   try {
     const { name, surname, phone, email, password } = req.body;
 
@@ -43,7 +46,7 @@ router.post('/signup', async (req, res, next) => {
   }
 });
 
-router.post('/login', async (req, res, next) => {
+router.post('/login', isLoggedIn, async (req, res, next) => {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email });
