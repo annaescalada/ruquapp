@@ -12,6 +12,8 @@ const MongoStore = require('connect-mongo')(session);
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
 const dashboardRouter = require('./routes/dashboard');
+const profileRouter = require('./routes/profile');
+const petRouter = require('./routes/pet');
 
 mongoose.connect('mongodb://localhost/ruquDB', {
   keepAlive: true,
@@ -54,6 +56,8 @@ hbs.registerPartials(path.join(__dirname, '/views/partials'));
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/dashboard', dashboardRouter);
+app.use('/profile', profileRouter);
+app.use('/pet', petRouter);
 
 app.use((req, res, next) => {
   res.status(404);

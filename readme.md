@@ -82,12 +82,7 @@ redirects to / if not logged in
 
 renders the dashboard view
 
-GET /pet/add:
-
-redirects to / if not logged in
-renders lost or found buttons
-
-GET /pet/add/:status
+GET /pet/add
 
 redirects to / if not logged in
 renders add pet form (with flash msg if form is incorrect)
@@ -112,6 +107,7 @@ hour*
 location*
 
 redirection to dashboard
+
 
 GET /profile
 
@@ -138,6 +134,9 @@ POST /profile/logout
   body: (empty)
   redirects to /
 
+  redirects to / if not logged in
+  render of map
+
 GET /pet/:dogID/matches
 
   renders matches view
@@ -148,7 +147,7 @@ redirects to / if not logged in
 renders lost pet form filled
 red
 
-POST /pet/edit/:status/:dogID
+POST /pet/edit/:dogID
 
 redirects to / if not logged in
 
@@ -166,36 +165,6 @@ hour*
 location*
 
 redirection to dashboard
-
-GET /pet/edit/:dogID
-
-redirects to / if not logged in
-renders found pet form filled
-
-POST /pet/edit/:status(:dogID)
-
-  redirects to / if not logged in
-
-  body:
-  name
-  color
-  size
-  breed
-  ears
-  tail
-  hair
-  picture
-  day*
-  hour*
-  location*
-
-  redirection to dashboard
-
-  
-GET /pet/:dogID/map
-
-  redirects to / if not logged in
-  render of map
 
 Models
 
