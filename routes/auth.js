@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { isLoggedIn, isLogInFormFilled } = require('../middlewares/authMiddlewares');
+const { isLoggedIn, isLogInFormFilled, isSignUpFormFilled } = require('../middlewares/authMiddlewares');
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -13,25 +13,28 @@ const User = require('../models/User.js');
 /* GET home page. */
 
 router.get('/signup', isLoggedIn, (req, res, next) => {
-  // const data = {
-  //   messages: req.flash('errorFormNotFilled'),
-  //   formData: req.flash('errorDataForm')
-  // };
-  // res.render('signup', data);
-  res.render('signup');
+  const data = {
+    message: req.flash('signUpMissingFields'),
+    exisitingUser: req.flash('existingUser'),
+    invalidEmail: req.flash('invalidEmail'),
+    name: req.flash('nameRecover'),
+    surname: req.flash('surnameRecover'),
+    phone: req.flash('phoneRecover')
+  };
+  res.render('signup', data);
 });
 
-router.post('/signup', isLoggedIn, async (req, res, next) => {
+router.post('/signup', isLoggedIn, isSignUpFormFilled, async (req, res, next) => {
   try {
     const { name, surname, phone, email, password } = req.body;
 
     const salt = bcrypt.genSaltSync(saltRounds);
     const hashedPassword = bcrypt.hashSync(password, salt);
 
-    const user = await User.findOne({ email });
-    if (user) {
-      return res.redirect('/auth/signup');
-    }
+    // const user = await User.findOne({ email });
+    // if (user) {
+    //   return res.redirect('/auth/signup');
+    // }
     const newUser = await User.create({
       name,
       surname,

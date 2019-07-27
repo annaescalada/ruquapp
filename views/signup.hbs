@@ -3,14 +3,46 @@
 
 <form action="/auth/signup" method="POST">
 <label for="name">Name</label>
+{{#if name.length}}
+<input name="name" type="text" id="name" value= "{{name.[0]}}" required>
+{{else}}
 <input name="name" type="text" id="name" placeholder="Your name" required>
+{{/if}}
+
 <label for="surname">Surname</label>
+{{#if surname.length}}
+<input name="surname" type="text" id="surname" value="{{surname.[0]}}" required>
+{{else}}
 <input name="surname" type="text" id="surname" placeholder="Your surname" required>
+{{/if}}
+
 <label for="phone">Phone</label>
+{{#if phone.length}}
+<input name="phone" type="text" id="phone" value= "{{phone.[0]}}" required>
+{{else}}
 <input name="phone" type="text" id="phone" placeholder="Your phone" required>
+{{/if}}
+
 <label for="email">Email</label>
 <input type="email" id="email" name="email" placeholder="Your email" required>
 <label for="password">Password</label>
 <input type="password" name="password" id="password" placeholder="Your password" required>
 <button type="submit">Sign up</button>
 </form>
+
+{{#if message.length}}
+<ul class="validation">
+  {{#each message}}<li>{{this}}</li>{{/each}}
+</ul>
+{{/if}}
+{{#if invalidEmail.length}}
+<ul class="validation">
+  {{#each invalidEmail}}<li>{{this}}</li>{{/each}}
+</ul>
+{{/if}}
+{{#if exisitingUser.length}}
+<ul class="validation">
+  {{#each exisitingUser}}<li>{{this}}</li>{{/each}}
+</ul>
+{{/if}}
+
