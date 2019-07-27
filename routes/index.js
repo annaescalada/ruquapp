@@ -7,7 +7,12 @@ const { isLoggedIn } = require('../middlewares/authMiddlewares');
 
 /* GET home page. */
 router.get('/', isLoggedIn, (req, res, next) => {
-  res.render('index');
+  const data = {
+    message1: req.flash('loginMissingFields'),
+    message2: req.flash('noEmailInDB'),
+    message3: req.flash('wrongPassword')
+  };
+  res.render('index', data);
 });
 
 module.exports = router;

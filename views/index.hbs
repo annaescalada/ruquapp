@@ -11,12 +11,22 @@
   <input type="password" name="password" id="password" placeholder="Password">
   <button type="submit">Log in</button>
 </form>
+{{#if message1.length}}
+<ul class="validation">
+  {{#each message1}}<li>{{this}}</li>{{/each}}
+</ul>
+{{/if}}
+{{#if message2.length}}
+<ul class="validation">
+  {{#each message2}}<li>{{this}}</li>{{/each}}
+</ul>
+{{/if}}
+{{#if message3.length}}
+<ul class="validation">
+  {{#each message3}}<li>{{this}}</li>{{/each}}
+</ul>
+{{/if}}
 
 <hr> or <hr>
 
 <a href="/auth/signup">Sign up</a>
-{{!-- {{#if messages.length}}
-<ul class="validation">
-  {{#each messages}}<li>{{this}}</li>{{/each}}
-</ul>
-{{/if}} --}}

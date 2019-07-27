@@ -25,10 +25,14 @@ const main = () => {
       inputPassword.removeAttribute('disabled');
       inputPassword.removeAttribute('value');
       const button = document.createElement('button');
+      const a = document.createElement('a');
+      a.setAttribute('href', '/profile');
+      a.innerHTML = 'Cancel';
       button.setAttribute('type', 'submit');
       button.innerHTML = 'Save changes';
       const formPassword = document.querySelector('.edit-password-form');
       formPassword.appendChild(button);
+      formPassword.appendChild(a);
     });
   }
   // Dashboard page
