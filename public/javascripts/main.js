@@ -48,13 +48,13 @@ const main = () => {
     const lostSectionDashboard = document.querySelector('.lostSectionDashboard');
     const foundSectionDashboard = document.querySelector('.foundSectionDashboard');
     if (lostButton || foundButton) {
-      lostButton.addEventListener('click', (event) => {
+      lostButton.addEventListener('click', event => {
         if (lostSectionDashboard.classList.contains('displayNone')) {
           lostSectionDashboard.classList.toggle('displayNone');
           foundSectionDashboard.classList.toggle('displayNone');
         }
       });
-      foundButton.addEventListener('click', (event) => {
+      foundButton.addEventListener('click', event => {
         if (foundSectionDashboard.classList.contains('displayNone')) {
           lostSectionDashboard.classList.toggle('displayNone');
           foundSectionDashboard.classList.toggle('displayNone');
@@ -63,7 +63,18 @@ const main = () => {
     }
   }
 
+  function redirectToMatches () {
+    const articlesDashboard = document.querySelectorAll('article.dogCardDashboard');
+    console.log(articlesDashboard);
+    articlesDashboard.forEach(article => {
+      article.addEventListener('click', event => {
+        const dogID = event.path[2].id;
+      });
+    });
+  }
+
   dashboardToggle();
+  redirectToMatches();
 
   // Delete pet and found
   // Lost found toggle
