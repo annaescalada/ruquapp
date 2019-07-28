@@ -24,7 +24,11 @@
 {{/if}}
 
 <label for="email">Email</label>
+{{#if phone.length}}
+<input name="email" type="email" id="email" value= "{{email.[0]}}" required>
+{{else}}
 <input type="email" id="email" name="email" placeholder="Your email" required>
+{{/if}}
 <label for="password">Password</label>
 <input type="password" name="password" id="password" placeholder="Your password" required>
 <button type="submit">Sign up</button>

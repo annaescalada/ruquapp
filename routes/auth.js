@@ -19,8 +19,10 @@ router.get('/signup', isLoggedIn, (req, res, next) => {
     invalidEmail: req.flash('invalidEmail'),
     name: req.flash('nameRecover'),
     surname: req.flash('surnameRecover'),
-    phone: req.flash('phoneRecover')
+    phone: req.flash('phoneRecover'),
+    email: req.flash('emailRecover')
   };
+  // console.log(data.name, data.surname, data.phone);
   res.render('signup', data);
 });
 

@@ -16,33 +16,41 @@ const isNotLoggedIn = (req, res, next) => {
 };
 
 const isSignUpFormFilled = async (req, res, next) => {
-  const { name, surname, phone, email, password } = req.body;
-  if (!name || !surname || !phone || !email || !password) {
-    req.flash('signUpMissingFields', 'All fields are required');
-    return res.redirect('/auth/signup');
-  }
+  try {
+    const { name, surname, phone, email, password } = req.body;
 
-  if (name) {
-    req.flash('nameRecover', name);
-  }
-  if (surname) {
-    req.flash('surnameRecover', surname);
-  }
-  if (phone) {
-    req.flash('phoneRecover', phone);
-  }
+    if (name) {
+      req.flash('nameRecover', name);
+    }
+    if (surname) {
+      req.flash('surnameRecover', surname);
+    }
+    if (phone) {
+      req.flash('phoneRecover', phone);
+    }
+    const user = await User.findOne({ email });
+    if (user) {
+      req.flash('existingUser', 'This email is registered, try another one');
+      return res.redirect('/auth/signup');
+    }
 
-  const user = await User.findOne({ email });
-  if (user) {
-    req.flash('existingUser', 'This email is registered, try another one');
-    return res.redirect('/auth/signup');
-  }
+    if (email) {
+      req.flash('emailRecover', email);
+    }
 
-  if (!email.includes('@') || !email.includes('.')) {
-    req.flash('invalidEmail', 'Please, introduce a valid email');
-    return res.redirect('/auth/signup');
+    if (!name || !surname || !phone || !email || !password) {
+      req.flash('signUpMissingFields', 'All fields are required');
+      return res.redirect('/auth/signup');
+    }
+
+    if (!email.includes('@') || !email.includes('.')) {
+      req.flash('invalidEmail', 'Please, introduce a valid email');
+      return res.redirect('/auth/signup');
+    }
+    next();
+  } catch (error) {
+    next(error);
   }
-  next();
 };
 
 const isLogInFormFilled = (req, res, next) => {
