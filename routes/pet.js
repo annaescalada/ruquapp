@@ -19,7 +19,6 @@ router.get('/add', isNotLoggedIn, (req, res, next) => {
 router.post('/add', isNotLoggedIn, parser.single('photo'), async (req, res, next) => {
   try {
     const { status, day, month, year, hour, location, name, white, grey, black, darkBrown, lightBrown, red, size, breed, ears, tail, hair } = req.body;
-    console.log(req.body);
     if (status === 'lost') {
       if (!status || !day || !month || !year || !hour || !location || !name || !size || !breed || !ears || !tail || !hair || (!white && !grey && !black && !darkBrown && !lightBrown && !red)) {
         req.flash('missingFields', 'All fields are required');
@@ -43,7 +42,8 @@ router.post('/add', isNotLoggedIn, parser.single('photo'), async (req, res, next
       black,
       darkBrown,
       lightBrown,
-      red
+      red,
+      unknown: false
     };
 
     switch (size) {
@@ -60,6 +60,7 @@ router.post('/add', isNotLoggedIn, parser.single('photo'), async (req, res, next
       sizeObj.small = true;
       sizeObj.medium = true;
       sizeObj.large = true;
+      sizeObj.unknown = true;
     }
 
     switch (tail) {
@@ -76,6 +77,7 @@ router.post('/add', isNotLoggedIn, parser.single('photo'), async (req, res, next
       tailObj.longTail = true;
       tailObj.longHairy = true;
       tailObj.shortTail = true;
+      tailObj.unknown = true;
     }
 
     switch (ears) {
@@ -88,6 +90,7 @@ router.post('/add', isNotLoggedIn, parser.single('photo'), async (req, res, next
     default:
       earsObj.up = true;
       earsObj.down = true;
+      earsObj.unknown = true;
     }
 
     switch (hair) {
@@ -100,6 +103,7 @@ router.post('/add', isNotLoggedIn, parser.single('photo'), async (req, res, next
     default:
       hairObj.short = true;
       hairObj.long = true;
+      hairObj.unknown = true;
     }
 
     if (!white && !grey && !black && !darkBrown && !lightBrown && !red) {
@@ -109,7 +113,8 @@ router.post('/add', isNotLoggedIn, parser.single('photo'), async (req, res, next
         black: 'black',
         darkBrown: 'darkBrown',
         lightBrown: 'lightBrown',
-        red: 'red'
+        red: 'red',
+        unknown: true
       };
     }
 
