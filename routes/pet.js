@@ -4,16 +4,19 @@ const express = require('express');
 const router = express.Router();
 
 const { isNotLoggedIn } = require('../middlewares/authMiddlewares');
-// const { isAddPetFormFilled } = require('../middlewares/petMiddlewares');
+// const { isAddLostPetFormFilled, isAddFoundPetFormFilled } = require('../middlewares/petMiddlewares');
 const Dog = require('../models/Dog');
 const parser = require('../config/cloudinary');
 
 /* GET home page. */
 router.get('/add', isNotLoggedIn, (req, res, next) => {
-  res.render('addPet');
+  const data = {
+    missingFields: req.flash('missingFields')
+  };
+  res.render('addPet', data);
 });
 
-router.post('/add', isNotLoggedIn, /* isAddPetFormFilled, */ parser.single('photo'), async (req, res, next) => {
+router.post('/add', isNotLoggedIn, /* isAddLostPetFormFilled, isAddFoundPetFormFilled, */ parser.single('photo'), async (req, res, next) => {
   try {
     const { status, day, month, year, hour, location, name, white, grey, black, darkBrown, lightBrown, red, size, breed, ears, tail, hair } = req.body;
     let { photo } = req.body;

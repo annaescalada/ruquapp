@@ -139,5 +139,11 @@
 
   <button type="submit">Add dog</button>
 
-
 </form>
+
+
+{{#if missingFields.length}}
+<ul class="validation">
+  {{#each missingFields}}<li>{{this}}</li>{{/each}}
+</ul>
+{{/if}}
