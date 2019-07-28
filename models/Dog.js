@@ -66,7 +66,6 @@ const DogSchema = new Schema({
   },
   breed: {
     type: String,
-    enum: ['retriever', 'boxer', 'bulldog', 'beagle', 'rottweiler', 'chihuahua', 'collie', 'labrador', 'terrier', 'shepherd', 'dobermann', 'dalmata', 'default'],
     required: function () {
       return this.type === 'lost';
     },
