@@ -44,6 +44,32 @@ const main = () => {
       });
     }
   }
+
+  // petForm page
+
+  function removeNameIfFound () {
+    const lostRadius = document.querySelector('.addPetForm input.lost');
+    const foundRadius = document.querySelector('.addPetForm input.found');
+    const nameLabel = document.querySelector('.addPetForm label.name');
+    const nameInput = document.querySelector('.addPetForm #name');
+    if (lostRadius || foundRadius) {
+      lostRadius.addEventListener('click', event => {
+        if (nameLabel.hasAttribute('style')) {
+          nameLabel.removeAttribute('style');
+          nameInput.removeAttribute('style');
+        }
+      });
+      foundRadius.addEventListener('click', event => {
+        if (!nameLabel.classList.contains('displayNone')) {
+          nameLabel.setAttribute('style', 'display: none');
+          nameInput.setAttribute('style', 'display: none');
+        }
+      });
+    }
+  }
+
+  removeNameIfFound();
+
   // Dashboard page
 
   function dashboardToggle () {
