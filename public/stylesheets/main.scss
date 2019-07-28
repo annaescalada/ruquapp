@@ -1,0 +1,57 @@
+@import './scss/helpers/mixins';
+@import './scss/helpers/variables';
+@import './scss/components/components';
+@import './scss/layout/layout';
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* ---- typography ---- */
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  line-height: 147%;
+  background: { 
+    color: $lightblue, 
+  }
+  padding: 50px;
+  height:100vh;
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding:0;
+  margin:0;
+}
+
+li{
+  list-style: none;
+  padding:0;
+  margin:0;
+}
+
+a {
+  color: $darkblue;
+}
+
+.displayNone {
+  display:none;
+}
+
+.logo{
+  width:100%;
+}

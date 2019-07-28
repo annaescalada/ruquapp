@@ -1,0 +1,43 @@
+form{
+  width:100%;
+  margin: 20px 0;
+}
+input{
+  text-align: center;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid $mediumblue;
+  height: 40px;
+  padding: 20px;
+  width: 80%;
+  margin-bottom: 20px;
+  -webkit-transition: all 1s; /* Safari prior 6.1 */
+  transition: all 1s;
+}
+
+input:focus{
+  outline: none;
+  width:100%;
+  border-bottom: 2px solid $darkblue;
+  -webkit-transition: all 0.5s; /* Safari prior 6.1 */
+  transition: all 0.5s;
+}
+
+::placeholder{
+  color:$mediumblue;
+  text-align: center;
+}
+
+button, .button{
+  width: 80%;
+  padding: 10px;
+  border: 0;
+  background: $darkblue;
+  color: white;
+  text-align: center;
+  font-size: 0.8em;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  min-height: 40px;
+}

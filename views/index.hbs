@@ -1,32 +1,27 @@
-<img src="" class="logo" alt="Ruqu lost and found logo">
-
-<form action="/auth/login" method="POST">
-  <label for="email">Email</label>
-  {{!-- {{#if formData.length}} --}}
-  {{!-- <input type="text" id="username" name="username" placeholder="Username" value={{formData.[0]}}> --}}
-  {{!-- {{else}} --}}
-  <input type="email" id="email" name="email" placeholder="E-mail">
-  {{!-- {{/if}} --}}
-  <label for="password"></label>
-  <input type="password" name="password" id="password" placeholder="Password">
-  <button type="submit">Log in</button>
-</form>
-{{#if message1.length}}
-<ul class="validation">
-  {{#each message1}}<li>{{this}}</li>{{/each}}
-</ul>
-{{/if}}
-{{#if message2.length}}
-<ul class="validation">
-  {{#each message2}}<li>{{this}}</li>{{/each}}
-</ul>
-{{/if}}
-{{#if message3.length}}
-<ul class="validation">
-  {{#each message3}}<li>{{this}}</li>{{/each}}
-</ul>
-{{/if}}
-
-<hr> or <hr>
-
-<a href="/auth/signup">Sign up</a>
+<div class="main-container">
+  <img src="/images/ruqu-logo.png" class="logo" alt="Ruqu lost and found logo">
+  <form action="/auth/login" method="POST">
+    <input type="email" id="email" name="email" placeholder="email">
+    <input type="password" name="password" id="password" placeholder="password">
+    <button type="submit">Log in</button>
+  </form>
+  {{#if message1.length}}
+  <ul class="validation">
+    {{#each message1}}<li>{{this}}</li>{{/each}}
+  </ul>
+  {{/if}}
+  {{#if message2.length}}
+  <ul class="validation">
+    {{#each message2}}<li>{{this}}</li>{{/each}}
+  </ul>
+  {{/if}}
+  {{#if message3.length}}
+  <ul class="validation">
+    {{#each message3}}<li>{{this}}</li>{{/each}}
+  </ul>
+  {{/if}}
+  <div class="separator">
+    <hr><span>or</span><hr>
+  </div>
+  <a href="/auth/signup" class="button margin">Sign up</a>
+</div>

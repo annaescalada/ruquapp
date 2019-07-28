@@ -51,7 +51,7 @@ router.post('/login', isLoggedIn, isLogInFormFilled, async (req, res, next) => {
   try {
     const user = await User.findOne({ email });
     if (!user) {
-      req.flash('noEmailInDB', 'Your email account is not registered. Please sign up.');
+      req.flash('noEmailInDB', 'This email is not registered.');
       return res.redirect('/');
     }
     if (bcrypt.compareSync(password /* provided password */, user.password/* hashed password */)) {
