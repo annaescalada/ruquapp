@@ -66,7 +66,6 @@ const main = () => {
   dashboardToggle();
 
   // Delete pet and found
-  // Lost found toggle
 
   // Matches page
   // notification on and off
