@@ -102,7 +102,24 @@ const main = () => {
     }
   }
 
+  function deleteOrFoundPet () {
+    const foundOrDeleteDogButton = document.querySelectorAll('.foundOrDeleteDogButton');
+    console.log(foundOrDeleteDogButton);
+    if (foundOrDeleteDogButton) {
+      foundOrDeleteDogButton.forEach(button => {
+        button.addEventListener('click', async event => {
+          const dogIDLost = event.target.parentElement.id;
+          console.log(dogIDLost);
+          await axios.post(`/pet/${dogIDLost}/delete`);
+          const article = event.target.parentElement;
+          article.remove();
+        });
+      });
+    }
+  }
+
   dashboardToggle();
+  deleteOrFoundPet();
 
   // Delete pet and found
 

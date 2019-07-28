@@ -248,4 +248,10 @@ router.get('/:dogID/matches', isNotLoggedIn, async (req, res, next) => {
   res.render('matches', dog);
 });
 
+router.post('/:dogID/delete', isNotLoggedIn, async (req, res, next) => {
+  const { dogID } = req.params;
+  await Dog.findByIdAndDelete(dogID);
+  res.json({ message: 'Dog deleted' });
+});
+
 module.exports = router;

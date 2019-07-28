@@ -8,11 +8,11 @@
 </nav>
 <section class="lostSectionDashboard">
   {{#each lostDogs}}
-  <article class="dogCardDashboard">
+  <article id={{_id}} class="dogCardDashboard">
 
     <a href="/pet/{{_id}}/matches">Matches</a>
-    <button>Found</button>
-    <button>Delete</button>
+    <button class="foundOrDeleteDogButton">Found</button>
+    <button  class="foundOrDeleteDogButton">Delete</button>
 
     <ul>
       {{#if name}}
@@ -109,11 +109,12 @@
 
 <section class="foundSectionDashboard displayNone">
   {{#each foundDogs}}
-    <article class="dogCardDashboard">
+    <article id={{_id}} class="dogCardDashboard">
 
       <a href="/pet/{{_id}}/matches">Matches</a>
-      <button>Found</button>
-      <button>Delete</button>
+      <button class="foundOrDeleteDogButton">Found</button>
+      <button  class="foundOrDeleteDogButton">Delete</button>
+
 
       <ul>
         {{#if name}}
