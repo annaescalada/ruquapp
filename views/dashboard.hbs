@@ -8,12 +8,11 @@
 </nav>
 <section class="lostSectionDashboard">
   {{#each lostDogs}}
-  <a href="/pet/{{_id}}/matches">
   <article class="dogCardDashboard">
 
-    <form action="/pet/{{_id}}/delete" method="POST">
-      <button type="input">Delete</button>
-    </form>
+    <a href="/pet/{{_id}}/matches">Matches</a>
+    <button>Found</button>
+    <button>Delete</button>
 
     <ul>
       {{#if name}}
@@ -105,14 +104,16 @@
       <li>{{location}}</li>
     </ul>
   </article>
-  </a>
   {{/each}}
 </section>
 
 <section class="foundSectionDashboard displayNone">
   {{#each foundDogs}}
-  <a href="/pet/{{_id}}/matches">
     <article class="dogCardDashboard">
+
+      <a href="/pet/{{_id}}/matches">Matches</a>
+      <button>Found</button>
+      <button>Delete</button>
 
       <ul>
         {{#if name}}
@@ -204,7 +205,6 @@
         <li>{{location}}</li>
       </ul>
     </article>
-    </a>
     {{/each}}
   </section>
 

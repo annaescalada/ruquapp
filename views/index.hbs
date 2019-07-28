@@ -1,7 +1,11 @@
 <div class="main-container">
   <img src="/images/ruqu-logo.png" class="logo" alt="Ruqu lost and found logo">
   <form action="/auth/login" method="POST">
+  {{#if email.length}}
+    <input type="email" id="email" name="email" value={{email}}>
+  {{else}}
     <input type="email" id="email" name="email" placeholder="email">
+  {{/if}}
     <input type="password" name="password" id="password" placeholder="password">
     <button type="submit">Log in</button>
   </form>

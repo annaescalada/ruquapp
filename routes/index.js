@@ -10,7 +10,8 @@ router.get('/', isLoggedIn, (req, res, next) => {
   const data = {
     message1: req.flash('loginMissingFields'),
     message2: req.flash('noEmailInDB'),
-    message3: req.flash('wrongPassword')
+    message3: req.flash('wrongPassword'),
+    email: req.flash('emailRecoverLogIn')
   };
   res.render('index', data);
 });
