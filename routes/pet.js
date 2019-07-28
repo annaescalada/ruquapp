@@ -16,14 +16,35 @@ router.get('/add', isNotLoggedIn, (req, res, next) => {
   res.render('addPet', data);
 });
 
-router.post('/add', isNotLoggedIn, /* isAddLostPetFormFilled, isAddFoundPetFormFilled, */ parser.single('photo'), async (req, res, next) => {
+router.post('/add', isNotLoggedIn, parser.single('photo'), async (req, res, next) => {
   try {
     const { status, day, month, year, hour, location, name, white, grey, black, darkBrown, lightBrown, red, size, breed, ears, tail, hair } = req.body;
+    console.log(req.body);
+    if (status === 'lost') {
+      if (!status || !day || !month || !year || !hour || !location || !name || !size || !breed || !ears || !tail || !hair || (!white && !grey && !black && !darkBrown && !lightBrown && !red)) {
+        req.flash('missingFields', 'All fields are required');
+        return res.redirect('/pet/add');
+      }
+    } else {
+      if (!status || !day || !month || !year || !hour || !location) {
+        req.flash('missingFields', 'Location, date and hour fields are required');
+        return res.redirect('/pet/add');
+      }
+    }
+
     let { photo } = req.body;
     const sizeObj = {};
     const tailObj = {};
     const earsObj = {};
     const hairObj = {};
+    let colorObj = {
+      white,
+      grey,
+      black,
+      darkBrown,
+      lightBrown,
+      red
+    };
 
     switch (size) {
     case 'large':
@@ -81,6 +102,17 @@ router.post('/add', isNotLoggedIn, /* isAddLostPetFormFilled, isAddFoundPetFormF
       hairObj.long = true;
     }
 
+    if (!white && !grey && !black && !darkBrown && !lightBrown && !red) {
+      colorObj = {
+        white: 'white',
+        grey: 'grey',
+        black: 'black',
+        darkBrown: 'darkBrown',
+        lightBrown: 'lightBrown',
+        red: 'red'
+      };
+    }
+
     const photoUrl = req.secure_url;
 
     if (!photo) {
@@ -99,14 +131,7 @@ router.post('/add', isNotLoggedIn, /* isAddLostPetFormFilled, isAddFoundPetFormF
       hour,
       location,
       name,
-      color: {
-        white,
-        grey,
-        black,
-        darkBrown,
-        lightBrown,
-        red
-      },
+      color: colorObj,
       size: sizeObj,
       breed,
       ears: earsObj,
