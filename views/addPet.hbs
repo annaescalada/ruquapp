@@ -11,7 +11,7 @@
   <input class="found" type="radio" name="status" value="found"><span>Found</span>
   {{/if}}
   
-  <select name="day" id="day">
+  <select name="day" id="day" required>
     {{#if day.length}}
     <option value="{{day}}">{{day}}</option>
     {{else}}
@@ -49,7 +49,8 @@
     <option value="30">30</option>
     <option value="31">31</option>
   </select>
-  <select name="month" id="month">
+
+  <select name="month" id="month" required>
     {{#if month.length}}
     <option value="{{month}}">{{month}}</option>
     {{else}}
@@ -68,13 +69,14 @@
     <option value="11">November</option>
     <option value="12">December</option>
   </select>
+
    {{#if year.length}}
-    <input type="text" id="year" name="year" value={{year}}>
+    <input type="text" id="year" name="year" value={{year}} required>
     {{else}}
-    <input type="text" id="year" name="year" placeholder="--Insert year (yyyy)--">
+    <input type="text" id="year" name="year" placeholder="--Insert year (yyyy)--" required>
     {{/if}}
 
-  <select name="hour" id="hour">
+  <select name="hour" id="hour" required>
     {{#if hour.length}}
     <option value="{{hour}}">{{hour}}</option>
     {{else}}
@@ -108,9 +110,9 @@
 
   <label for="location">Where did you lose or find the dog?</label>
     {{#if location.length}}
-    <input type="text" id="location" name="location" value={{location}}>
+    <input type="text" id="location" name="location" value={{location}} required>
     {{else}}
-    <input type="text" id="location" name="location" placeholder="C/Balmes, Barcelona, 08026">
+    <input type="text" id="location" name="location" placeholder="C/Balmes, Barcelona, 08026" required>
     {{/if}}
 
   <label class="name" for="name">Name of the dog</label>  
@@ -170,7 +172,7 @@
   {{/if}}
 
   <label for="breed">What breed is the dog?</label>
-  <select name="breed" id="breed">
+  <select class="required" name="breed" id="breed" required>
     {{#if breed.length}}
     <option value="{{breed}}" selected>{{breed}}</option>
     {{else}}

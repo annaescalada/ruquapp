@@ -52,17 +52,26 @@ const main = () => {
     const foundRadius = document.querySelector('.addPetForm input.found');
     const nameLabel = document.querySelector('.addPetForm label.name');
     const nameInput = document.querySelector('.addPetForm #name');
+    const requiredInputs = document.querySelectorAll('.addPetForm .required');
     if (lostRadius || foundRadius) {
       lostRadius.addEventListener('click', event => {
         if (nameLabel.hasAttribute('style')) {
           nameLabel.removeAttribute('style');
           nameInput.removeAttribute('style');
+          nameInput.setAttribute('required', '');
+          requiredInputs.forEach(input => {
+            input.setAttribute('required', '');
+          });
         }
       });
       foundRadius.addEventListener('click', event => {
         if (!nameLabel.classList.contains('displayNone')) {
           nameLabel.setAttribute('style', 'display: none');
           nameInput.setAttribute('style', 'display: none');
+          nameInput.removeAttribute('required');
+          requiredInputs.forEach(input => {
+            input.removeAttribute('required');
+          });
         }
       });
     }
