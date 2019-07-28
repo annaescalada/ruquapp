@@ -55,6 +55,9 @@ const isSignUpFormFilled = async (req, res, next) => {
 
 const isLogInFormFilled = (req, res, next) => {
   const { email, password } = req.body;
+  if (email) {
+    req.flash('emailRecoverLogIn', email);
+  }
   if (!email || !password) {
     req.flash('loginMissingFields', 'All fields are required');
     return res.redirect('/');

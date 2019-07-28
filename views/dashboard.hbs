@@ -11,6 +11,10 @@
   <a href="/pet/{{_id}}/matches">
   <article class="dogCardDashboard">
 
+    <form action="/pet/{{_id}}/delete" method="POST">
+      <button type="input">Delete</button>
+    </form>
+
     <ul>
       {{#if name}}
       <li>{{name}}</li>
