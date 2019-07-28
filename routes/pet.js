@@ -139,6 +139,7 @@ router.post('/add', isNotLoggedIn, parser.single('photo'), async (req, res, next
       hair: hairObj,
       photo
     });
+    res.redirect('/dashboard');
   } catch (error) {
     next(error);
   }
