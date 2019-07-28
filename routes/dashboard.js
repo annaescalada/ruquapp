@@ -22,6 +22,7 @@ router.get('/', isNotLoggedIn, async (req, res, next) => {
     }
   });
   const dogsData = {
+    dogs,
     lostDogs,
     foundDogs
   };
