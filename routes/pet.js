@@ -15,7 +15,8 @@ router.get('/add', isNotLoggedIn, (req, res, next) => {
 
 router.post('/add', isNotLoggedIn, /* isAddPetFormFilled, */ parser.single('photo'), async (req, res, next) => {
   try {
-    const { status, day, month, year, hour, location, name, white, grey, black, darkBrown, lightBrown, red, size, breed, ears, tail, hair, photo } = req.body;
+    const { status, day, month, year, hour, location, name, white, grey, black, darkBrown, lightBrown, red, size, breed, ears, tail, hair } = req.body;
+    let { photo } = req.body;
     const sizeObj = {};
     const tailObj = {};
     const earsObj = {};
@@ -77,6 +78,14 @@ router.post('/add', isNotLoggedIn, /* isAddPetFormFilled, */ parser.single('phot
       hairObj.long = true;
     }
 
+    const photoUrl = req.secure_url;
+
+    if (!photo) {
+      photo = '/images/dog-default.png';
+    } else {
+      photo = photoUrl;
+    }
+
     await Dog.create({
       notification: true,
       userID: req.session.currentUser._id,
@@ -100,8 +109,7 @@ router.post('/add', isNotLoggedIn, /* isAddPetFormFilled, */ parser.single('phot
       ears: earsObj,
       tail: tailObj,
       hair: hairObj,
-      photo: req.file.secure_url
-
+      photo
     });
   } catch (error) {
     next(error);

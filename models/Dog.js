@@ -123,6 +123,6 @@ const DogSchema = new Schema({
   timestamps: true
 });
 
-const Dog = mongoose.model('LostDog', DogSchema);
+const Dog = mongoose.model('Dog', DogSchema);
 
 module.exports = Dog;
