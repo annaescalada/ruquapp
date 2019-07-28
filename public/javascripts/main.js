@@ -6,17 +6,20 @@ const main = () => {
     const editInfoButton = document.querySelector('.edit-info');
     if (editInfoButton) {
       editInfoButton.addEventListener('click', event => {
+        editInfoButton.remove();
         const inputsInfo = document.querySelectorAll('.edit-info-input');
         inputsInfo.forEach(input => {
           input.removeAttribute('disabled');
         });
         const button = document.createElement('button');
+        const a = document.createElement('a');
+        a.setAttribute('href', '/profile');
+        a.innerHTML = 'Cancel';
         button.setAttribute('type', 'submit');
         button.innerHTML = 'Save changes';
-        // const mailInput = document.querySelector('#email');
-        // mailInput.innerHTML = mailInput.value;
         const formInfo = document.querySelector('.edit-info-form');
         formInfo.appendChild(button);
+        formInfo.appendChild(a);
       });
     }
   }
@@ -25,6 +28,7 @@ const main = () => {
     const editPasswordButton = document.querySelector('.edit-password');
     if (editPasswordButton) {
       editPasswordButton.addEventListener('click', event => {
+        editPasswordButton.remove();
         const inputPassword = document.querySelector('.edit-password-input');
         inputPassword.removeAttribute('disabled');
         inputPassword.removeAttribute('value');

@@ -62,9 +62,28 @@ const isLogInFormFilled = (req, res, next) => {
   next();
 };
 
+const isEditInfoFormFilled = (req, res, next) => {
+  const { name, surname, phone } = req.body;
+  if (!name || !surname || !phone) {
+    req.flash('editProfileInfo', 'All fields are required');
+    return res.redirect('/profile');
+  }
+  next();
+};
+
+const isEditPassFormFilled = (req, res, next) => {
+  const { password } = req.body;
+  if (!password) {
+    req.flash('editPassword', 'You have to insert a new password or cancel.');
+    return res.redirect('/profile');
+  }
+  next();
+};
 module.exports = {
   isLoggedIn,
   isNotLoggedIn,
   isLogInFormFilled,
-  isSignUpFormFilled
+  isSignUpFormFilled,
+  isEditInfoFormFilled,
+  isEditPassFormFilled
 };

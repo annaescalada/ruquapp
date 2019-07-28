@@ -9,14 +9,21 @@
 <button class="edit-info">Edit</button>
 <form class="edit-info-form" action="/profile/edit" method="POST">
   <label for="name">Name</label>
-  <input class="edit-info-input" name="name" type="text" id="name" placeholder="Your name" value="{{name}}" required disabled>
+  <input class="edit-info-input" name="name" type="text" id="name" placeholder="Your name" value="{{user.name}}" required disabled>
   <label for="surname">Surname</label>
-  <input class="edit-info-input" name="surname" type="text" id="surname" placeholder="Your surname" value="{{surname}}" required disabled>
+  <input class="edit-info-input" name="surname" type="text" id="surname" placeholder="Your surname" value="{{user.surname}}" required disabled>
   <label for="phone">Phone</label>
-  <input class="edit-info-input" name="phone" type="text" id="phone" placeholder="Your phone" value="{{phone}}" required disabled>
+  <input class="edit-info-input" name="phone" type="text" id="phone" placeholder="Your phone" value="{{user.phone}}" required disabled>
   <label for="email">Email</label>
-  <input type="email" id="email" name="email" placeholder="Your email" value="{{email}}" required disabled>
+  <input type="email" id="email" name="email" placeholder="Your email" value="{{user.email}}" required disabled>
 </form>
+
+
+{{#if errorInfo.length}}
+<ul class="validation">
+  {{#each errorInfo}}<li>{{this}}</li>{{/each}}
+</ul>
+{{/if}}
 
 <p>Edit password</p>
 <button class="edit-password">Edit password</button>
@@ -24,3 +31,9 @@
   <label for="password">Password</label>
   <input class="edit-password-input" type="password" name="password" id="password" placeholder="Your new password" value="*****" required disabled>
 </form>
+
+{{#if errorPass.length}}
+<ul class="validation">
+  {{#each errorPass}}<li>{{this}}</li>{{/each}}
+</ul>
+{{/if}}
