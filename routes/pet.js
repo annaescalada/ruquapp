@@ -8,7 +8,10 @@ const { isNotLoggedIn } = require('../middlewares/authMiddlewares');
 const Dog = require('../models/Dog');
 const parser = require('../config/cloudinary');
 
-/* GET home page. */
+router.get('/:dogID/matches', isNotLoggedIn, (req, res, next) => {
+  res.render('matches');
+});
+
 router.get('/add', isNotLoggedIn, (req, res, next) => {
   const data = {
     missingFields: req.flash('missingFields')

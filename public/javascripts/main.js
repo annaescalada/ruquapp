@@ -63,18 +63,7 @@ const main = () => {
     }
   }
 
-  function redirectToMatches () {
-    const articlesDashboard = document.querySelectorAll('article.dogCardDashboard');
-    console.log(articlesDashboard);
-    articlesDashboard.forEach(article => {
-      article.addEventListener('click', event => {
-        const dogID = event.path[2].id;
-      });
-    });
-  }
-
   dashboardToggle();
-  redirectToMatches();
 
   // Delete pet and found
   // Lost found toggle
