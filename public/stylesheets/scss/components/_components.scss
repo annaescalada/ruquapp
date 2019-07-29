@@ -1,0 +1,95 @@
+form{
+  width:100%;
+  margin: 20px 0;
+}
+input[type="text"], input[type="email"], input[type="password"]{
+  text-align: center;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid $mediumblue;
+  height: 40px;
+  padding: 20px;
+  width: 80%;
+  margin-bottom: 20px;
+  -webkit-transition: all 1s; /* Safari prior 6.1 */
+  transition: all 1s;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus{
+  outline: none;
+  width:100%;
+  border-bottom: 2px solid $darkblue;
+  -webkit-transition: all 0.5s; /* Safari prior 6.1 */
+  transition: all 0.5s;
+}
+
+select{
+  text-align: center;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid #259bab;
+  height: 40px;
+  padding: 5px;
+  width: 80%;
+  margin-bottom: 20px;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  color: $darkblue;
+}
+
+select:focus{
+  outline: none;
+  border-bottom: 2px solid $darkblue;
+  -webkit-transition: all 0.5s; /* Safari prior 6.1 */
+  transition: all 0.5s;
+}
+
+input[type="checkbox"] {
+  width: 30px;
+}
+ 
+.pet-color {
+  .color {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px solid $darkblue;
+  }
+  .white {
+    background-color: white;
+  }
+  .black {
+    background-color: black;
+  }
+  .grey {
+    background-color: grey;
+  }
+  .red {
+    background-color: $red;
+  }
+  .light-brown {
+    background-color: #ebcc7c;
+  }
+  .dark-brown {
+    background-color: #b36b01;
+  }
+}
+
+::placeholder{
+  color:$mediumblue;
+  text-align: center;
+}
+
+button, .button{
+  width: 80%;
+  padding: 10px;
+  border: 0;
+  background: $darkblue;
+  color: white;
+  text-align: center;
+  font-size: 0.8em;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  min-height: 40px;
+}

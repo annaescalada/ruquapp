@@ -1,2 +1,29 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+  <img src="/images/ruqu-logo.png" class="logo" alt="Ruqu lost and found logo">
+  <form action="/auth/login" method="POST">
+  {{#if email.length}}
+    <input type="email" id="email" name="email" value={{email}}>
+  {{else}}
+    <input type="email" id="email" name="email" placeholder="email">
+  {{/if}}
+    <input type="password" name="password" id="password" placeholder="password">
+    <button type="submit">Log in</button>
+  </form>
+  {{#if message1.length}}
+  <ul class="validation">
+    {{#each message1}}<li>{{this}}</li>{{/each}}
+  </ul>
+  {{/if}}
+  {{#if message2.length}}
+  <ul class="validation">
+    {{#each message2}}<li>{{this}}</li>{{/each}}
+  </ul>
+  {{/if}}
+  {{#if message3.length}}
+  <ul class="validation">
+    {{#each message3}}<li>{{this}}</li>{{/each}}
+  </ul>
+  {{/if}}
+  <div class="separator">
+    <hr><span>or</span><hr>
+  </div>
+  <a href="/auth/signup" class="button margin">Sign up</a>

@@ -1,0 +1,216 @@
+<div class="navigation-logo">
+  <img src="/images/ruqu-logo.png" class="logo logo-small" alt="Ruqu lost and found logo">
+  <a href="/profile">*</a>
+</div>
+<nav>
+  <ul>
+    <li class="lostToggle">LOST</li>
+    <li class="foundToggle">FOUND</li>
+  </ul>
+</nav>
+<section class="lostSectionDashboard">
+  {{#each lostDogs}}
+  <article id={{_id}} class="dogCardDashboard">
+
+    <a class="button" href="/pet/{{_id}}/matches">Matches</a>
+    <button class="foundOrDeleteDogButton">Found</button>
+    <button  class="foundOrDeleteDogButton">Delete</button>
+
+    <ul>
+      {{#if name}}
+      <li>{{name}}</li>
+      {{/if}}
+
+      <li>Color:</li>
+      {{#if color.unknown}}
+        <p>Unknown</p>
+      {{else}}
+        {{#if color.white }}
+          <li>White</li>
+        {{/if}}
+        {{#if color.black}}
+          <li>Black</li>
+        {{/if}}
+        {{#if color.darkBrown}}
+          <li>Dark Brown</li>
+        {{/if}}
+        {{#if color.lightBrown}}
+          <li>Ligth Brown</li>
+        {{/if}}
+        {{#if color.red}}
+          <li>Red</li>
+        {{/if}}
+        {{#if color.grey}}
+          <li>Grey</li>
+        {{/if}}
+      {{/if}}
+
+      <li>Size:</li>
+      {{#if size.unknown}}
+        <p>Unknown</p>
+        {{#if size.small}}
+          <li>Small</li>
+        {{/if}}
+        {{#if size.medium}}
+          <li>Medium</li>
+        {{/if}}
+        {{#if size.big}}
+          <li>Big</li>
+        {{/if}}
+      {{/if}}
+
+      <li>{{breed}}</li>
+
+      <li>Ears:</li>
+      {{#if ears.unknown}}
+        <p>Unknown</p>
+        {{#if ears.up}}
+          <li>Up</li>
+        {{/if}}
+        {{#if ears.down}}
+          <li>Down</li>
+        {{/if}}
+      {{/if}}
+
+      <li>Tail:</li>
+      {{#if tail.unknown}}
+        <p>Unknown</p>
+        {{#if tail.longTail}}
+          <li>Long</li>
+        {{/if}}
+        {{#if tail.longHairy}}
+          <li>Long and hairy</li>
+        {{/if}}
+        {{#if tail.shortTail}}
+          <li>Short</li>
+        {{/if}}
+      {{/if}}
+
+      <li>Hair:</li>
+      {{#if size.unknown}}
+        <p>Unknown</p>
+        {{#if hair.long}}
+          <li>Long</li>
+        {{/if}}
+        {{#if hair.short}}
+          <li>Short</li>
+        {{/if}}
+      {{/if}}
+      
+      <li>{{photo}}</li>
+      <li>{{notification}}</li>
+      <li>{{day}}</li>
+      <li>{{month}}</li>
+      <li>{{year}}</li>
+      <li>{{hour}}</li>
+      <li>{{location}}</li>
+    </ul>
+  </article>
+  {{/each}}
+</section>
+
+<section class="foundSectionDashboard displayNone">
+  {{#each foundDogs}}
+    <article id={{_id}} class="dogCardDashboard">
+
+      <a href="/pet/{{_id}}/matches">Matches</a>
+      <button class="foundOrDeleteDogButton">Found</button>
+      <button  class="foundOrDeleteDogButton">Delete</button>
+
+
+      <ul>
+        {{#if name}}
+        <li>{{name}}</li>
+        {{/if}}
+
+        <li>Color:</li>
+        {{#if color.unknown}}
+          <p>Unknown</p>
+        {{else}}
+          {{#if color.white }}
+            <li>White</li>
+          {{/if}}
+          {{#if color.black}}
+            <li>Black</li>
+          {{/if}}
+          {{#if color.darkBrown}}
+            <li>Dark Brown</li>
+          {{/if}}
+          {{#if color.lightBrown}}
+            <li>Ligth Brown</li>
+          {{/if}}
+          {{#if color.red}}
+            <li>Red</li>
+          {{/if}}
+          {{#if color.grey}}
+            <li>Grey</li>
+          {{/if}}
+        {{/if}}
+
+        <li>Size:</li>
+        {{#if size.unknown}}
+          <p>Unknown</p>
+          {{#if size.small}}
+            <li>Small</li>
+          {{/if}}
+          {{#if size.medium}}
+            <li>Medium</li>
+          {{/if}}
+          {{#if size.big}}
+            <li>Big</li>
+          {{/if}}
+        {{/if}}
+
+        <li>{{breed}}</li>
+
+        <li>Ears:</li>
+        {{#if ears.unknown}}
+          <p>Unknown</p>
+          {{#if ears.up}}
+            <li>Up</li>
+          {{/if}}
+          {{#if ears.down}}
+            <li>Down</li>
+          {{/if}}
+        {{/if}}
+
+        <li>Tail:</li>
+        {{#if tail.unknown}}
+          <p>Unknown</p>
+          {{#if tail.longTail}}
+            <li>Long</li>
+          {{/if}}
+          {{#if tail.longHairy}}
+            <li>Long and hairy</li>
+          {{/if}}
+          {{#if tail.shortTail}}
+            <li>Short</li>
+          {{/if}}
+        {{/if}}
+
+        <li>Hair:</li>
+        {{#if size.unknown}}
+          <p>Unknown</p>
+          {{#if hair.long}}
+            <li>Long</li>
+          {{/if}}
+          {{#if hair.short}}
+            <li>Short</li>
+          {{/if}}
+        {{/if}}
+        
+        <li>{{photo}}</li>
+        <li>{{notification}}</li>
+        <li>{{day}}</li>
+        <li>{{month}}</li>
+        <li>{{year}}</li>
+        <li>{{hour}}</li>
+        <li>{{location}}</li>
+      </ul>
+    </article>
+    {{/each}}
+  </section>
+
+<section class="add-dog">
+  <a href="/pet/add">+</a>
+</section>
