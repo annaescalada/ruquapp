@@ -5,8 +5,8 @@ require('dotenv').config();
 
 cloudinary.config({
   cloud_name: 'ruquapp',
-  api_key: CLOUDINARY,
-  api_secret: CLOUDINARY_SECRET
+  api_key: process.env.CLOUDINARY,
+  api_secret: process.env.CLOUDINARY_SECRET
 });
 
 const storage = cloudinaryStorage({
