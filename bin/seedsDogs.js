@@ -70,7 +70,7 @@ async function seedsDogs () {
       },
       photo: '/images/seeds2.jpeg',
       notification: true,
-      userID: users[0],
+      userID: users[1],
       status: 'lost',
       day: 13,
       month: 4,
@@ -99,7 +99,7 @@ async function seedsDogs () {
       },
       photo: '/images/seeds3.jpeg',
       notification: true,
-      userID: users[0],
+      userID: users[2],
       status: 'lost',
       day: 30,
       month: 6,
@@ -127,7 +127,7 @@ async function seedsDogs () {
       },
       photo: '/images/seeds4.jpeg',
       notification: true,
-      userID: users[0],
+      userID: users[3],
       status: 'lost',
       day: 22,
       month: 5,
@@ -155,7 +155,7 @@ async function seedsDogs () {
       },
       photo: '/images/seeds5.jpeg',
       notification: true,
-      userID: users[0],
+      userID: users[4],
       status: 'lost',
       day: 22,
       month: 5,
@@ -182,7 +182,7 @@ async function seedsDogs () {
       },
       photo: '/images/seeds6.jpeg',
       notification: true,
-      userID: users[0],
+      userID: users[5],
       status: 'lost',
       day: 22,
       month: 5,
@@ -214,7 +214,7 @@ async function seedsDogs () {
       },
       photo: '/images/dog-default.jpeg',
       notification: true,
-      userID: users[0],
+      userID: users[6],
       status: 'found',
       day: 22,
       month: 5,
@@ -247,10 +247,10 @@ async function seedsDogs () {
       },
       photo: '/images/dog-default.jpeg',
       notification: true,
-      userID: users[0],
+      userID: users[7],
       status: 'found',
       day: 22,
-      month: 5,
+      month: 8,
       year: 2019,
       hour: 18,
       location: 'C/Numancia 2'
@@ -264,7 +264,7 @@ async function seedsDogs () {
       },
       breed: 'Mixed breed',
       ears: {
-        down: true
+        up: true
       },
       tail: {
         longHairy: true
@@ -272,15 +272,171 @@ async function seedsDogs () {
       hair: {
         long: true
       },
-      photo: '/images/seeds.jpeg',
+      photo: '/images/dog-default.jpeg',
+      notification: true,
+      userID: users[7],
+      status: 'found',
+      day: 22,
+      month: 8,
+      year: 2019,
+      hour: 18,
+      location: 'C/Juan Corrales 4'
+    },
+    {
+      color: {
+        red: true
+      },
+      size: {
+        big: true,
+        medium: true,
+        large: true,
+        unknown: true
+      },
+      breed: 'Mixed breed',
+      ears: {
+        down: true,
+        up: true,
+        unknown: true
+      },
+      tail: {
+        longHairy: true
+      },
+      hair: {
+        long: true,
+        short: true,
+        unknown: true
+      },
+      photo: '/images/dog-default.jpeg',
       notification: true,
       userID: users[0],
       status: 'found',
       day: 22,
-      month: 5,
+      month: 8,
       year: 2019,
       hour: 18,
-      location: 'C/Villarroel 22'
+      location: 'C/Arago 150'
+    },
+    {
+      color: {
+        white: true,
+        black: true,
+        red: true,
+        unknown: false
+      },
+      size: {
+        big: true,
+        large: true,
+        small: true,
+        unknown: true
+      },
+      breed: 'Mixed breed',
+      ears: {
+        down: true,
+        up: true,
+        unknown: true
+      },
+      tail: {
+        smallTail: true,
+        longHairy: true,
+        longTail: true,
+        unknown: true
+      },
+      hair: {
+        long: true,
+        short: true,
+        unknown: true
+      },
+      photo: '/images/dog-default.jpeg',
+      notification: true,
+      userID: users[1],
+      status: 'found',
+      day: 22,
+      month: 5,
+      year: 2020,
+      hour: 18,
+      location: 'C/Deu i mata 22'
+    },
+    {
+      color: {
+        white: true,
+        black: true,
+        red: true,
+        lightBrown: true,
+        darkBrown: true,
+        grey: true,
+        unknown: false
+      },
+      size: {
+        big: true,
+        large: true,
+        small: true,
+        unknown: true
+      },
+      breed: 'Mixed breed',
+      ears: {
+        down: true,
+        up: true,
+        unknown: true
+      },
+      tail: {
+        smallTail: true,
+        longHairy: true,
+        longTail: true,
+        unknown: true
+      },
+      hair: {
+        long: true,
+        short: true,
+        unknown: true
+      },
+      photo: '/images/dog-default.jpeg',
+      notification: true,
+      userID: users[2],
+      status: 'found',
+      day: 22,
+      month: 3,
+      year: 2019,
+      hour: 18,
+      location: 'Passeig Sant Joan 2'
+    },
+    {
+      color: {
+        white: true,
+        black: true,
+        red: true
+      },
+      size: {
+        big: true,
+        large: true,
+        small: true,
+        unknown: true
+      },
+      breed: 'Mixed breed',
+      ears: {
+        down: true,
+        up: true,
+        unknown: true
+      },
+      tail: {
+        smallTail: true,
+        longHairy: true,
+        longTail: true,
+        unknown: true
+      },
+      hair: {
+        long: true,
+        short: true,
+        unknown: true
+      },
+      photo: '/images/dog-default.jpeg',
+      notification: true,
+      userID: users[3],
+      status: 'found',
+      day: 22,
+      month: 3,
+      year: 2019,
+      hour: 18,
+      location: 'Plaça Universitat 10'
     },
     {
       color: {
@@ -299,19 +455,47 @@ async function seedsDogs () {
       hair: {
         long: true
       },
-      photo: '/images/seeds.jpeg',
+      photo: '/images/dog-default.jpeg',
       notification: true,
-      userID: users[0],
+      userID: users[4],
       status: 'found',
       day: 22,
-      month: 5,
+      month: 6,
       year: 2019,
       hour: 18,
-      location: 'C/Villarroel 22'
+      location: 'Plaza lesseps 5'
     },
     {
       color: {
-        lightBrown: true
+        red: true,
+        black: true
+      },
+      size: {
+        small: true
+      },
+      breed: 'Mixed breed',
+      ears: {
+        down: true
+      },
+      tail: {
+        longHairy: true
+      },
+      hair: {
+        long: true
+      },
+      photo: '/images/dog-default.jpeg',
+      notification: true,
+      userID: users[5],
+      status: 'found',
+      day: 2,
+      month: 5,
+      year: 2019,
+      hour: 18,
+      location: 'C/Girona 65'
+    },
+    {
+      color: {
+        darkBrown: true
       },
       size: {
         big: true
@@ -326,22 +510,22 @@ async function seedsDogs () {
       hair: {
         long: true
       },
-      photo: '/images/seeds.jpeg',
+      photo: '/images/dog-default.jpeg',
       notification: true,
-      userID: users[0],
+      userID: users[6],
       status: 'found',
       day: 22,
       month: 5,
       year: 2019,
       hour: 18,
-      location: 'C/Villarroel 22'
+      location: 'C/ de Sants 89'
     },
     {
       color: {
-        lightBrown: true
+        grey: true
       },
       size: {
-        big: true
+        medium: true
       },
       breed: 'Mixed breed',
       ears: {
@@ -353,153 +537,16 @@ async function seedsDogs () {
       hair: {
         long: true
       },
-      photo: '/images/seeds.jpeg',
+      photo: '/images/dog-default.jpeg',
       notification: true,
-      userID: users[0],
+      userID: users[7],
       status: 'found',
       day: 22,
       month: 5,
       year: 2019,
       hour: 18,
-      location: 'C/Villarroel 22'
-    },
-    {
-      color: {
-        lightBrown: true
-      },
-      size: {
-        big: true
-      },
-      breed: 'Mixed breed',
-      ears: {
-        down: true
-      },
-      tail: {
-        longHairy: true
-      },
-      hair: {
-        long: true
-      },
-      photo: '/images/seeds.jpeg',
-      notification: true,
-      userID: users[0],
-      status: 'found',
-      day: 22,
-      month: 5,
-      year: 2019,
-      hour: 18,
-      location: 'C/Villarroel 22'
-    },
-    {
-      color: {
-        lightBrown: true
-      },
-      size: {
-        big: true
-      },
-      breed: 'Mixed breed',
-      ears: {
-        down: true
-      },
-      tail: {
-        longHairy: true
-      },
-      hair: {
-        long: true
-      },
-      photo: '/images/seeds.jpeg',
-      notification: true,
-      userID: users[0],
-      status: 'found',
-      day: 22,
-      month: 5,
-      year: 2019,
-      hour: 18,
-      location: 'C/Villarroel 22'
-    },
-    {
-      color: {
-        lightBrown: true
-      },
-      size: {
-        big: true
-      },
-      breed: 'Mixed breed',
-      ears: {
-        down: true
-      },
-      tail: {
-        longHairy: true
-      },
-      hair: {
-        long: true
-      },
-      photo: '/images/seeds.jpeg',
-      notification: true,
-      userID: users[0],
-      status: 'found',
-      day: 22,
-      month: 5,
-      year: 2019,
-      hour: 18,
-      location: 'C/Villarroel 22'
-    },
-    {
-      color: {
-        lightBrown: true
-      },
-      size: {
-        big: true
-      },
-      breed: 'Mixed breed',
-      ears: {
-        down: true
-      },
-      tail: {
-        longHairy: true
-      },
-      hair: {
-        long: true
-      },
-      photo: '/images/seeds.jpeg',
-      notification: true,
-      userID: users[0],
-      status: 'found',
-      day: 22,
-      month: 5,
-      year: 2019,
-      hour: 18,
-      location: 'C/Villarroel 22'
-    },
-    {
-      color: {
-        lightBrown: true
-      },
-      size: {
-        big: true
-      },
-      breed: 'Mixed breed',
-      ears: {
-        down: true
-      },
-      tail: {
-        longHairy: true
-      },
-      hair: {
-        long: true
-      },
-      photo: '/images/seeds.jpeg',
-      notification: true,
-      userID: users[0],
-      status: 'found',
-      day: 22,
-      month: 5,
-      year: 2019,
-      hour: 18,
-      location: 'C/Villarroel 22'
-    },
-    v
-
+      location: 'C/Roser 8'
+    }
   ];
 }
 
