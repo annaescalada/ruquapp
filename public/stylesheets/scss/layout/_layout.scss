@@ -1,0 +1,58 @@
+body{
+  @include flex-center();
+}
+
+.main-container{
+  @include flex-center(column);
+  form{
+    @include flex-center(column);
+  }
+  height: 100%;
+  width: 100%;
+  max-width: 1100px;
+}
+
+.logo{
+  width:100%;
+}
+
+.logo-small {
+  width: 50%;
+}
+
+.navigation-logo {
+  @include flex-center();
+  
+}
+.validation{
+  margin-bottom: 20px;
+  
+  li{
+    background-color: $red;
+    padding: 10px 20px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+  }
+}
+
+.separator{
+  @include flex-center(row);
+  width:80%;
+  margin-bottom: 20px;
+  hr{
+    width: 100%;
+    background-color: $mediumblue;
+    border: 0;
+    height: 1px;
+  }
+  span{
+    margin: 10px;
+    color: $mediumblue;
+  }
+}
+
+.radio-list {
+  @include flex-center(row);
+}

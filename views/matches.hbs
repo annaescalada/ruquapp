@@ -1,0 +1,108 @@
+<a href="/dashboard"><</a>
+<img src="/images/ruqu-logo.png" class="logo" alt="Ruqu lost and found logo">
+
+<section class="currentDogMacthes">
+<article>
+    <a href="/pet/{{_id}}/edit">Edit</a>
+    {{#if notification}}
+    <img id={{_id}} class="notifications notifications-true" src="/images/notifications-true.svg" alt="notifications on" width="80px">
+    {{else}}
+    <img id={{_id}} class="notifications" src="/images/notifications-false.png" alt="notifications off" width="80px">
+    {{/if}}
+
+
+    <ul>
+      {{#if name}}
+      <li>{{name}}</li>
+      {{/if}}
+
+      <li>Color:</li>
+      {{#if color.unknown}}
+        <p>Unknown</p>
+      {{else}}
+        {{#if color.white }}
+          <li>White</li>
+        {{/if}}
+        {{#if color.black}}
+          <li>Black</li>
+        {{/if}}
+        {{#if color.darkBrown}}
+          <li>Dark Brown</li>
+        {{/if}}
+        {{#if color.lightBrown}}
+          <li>Ligth Brown</li>
+        {{/if}}
+        {{#if color.red}}
+          <li>Red</li>
+        {{/if}}
+        {{#if color.grey}}
+          <li>Grey</li>
+        {{/if}}
+      {{/if}}
+
+      <li>Size:</li>
+      {{#if size.unknown}}
+        <p>Unknown</p>
+        {{#if size.small}}
+          <li>Small</li>
+        {{/if}}
+        {{#if size.medium}}
+          <li>Medium</li>
+        {{/if}}
+        {{#if size.big}}
+          <li>Big</li>
+        {{/if}}
+      {{/if}}
+
+      <li>{{breed}}</li>
+
+      <li>Ears:</li>
+      {{#if ears.unknown}}
+        <p>Unknown</p>
+        {{#if ears.up}}
+          <li>Up</li>
+        {{/if}}
+        {{#if ears.down}}
+          <li>Down</li>
+        {{/if}}
+      {{/if}}
+
+      <li>Tail:</li>
+      {{#if tail.unknown}}
+        <p>Unknown</p>
+        {{#if tail.longTail}}
+          <li>Long</li>
+        {{/if}}
+        {{#if tail.longHairy}}
+          <li>Long and hairy</li>
+        {{/if}}
+        {{#if tail.shortTail}}
+          <li>Short</li>
+        {{/if}}
+      {{/if}}
+
+      <li>Hair:</li>
+      {{#if size.unknown}}
+        <p>Unknown</p>
+        {{#if hair.long}}
+          <li>Long</li>
+        {{/if}}
+        {{#if hair.short}}
+          <li>Short</li>
+        {{/if}}
+      {{/if}}
+      
+      <li>{{photo}}</li>
+      <li>{{notification}}</li>
+      <li>{{day}}</li>
+      <li>{{month}}</li>
+      <li>{{year}}</li>
+      <li>{{hour}}</li>
+      <li>{{location}}</li>
+    </ul>
+  </article>
+</section>
+
+<section class="matches">
+  
+</section>
