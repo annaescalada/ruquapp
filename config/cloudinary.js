@@ -1,11 +1,12 @@
 const cloudinary = require('cloudinary');
 const cloudinaryStorage = require('multer-storage-cloudinary');
 const multer = require('multer');
+require('dotenv').config();
 
 cloudinary.config({
   cloud_name: 'ruquapp',
-  api_key: '148111121479213',
-  api_secret: '7jtf219hI17T01Y-u-UynmQ_FsY'
+  api_key: CLOUDINARY,
+  api_secret: CLOUDINARY_SECRET
 });
 
 const storage = cloudinaryStorage({
