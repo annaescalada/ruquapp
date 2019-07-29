@@ -14,7 +14,6 @@ const Dog = require('../models/Dog');
 
 async function seedsDogs () {
   const users = await User.find();
-
   const seeds = [
 
     {
@@ -40,7 +39,7 @@ async function seedsDogs () {
       },
       photo: '/images/seeds/seeds1.jpeg',
       notification: true,
-      userID: users[0],
+      userID: users[0]._id,
       status: 'lost',
       day: 1,
       month: 3,
@@ -70,7 +69,7 @@ async function seedsDogs () {
       },
       photo: '/images/seeds2.jpeg',
       notification: true,
-      userID: users[1],
+      userID: users[1]._id,
       status: 'lost',
       day: 13,
       month: 4,
@@ -99,7 +98,7 @@ async function seedsDogs () {
       },
       photo: '/images/seeds3.jpeg',
       notification: true,
-      userID: users[2],
+      userID: users[2]._id,
       status: 'lost',
       day: 30,
       month: 6,
@@ -127,7 +126,7 @@ async function seedsDogs () {
       },
       photo: '/images/seeds4.jpeg',
       notification: true,
-      userID: users[3],
+      userID: users[3]._id,
       status: 'lost',
       day: 22,
       month: 5,
@@ -155,7 +154,7 @@ async function seedsDogs () {
       },
       photo: '/images/seeds5.jpeg',
       notification: true,
-      userID: users[4],
+      userID: users[4]._id,
       status: 'lost',
       day: 22,
       month: 5,
@@ -182,7 +181,7 @@ async function seedsDogs () {
       },
       photo: '/images/seeds6.jpeg',
       notification: true,
-      userID: users[5],
+      userID: users[5]._id,
       status: 'lost',
       day: 22,
       month: 5,
@@ -214,7 +213,7 @@ async function seedsDogs () {
       },
       photo: '/images/dog-default.jpeg',
       notification: true,
-      userID: users[6],
+      userID: users[6]._id,
       status: 'found',
       day: 22,
       month: 5,
@@ -247,7 +246,7 @@ async function seedsDogs () {
       },
       photo: '/images/dog-default.jpeg',
       notification: true,
-      userID: users[7],
+      userID: users[7]._id,
       status: 'found',
       day: 22,
       month: 8,
@@ -274,7 +273,7 @@ async function seedsDogs () {
       },
       photo: '/images/dog-default.jpeg',
       notification: true,
-      userID: users[7],
+      userID: users[7]._id,
       status: 'found',
       day: 22,
       month: 8,
@@ -308,7 +307,7 @@ async function seedsDogs () {
       },
       photo: '/images/dog-default.jpeg',
       notification: true,
-      userID: users[0],
+      userID: users[0]._id,
       status: 'found',
       day: 22,
       month: 8,
@@ -348,7 +347,7 @@ async function seedsDogs () {
       },
       photo: '/images/dog-default.jpeg',
       notification: true,
-      userID: users[1],
+      userID: users[1]._id,
       status: 'found',
       day: 22,
       month: 5,
@@ -391,7 +390,7 @@ async function seedsDogs () {
       },
       photo: '/images/dog-default.jpeg',
       notification: true,
-      userID: users[2],
+      userID: users[2]._id,
       status: 'found',
       day: 22,
       month: 3,
@@ -430,7 +429,7 @@ async function seedsDogs () {
       },
       photo: '/images/dog-default.jpeg',
       notification: true,
-      userID: users[3],
+      userID: users[3]._id,
       status: 'found',
       day: 22,
       month: 3,
@@ -457,7 +456,7 @@ async function seedsDogs () {
       },
       photo: '/images/dog-default.jpeg',
       notification: true,
-      userID: users[4],
+      userID: users[4]._id,
       status: 'found',
       day: 22,
       month: 6,
@@ -485,7 +484,7 @@ async function seedsDogs () {
       },
       photo: '/images/dog-default.jpeg',
       notification: true,
-      userID: users[5],
+      userID: users[5]._id,
       status: 'found',
       day: 2,
       month: 5,
@@ -512,7 +511,7 @@ async function seedsDogs () {
       },
       photo: '/images/dog-default.jpeg',
       notification: true,
-      userID: users[6],
+      userID: users[6]._id,
       status: 'found',
       day: 22,
       month: 5,
@@ -539,7 +538,7 @@ async function seedsDogs () {
       },
       photo: '/images/dog-default.jpeg',
       notification: true,
-      userID: users[7],
+      userID: users[7]._id,
       status: 'found',
       day: 22,
       month: 5,
@@ -548,11 +547,12 @@ async function seedsDogs () {
       location: 'C/Roser 8'
     }
   ];
+  Dog.create(seeds).then((dogs) => {
+    console.log(dogs);
+    mongoose.connection.close();
+  }).catch((error) => {
+    console.log(error);
+  });
 }
 
-User.create(seeds).then((users) => {
-  console.log(users);
-  mongoose.connection.close();
-}).catch((error) => {
-  console.log(error);
-});
+seedsDogs();
