@@ -188,6 +188,7 @@
     {{else}}
     <option value="" disabled selected>--Select a breed--</option>
     {{/if}}
+    <option value="Mixed breed">Mixed breed</option>
     <option value="Golden Retriever">Golden Retriever</option>
     <option value="Boxer">Boxer</option>
     <option value="Bulldog">Bulldog</option>
@@ -246,15 +247,15 @@
   <label for="hair">What kind of hair does the dog have?</label>
   <div class="pet-hair radio-list">
     {{#if short.length}}
-      <input type="radio" name="hair" value="short" checked><span>Short hair</span>
-      <input type="radio" name="hair" value="long"><span>Long hair</span>
+      <input type="radio" name="hair" value="short" checked><span>Short</span>
+      <input type="radio" name="hair" value="long"><span>Long</span>
     {{else}}
       {{#if long.length}}
-        <input type="radio" name="hair" value="short"><span>Short hair</span>
-        <input type="radio" name="hair" value="long" checked><span>Long hair</span>
+        <input type="radio" name="hair" value="short"><span>Short</span>
+        <input type="radio" name="hair" value="long" checked><span>Long</span>
       {{else}}
-        <input type="radio" name="hair" value="short"><span>Short hair</span>
-        <input type="radio" name="hair" value="long"><span>Long hair</span>
+        <input type="radio" name="hair" value="short"><span>Short</span>
+        <input type="radio" name="hair" value="long"><span>Long</span>
       {{/if}}
     {{/if}}
   </div>

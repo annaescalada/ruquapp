@@ -21,8 +21,7 @@ async function seedsDogs () {
       color: {
         white: true,
         black: true,
-        red: true,
-        unknown: false
+        red: true
       },
       size: {
         medium: true
@@ -51,8 +50,7 @@ async function seedsDogs () {
       name: 'Zuki',
       color: {
         white: true,
-        lightBrown: true,
-        unknown: false
+        lightBrown: true
       },
       size: {
         large: true
@@ -319,8 +317,7 @@ async function seedsDogs () {
       color: {
         white: true,
         black: true,
-        red: true,
-        unknown: false
+        red: true
       },
       size: {
         big: true,
@@ -362,8 +359,7 @@ async function seedsDogs () {
         red: true,
         lightBrown: true,
         darkBrown: true,
-        grey: true,
-        unknown: false
+        grey: true
       },
       size: {
         big: true,
