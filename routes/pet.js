@@ -44,6 +44,7 @@ router.post('/add', parser.single('photo'), isNotLoggedIn, isAddPetFormFilled, a
   try {
     const { status, day, month, year, hour, location, name, white, grey, black, darkBrown, lightBrown, red, size, breed, ears, tail, hair } = req.body;
 
+    // Código Axel
     // for (const key in req.body) {
     //   createFlashMessage({ [key]: req.body[key] });
     // }
@@ -173,8 +174,16 @@ router.post('/add', parser.single('photo'), isNotLoggedIn, isAddPetFormFilled, a
 router.get('/:dogID/matches', isNotLoggedIn, async (req, res, next) => {
   const { dogID } = req.params;
   const dog = await Dog.findById(dogID);
-  console.log(dog);
   res.render('matches', dog);
+});
+
+router.get('/:dogID/edit', isNotLoggedIn, async (req, res, next) => {
+  const { dogID } = req.params;
+  const dog = await Dog.findById(dogID);
+  const data = {
+    dog
+  };
+  res.render('matches', data);
 });
 
 router.post('/:dogID/delete', isNotLoggedIn, async (req, res, next) => {

@@ -1,8 +1,16 @@
 <a href="/dashboard"><</a>
-<img src="" class="logo" alt="Ruqu lost and found logo">
+<img src="/images/ruqu-logo.png" class="logo" alt="Ruqu lost and found logo">
 
 <section class="currentDogMacthes">
 <article>
+    <a href="/pet/{{_id}}/edit">Edit</a>
+    {{#if notification}}
+    <img src="/images/notifications-true.svg" alt="notifications on" width="80px">
+    {{else}}
+    <img src="/images/notifications-false.png" alt="notifications off" width="80px">
+    {{/if}}
+
+
     <ul>
       {{#if name}}
       <li>{{name}}</li>

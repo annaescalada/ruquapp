@@ -2,7 +2,7 @@ form{
   width:100%;
   margin: 20px 0;
 }
-input{
+input[type="text"], input[type="email"], input[type="password"]{
   text-align: center;
   background: none;
   border: 0;
@@ -15,12 +15,42 @@ input{
   transition: all 1s;
 }
 
-input:focus{
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus{
   outline: none;
   width:100%;
   border-bottom: 2px solid $darkblue;
   -webkit-transition: all 0.5s; /* Safari prior 6.1 */
   transition: all 0.5s;
+}
+
+input[type="radio"] {
+}
+ 
+.pet-color {
+  .color {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px solid $darkblue;
+  }
+  .white {
+    background-color: white;
+  }
+  .black {
+    background-color: black;
+  }
+  .grey {
+    background-color: grey;
+  }
+  .red {
+    background-color: $red;
+  }
+  .light-brown {
+    background-color: #ebcc7c;
+  }
+  .dark-brown {
+    background-color: #b36b01;
+  }
 }
 
 ::placeholder{

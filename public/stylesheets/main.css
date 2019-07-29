@@ -3,7 +3,7 @@ form {
   margin: 20px 0;
 }
 
-input {
+input[type="text"], input[type="email"], input[type="password"] {
   text-align: center;
   background: none;
   border: 0;
@@ -17,13 +17,44 @@ input {
   transition: all 1s;
 }
 
-input:focus {
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
   outline: none;
   width: 100%;
   border-bottom: 2px solid #085a75;
   -webkit-transition: all 0.5s;
   /* Safari prior 6.1 */
   transition: all 0.5s;
+}
+
+.pet-color .color {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid #085a75;
+}
+
+.pet-color .white {
+  background-color: white;
+}
+
+.pet-color .black {
+  background-color: black;
+}
+
+.pet-color .grey {
+  background-color: grey;
+}
+
+.pet-color .red {
+  background-color: #e65835;
+}
+
+.pet-color .light-brown {
+  background-color: #ebcc7c;
+}
+
+.pet-color .dark-brown {
+  background-color: #b36b01;
 }
 
 ::-webkit-input-placeholder {
@@ -115,6 +146,26 @@ body {
   width: 100%;
 }
 
+.logo-small {
+  width: 50%;
+}
+
+.navigation-logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .validation {
   margin-bottom: 20px;
 }
@@ -156,6 +207,22 @@ body {
 .separator span {
   margin: 10px;
   color: #259bab;
+}
+
+.radio-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 html {

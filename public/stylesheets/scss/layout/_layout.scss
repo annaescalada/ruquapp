@@ -16,6 +16,14 @@ body{
   width:100%;
 }
 
+.logo-small {
+  width: 50%;
+}
+
+.navigation-logo {
+  @include flex-center();
+  
+}
 .validation{
   margin-bottom: 20px;
   
@@ -43,4 +51,8 @@ body{
     margin: 10px;
     color: $mediumblue;
   }
+}
+
+.radio-list {
+  @include flex-center(row);
 }

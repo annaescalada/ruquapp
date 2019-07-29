@@ -1,5 +1,7 @@
-<img src="" class="logo" alt="Ruqu lost and found logo">
-<a href="/profile">*</a>
+<div class="navigation-logo">
+  <img src="/images/ruqu-logo.png" class="logo logo-small" alt="Ruqu lost and found logo">
+  <a href="/profile">*</a>
+</div>
 <nav>
   <ul>
     <li class="lostToggle">LOST</li>
@@ -10,7 +12,7 @@
   {{#each lostDogs}}
   <article id={{_id}} class="dogCardDashboard">
 
-    <a href="/pet/{{_id}}/matches">Matches</a>
+    <a class="button" href="/pet/{{_id}}/matches">Matches</a>
     <button class="foundOrDeleteDogButton">Found</button>
     <button  class="foundOrDeleteDogButton">Delete</button>
 
