@@ -26,6 +26,10 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
   transition: all 0.5s;
 }
 
+input[type="checkbox"] {
+  width: 30px;
+}
+
 .pet-color .color {
   width: 15px;
   height: 15px;

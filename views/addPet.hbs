@@ -4,16 +4,17 @@
 </div>
 
 <form class="addPetForm" action="/pet/add" method="POST" enctype="multipart/form-data">
-  <label for="status">Have you lost or found a dog?</label>
-  <div class="pet-status radio-list">
-    {{#if status.length}}
-    <input class="lost" type="radio" name="status" value="lost" ><span>Lost</span>
-    <input class="found checked" type="radio" name="status" value="found"checked><span>Found</span>
-    {{else}}
-    <input class="lost checked" type="radio" name="status" value="lost" checked><span>Lost</span>
-    <input class="found" type="radio" name="status" value="found"><span>Found</span>
-    {{/if}}
-  </div>
+  <label for="status">Have you lost or found a dog?
+    <div class="pet-status radio-list">
+      {{#if status.length}}
+      <input class="lost" type="radio" name="status" value="lost" ><span>Lost</span>
+      <input class="found checked" type="radio" name="status" value="found"checked><span>Found</span>
+      {{else}}
+      <input class="lost checked" type="radio" name="status" value="lost" checked><span>Lost</span>
+      <input class="found" type="radio" name="status" value="found"><span>Found</span>
+      {{/if}}
+    </div>
+  </label>
   
   <select name="day" id="day" required>
     {{#if day.length}}
@@ -112,21 +113,23 @@
     <option value="23">23:00</option>
   </select>
 
-  <label for="location">Where did you lose or find the dog?</label>
+  <label for="location">Where did you lose or find the dog?
     {{#if location.length}}
     <input type="text" id="location" name="location" value={{location}} required>
     {{else}}
     <input type="text" id="location" name="location" placeholder="C/Balmes, Barcelona, 08026" required>
     {{/if}}
+  </label>
 
-  <label class="name" for="name">Name of the dog</label>  
+  <label class="name" for="name">Name of the dog  
     {{#if name.length}}
     <input type="text" id="name" name="name" value={{name}}>
     {{else}}
     <input type="text" id="name" name="name" placeholder="Ruqu">
     {{/if}}
+  </label>
 
-  <label for="color">What color/s is the dog?</label>
+  <label for="color">What color/s is the dog?
   <div class="pet-color radio-list">
     {{#if white.length}}
     <input type="checkbox" name="white" value="white" checked><span class="color white"></span>
@@ -159,8 +162,9 @@
     <input type="checkbox" name="red" value="red"><span class="color red"></span>
     {{/if}}
   </div>
+  </label>
   
-  <label>What's the dog size?</label>
+  <label>What's the dog size?
   <div class="pet-size radio-list">
     {{#if small.length}}
     <input type="radio" name="size" value="small" checked><span>Small</span>
@@ -178,9 +182,10 @@
     <input type="radio" name="size" value="large"><span>Large</span>
     {{/if}}
   </div> 
+  </label>
   
 
-  <label for="breed">What breed is the dog?</label>
+  <label for="breed">What breed is the dog?
   <select class="required" name="breed" id="breed" required>
     {{#if breed.length}}
     <option value="{{breed}}" selected>{{breed}}</option>
@@ -200,8 +205,9 @@
     <option value="Dobermann">Dobermann</option>
     <option value="Dalmata">Dalmata</option>
   </select>
+  </label>
 
-  <label>What kind of ears does the dog have?</label>
+  <label>What kind of ears does the dog have?
   <div class="pet-ears radio-list">
     {{#if up.length}}
     <input type="radio" name="ears" value="up"checked><span>Up</span>
@@ -216,8 +222,9 @@
       {{/if}}
     {{/if}}
   </div>
+  </label>
 
-  <label for="tail">What kind of tail does the dog have?</label>
+  <label for="tail">What kind of tail does the dog have?
   <div class="pet-tail radio-list">
     {{#if longTail.length}}
     <input type="radio" name="tail" value="longTail" checked><span>Long</span>
@@ -241,8 +248,9 @@
       {{/if}}
     {{/if}}
   </div>
+  </label>
 
-  <label for="hair">What kind of hair does the dog have?</label>
+  <label for="hair">What kind of hair does the dog have?
   <div class="pet-hair radio-list">
     {{#if short.length}}
       <input type="radio" name="hair" value="short" checked><span>Short hair</span>
@@ -257,9 +265,11 @@
       {{/if}}
     {{/if}}
   </div>
+  </label>
 
-  <label for="photo">Upload an image if you have any</label>
+  <label for="photo">Upload an image if you have any
   <input type="file" name="photo" />
+  </label>
 
   <button type="submit">Add dog</button>
 
