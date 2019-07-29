@@ -50,7 +50,6 @@ async function match (dogID) {
     dogs.forEach(dog => {
       currentDogColors.forEach(currentColor => {
         if (Object.keys(dog.color).includes(currentColor)) {
-          console.log(currentColor);
           commonAttributes.color = {};
           commonAttributes.color[currentColor] = currentColor;
         }
@@ -83,7 +82,7 @@ async function match (dogID) {
             commonAttributes.hair[currentHair] = currentHair;
           }
         });
-        if (commonAttributes.hair) {
+        if (commonAttributes.hair && !currentDog.hair.unknown) {
           match.compatibility += 10;
         }
         currentDogTail.forEach(currentTail => {
@@ -92,7 +91,7 @@ async function match (dogID) {
             commonAttributes.tail[currentTail] = currentTail;
           }
         });
-        if (commonAttributes.tail) {
+        if (commonAttributes.tail && !currentDog.tail.unknown) {
           match.compatibility += 10;
         }
         currentDogEars.forEach(currentEars => {
@@ -101,7 +100,7 @@ async function match (dogID) {
             commonAttributes.ears[currentEars] = currentEars;
           }
         });
-        if (commonAttributes.ears) {
+        if (commonAttributes.ears && !currentDog.ears.unknown) {
           match.compatibility += 10;
         }
         match.commonAttributes = commonAttributes;
