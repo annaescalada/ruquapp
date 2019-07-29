@@ -4,11 +4,12 @@ const express = require('express');
 const router = express.Router();
 
 const { isNotLoggedIn } = require('../middlewares/authMiddlewares');
-// const { isAddLostPetFormFilled, isAddFoundPetFormFilled } = require('../middlewares/petMiddlewares');
+const { isAddPetFormFilled } = require('../middlewares/petMiddlewares');
 const Dog = require('../models/Dog');
 const parser = require('../config/cloudinary');
 
 router.get('/add', isNotLoggedIn, (req, res, next) => {
+  console.log(req.flash('dataFrom'));
   const data = {
     missingFields: req.flash('missingFields'),
     status: req.flash('statusRecoverAdd'),
@@ -39,88 +40,16 @@ router.get('/add', isNotLoggedIn, (req, res, next) => {
   res.render('addPet', data);
 });
 
-router.post('/add', isNotLoggedIn, parser.single('photo'), async (req, res, next) => {
+router.post('/add', parser.single('photo'), isNotLoggedIn, isAddPetFormFilled, async (req, res, next) => {
   try {
     const { status, day, month, year, hour, location, name, white, grey, black, darkBrown, lightBrown, red, size, breed, ears, tail, hair } = req.body;
 
-    if (status === 'found') {
-      req.flash('statusRecoverAdd', status);
-    }
-    if (day) {
-      req.flash('dayRecoverAdd', day);
-    }
-    if (month) {
-      req.flash('monthRecoverAdd', month);
-    }
-    if (year) {
-      req.flash('yearRecoverAdd', year);
-    }
-    if (hour) {
-      req.flash('hourRecoverAdd', hour);
-    }
-    if (location) {
-      req.flash('locationRecoverAdd', location);
-    }
-    if (name) {
-      req.flash('nameRecoverAdd', name);
-    }
-    if (white) {
-      req.flash('whiteRecoverAdd', white);
-    }
-    if (grey) {
-      req.flash('greyRecoverAdd', grey);
-    }
-    if (black) {
-      req.flash('blackRecoverAdd', black);
-    }
-    if (darkBrown) {
-      req.flash('darkBrownRecoverAdd', darkBrown);
-    }
-    if (lightBrown) {
-      req.flash('lightBrownRecoverAdd', lightBrown);
-    }
-    if (red) {
-      req.flash('redRecoverAdd', red);
-    }
-    if (size === 'small') {
-      req.flash('smallRecoverAdd', size);
-    } else if (size === 'medium') {
-      req.flash('mediumRecoverAdd', size);
-    } else if (size === 'large') {
-      req.flash('largeRecoverAdd', size);
-    }
-    if (breed) {
-      req.flash('breedRecoverAdd', breed);
-    }
-    if (ears === 'up') {
-      req.flash('upRecoverAdd', ears);
-    } else if (ears === 'down') {
-      req.flash('downRecoverAdd', ears);
-    }
-    if (tail === 'longTail') {
-      req.flash('longTailRecoverAdd', tail);
-    } else if (tail === 'longHairy') {
-      req.flash('longHairyRecoverAdd', tail);
-    } else if (tail === 'shortTail') {
-      req.flash('shortTailRecoverAdd', tail);
-    }
-    if (hair === 'long') {
-      req.flash('longRecoverAdd', hair);
-    } else if (hair === 'short') {
-      req.flash('shortRecoverAdd', hair);
-    }
-
-    if (status === 'lost') {
-      if (!status || !day || !month || !year || !hour || !location || !name || !size || !breed || !ears || !tail || !hair || (!white && !grey && !black && !darkBrown && !lightBrown && !red)) {
-        req.flash('missingFields', 'All fields are required');
-        return res.redirect('/pet/add');
-      }
-    } else {
-      if (!status || !day || !month || !year || !hour || !location) {
-        req.flash('missingFields', 'Location, date and hour fields are required');
-        return res.redirect('/pet/add');
-      }
-    }
+    // for (const key in req.body) {
+    //   createFlashMessage({ [key]: req.body[key] });
+    // }
+    // function createFlashMessage (data) {
+    //   req.flash('dataFrom', data);
+    // }
 
     let { photo } = req.body;
     const sizeObj = {};
