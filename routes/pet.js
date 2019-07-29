@@ -6,6 +6,7 @@ const router = express.Router();
 const { isNotLoggedIn } = require('../middlewares/authMiddlewares');
 const { isAddPetFormFilled } = require('../middlewares/petMiddlewares');
 const Dog = require('../models/Dog');
+const match = require('../helpers/matchLogic');
 const parser = require('../config/cloudinary');
 
 router.get('/add', isNotLoggedIn, (req, res, next) => {
@@ -147,7 +148,7 @@ router.post('/add', parser.single('photo'), isNotLoggedIn, isAddPetFormFilled, a
       photo = photoUrl;
     }
 
-    await Dog.create({
+    const newDog = await Dog.create({
       notification: true,
       userID: req.session.currentUser._id,
       status,
@@ -165,6 +166,9 @@ router.post('/add', parser.single('photo'), isNotLoggedIn, isAddPetFormFilled, a
       hair: hairObj,
       photo
     });
+
+    match(newDog._id);
+
     res.redirect('/dashboard');
   } catch (error) {
     next(error);

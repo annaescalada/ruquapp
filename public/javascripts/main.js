@@ -142,7 +142,7 @@ const main = () => {
   }
 
   notificationsOnOff();
-  // notification on and off
+
   // delete match
   // send information
   // list map toggle
