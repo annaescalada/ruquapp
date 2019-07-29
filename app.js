@@ -1,6 +1,5 @@
 'use strict';
 
-const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -11,7 +10,7 @@ const mongoose = require('mongoose');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
-mongoose.connect('mongodb://localhost/ruquDB', {
+mongoose.connect(process.env.MONGODB_URI, {
   keepAlive: true,
   useNewUrlParser: true,
   reconnectTries: Number.MAX_VALUE
