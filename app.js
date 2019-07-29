@@ -16,7 +16,7 @@ const dashboardRouter = require('./routes/dashboard');
 const profileRouter = require('./routes/profile');
 const petRouter = require('./routes/pet');
 
-mongoose.connect('mongodb://localhost/ruquDB', {
+mongoose.connect(process.env.MONGODB_URI, {
   keepAlive: true,
   useNewUrlParser: true,
   reconnectTries: Number.MAX_VALUE
