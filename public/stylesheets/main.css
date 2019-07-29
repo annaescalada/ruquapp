@@ -26,6 +26,28 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
   transition: all 0.5s;
 }
 
+select {
+  text-align: center;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid #259bab;
+  height: 40px;
+  padding: 5px;
+  width: 80%;
+  margin-bottom: 20px;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  color: #085a75;
+}
+
+select:focus {
+  outline: none;
+  border-bottom: 2px solid #085a75;
+  -webkit-transition: all 0.5s;
+  /* Safari prior 6.1 */
+  transition: all 0.5s;
+}
+
 input[type="checkbox"] {
   width: 30px;
 }
@@ -251,7 +273,6 @@ body {
   line-height: 147%;
   background-color: #88d6d6;
   padding: 50px;
-  height: 100vh;
 }
 
 p {

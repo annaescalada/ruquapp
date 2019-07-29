@@ -1,7 +1,7 @@
-RUQU
+#RUQU
 Has your dog been lost? Have you found a dog and you want to find the owner? With Ruqus - lost and found you can register a lost dog and the app will notify you if there is a match with a found dog, or vice versa!
 
-User Stories
+#User Stories
 404 - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault
 500 - As a user I want to see a nice error page when the super team screws it up so that I know that is not my fault
 homepage - As a user I want to be able to access the homepage so that I see what the app is about and login and signup
@@ -27,7 +27,7 @@ map - As a user I want be able to see the lost or found pets that match mine in 
 matches - As a user I want to see a % of compatibility in the match list so that I can see the pets that are more likely to match mine.
 dashboard - As a user I want to be able to see the a new matches notifications everytime I acces my dashboard so that I can know how many new matches have been found from my last visit.
 
-User profile:
+##User profile:
 
 sign up and log in
 add lost or found pet
@@ -43,8 +43,8 @@ view matches in map
 edit profile
 log out
 
-...
-ROUTES:
+
+#ROUTES:
 GET /
 
   redirects to /dashboard if user logged in
@@ -166,7 +166,7 @@ location*
 
 redirection to dashboard
 
-Models
+#Models
 
   User
 
@@ -209,19 +209,19 @@ Models
     timestamps
 
 
-Links
+#Links
 Trello
 https://trello.com/b/f4nr4P18/ruqu
 
-Git
+#Git
 The url to your repository and to your deployed project
 
-Repository Link
+#Repository Link
 https://github.com/annaescalada/ruquapp
 
-Deploy Link
+#Deploy Link
 
-Slides
+#Slides
 The url to your presentation slides
 
-Slides Link
+#Slides Link
