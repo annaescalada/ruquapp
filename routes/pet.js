@@ -186,6 +186,17 @@ router.get('/:dogID/edit', isNotLoggedIn, async (req, res, next) => {
   res.render('matches', data);
 });
 
+router.post('/:dogID/notification', isNotLoggedIn, async (req, res, next) => {
+  const { dogID } = req.params;
+  const dog = await Dog.findById(dogID);
+  if (dog.notification) {
+    await Dog.findByIdAndUpdate(dogID, { notification: false });
+  } else {
+    await Dog.findByIdAndUpdate(dogID, { notification: true });
+  }
+  res.json({ message: 'Notification updated' });
+});
+
 router.post('/:dogID/delete', isNotLoggedIn, async (req, res, next) => {
   const { dogID } = req.params;
   await Dog.findByIdAndDelete(dogID);

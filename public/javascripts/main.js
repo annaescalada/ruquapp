@@ -121,9 +121,27 @@ const main = () => {
   dashboardToggle();
   deleteOrFoundPet();
 
-  // Delete pet and found
-
   // Matches page
+
+  function notificationsOnOff () {
+    const notificationButton = document.querySelector('img.notifications');
+    const dogID = notificationButton.id;
+    console.log(notificationButton);
+    if (notificationButton) {
+      notificationButton.addEventListener('click', async event => {
+        await axios.post(`/pet/${dogID}/notification`);
+        const src = notificationButton.src;
+        console.log(src);
+        if (src.includes('true')) {
+          notificationButton.src = '/images/notifications-false.png';
+        } else {
+          notificationButton.src = '/images/notifications-true.svg';
+        }
+      });
+    }
+  }
+
+  notificationsOnOff();
   // notification on and off
   // delete match
   // send information

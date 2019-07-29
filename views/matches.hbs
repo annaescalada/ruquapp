@@ -5,9 +5,9 @@
 <article>
     <a href="/pet/{{_id}}/edit">Edit</a>
     {{#if notification}}
-    <img src="/images/notifications-true.svg" alt="notifications on" width="80px">
+    <img id={{_id}} class="notifications notifications-true" src="/images/notifications-true.svg" alt="notifications on" width="80px">
     {{else}}
-    <img src="/images/notifications-false.png" alt="notifications off" width="80px">
+    <img id={{_id}} class="notifications" src="/images/notifications-false.png" alt="notifications off" width="80px">
     {{/if}}
 
 
