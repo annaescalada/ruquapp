@@ -200,15 +200,16 @@ router.get('/:dogID/matches', isNotLoggedIn, async (req, res, next) => {
 });
 
 router.get('/:dogID/edit', isNotLoggedIn, async (req, res, next) => {
+  let dataEdit = {};
   const { dogID } = req.params;
   const dog = await Dog.findById(dogID);
   let status;
   if (dog.status === 'found') {
     status = dog.status;
   }
-  console.log(dog);
-  const dataEdit = {
+  dataEdit = {
     missingFields: req.flash('missingFieldsEdit'),
+    id: dogID,
     status,
     day: dog.day,
     month: dog.month,
@@ -243,10 +244,10 @@ router.get('/:dogID/edit', isNotLoggedIn, async (req, res, next) => {
   res.render('editPet', dataEdit);
 });
 
-router.post('/edit', isNotLoggedIn, isEditPetFormFilled, async (req, res, next) => {
+router.post('/:dogID/edit', isNotLoggedIn, isEditPetFormFilled, async (req, res, next) => {
   try {
     const { status, day, month, year, hour, location, name, white, grey, black, darkBrown, lightBrown, red, size, breed, ears, tail, hair } = req.body;
-
+    const currentDogId = req.params.dogID;
     const sizeObj = {};
     const tailObj = {};
     const earsObj = {};
@@ -333,7 +334,7 @@ router.post('/edit', isNotLoggedIn, isEditPetFormFilled, async (req, res, next) 
       };
     }
 
-    const newDog = await Dog.create({
+    const newDog = await Dog.findByIdAndUpdate(currentDogId, {
       notification: true,
       userID: req.session.currentUser._id,
       status,

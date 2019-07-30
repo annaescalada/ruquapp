@@ -3,7 +3,7 @@
   <img src="/images/ruqu-logo.png" class="logo logo-small" alt="Ruqu lost and found logo">
 </div>
 
-<form class="addPetForm" action="/pet/add" method="POST" enctype="multipart/form-data">
+<form class="addPetForm" action="/pet/{{id}}/edit" method="POST">
   <div class="margin-bottom">
     <label for="status">Have you lost or found a dog? </label>
     <div class="pet-status radio-list">
@@ -87,7 +87,7 @@
 
   <select name="hour" id="hour" required>
     {{#if hour}}
-    <option value="{{hour}}:00">{{hour}}:00</option>
+    <option value="{{hour}}">{{hour}}:00</option>
     {{else}}
     <option value="" disabled selected>--Select an aproximated hour--</option>
     {{/if}}
@@ -119,14 +119,14 @@
 
 
   {{#if location.length}}
-  <input type="text" id="location" name="location" value={{location}} required>
+  <input type="text" id="location" value="{{location}}" name="location" required>
   {{else}}
   <input type="text" id="location" name="location" placeholder="C/Balmes, Barcelona, 08026" required>
   {{/if}}
 
   <label class="name" for="name">Name of the dog</label>
   {{#if name.length}}
-  <input type="text" id="name" name="name" value={{name}}>
+  <input type="text" id="name" name="name" value="{{name}}">
   {{else}}
   <input type="text" id="name" name="name" placeholder="Ruqu">
   {{/if}}
