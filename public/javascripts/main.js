@@ -175,6 +175,7 @@ const main = () => {
   notificationsOnOff();
   deleteMatch();
   sendContactInfo();
+
   // list map toggle
   // map
 

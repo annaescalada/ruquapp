@@ -14,7 +14,6 @@ router.get('/', isNotLoggedIn, async (req, res, next) => {
   const dogs = await Dog.find({ userID: currentUserID });
   const lostDogs = [];
   const foundDogs = [];
-  let dogsData;
 
   dogs.forEach(async (dog) => {
     const matches = await Match.find({ $or: [{ idFoundDog: dog._id }, { idLostDog: dog._id }] });
@@ -43,12 +42,13 @@ router.get('/', isNotLoggedIn, async (req, res, next) => {
 
     if (dog.status === 'lost') {
       lostDogs.push(dog);
+      console.log(lostDogs);
     } else {
       foundDogs.push(dog);
+      console.log(foundDogs);
     }
   });
-  dogsData = {
-    dogs,
+  const dogsData = {
     lostDogs,
     foundDogs
   };

@@ -83,7 +83,7 @@ async function match (dogID) {
           compatibility: 60,
           new: true,
           message: false,
-          messageRead: false
+          messageRead: true
         };
         if (currentDog.breed === dog.breed) {
           match.compatibility += 10;
