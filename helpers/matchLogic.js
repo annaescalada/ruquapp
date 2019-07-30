@@ -106,7 +106,6 @@ async function match (dogID) {
         match.commonAttributes = commonAttributes;
         console.log(match);
         await Match.create(match);
-        // create match in DB;
       }
     });
   } catch (error) {
