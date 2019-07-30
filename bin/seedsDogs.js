@@ -209,7 +209,7 @@ async function seedsDogs () {
       hair: {
         long: true
       },
-      photo: '/images/dog-default.jpeg',
+      photo: '/images/dog-default.png',
       notification: true,
       userID: users[6]._id,
       status: 'found',
@@ -242,7 +242,7 @@ async function seedsDogs () {
       hair: {
         short: true
       },
-      photo: '/images/dog-default.jpeg',
+      photo: '/images/dog-default.png',
       notification: true,
       userID: users[7]._id,
       status: 'found',
@@ -269,7 +269,7 @@ async function seedsDogs () {
       hair: {
         long: true
       },
-      photo: '/images/dog-default.jpeg',
+      photo: '/images/dog-default.png',
       notification: true,
       userID: users[7]._id,
       status: 'found',
@@ -303,7 +303,7 @@ async function seedsDogs () {
         short: true,
         unknown: true
       },
-      photo: '/images/dog-default.jpeg',
+      photo: '/images/dog-default.png',
       notification: true,
       userID: users[0]._id,
       status: 'found',
@@ -342,7 +342,7 @@ async function seedsDogs () {
         short: true,
         unknown: true
       },
-      photo: '/images/dog-default.jpeg',
+      photo: '/images/dog-default.png',
       notification: true,
       userID: users[1]._id,
       status: 'found',
@@ -384,7 +384,7 @@ async function seedsDogs () {
         short: true,
         unknown: true
       },
-      photo: '/images/dog-default.jpeg',
+      photo: '/images/dog-default.png',
       notification: true,
       userID: users[2]._id,
       status: 'found',
@@ -423,7 +423,7 @@ async function seedsDogs () {
         short: true,
         unknown: true
       },
-      photo: '/images/dog-default.jpeg',
+      photo: '/images/dog-default.png',
       notification: true,
       userID: users[3]._id,
       status: 'found',
@@ -450,7 +450,7 @@ async function seedsDogs () {
       hair: {
         long: true
       },
-      photo: '/images/dog-default.jpeg',
+      photo: '/images/dog-default.png',
       notification: true,
       userID: users[4]._id,
       status: 'found',
@@ -478,7 +478,7 @@ async function seedsDogs () {
       hair: {
         long: true
       },
-      photo: '/images/dog-default.jpeg',
+      photo: '/images/dog-default.png',
       notification: true,
       userID: users[5]._id,
       status: 'found',
@@ -505,7 +505,7 @@ async function seedsDogs () {
       hair: {
         long: true
       },
-      photo: '/images/dog-default.jpeg',
+      photo: '/images/dog-default.png',
       notification: true,
       userID: users[6]._id,
       status: 'found',
@@ -532,7 +532,7 @@ async function seedsDogs () {
       hair: {
         long: true
       },
-      photo: '/images/dog-default.jpeg',
+      photo: '/images/dog-default.png',
       notification: true,
       userID: users[7]._id,
       status: 'found',
