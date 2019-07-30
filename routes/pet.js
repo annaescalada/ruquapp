@@ -205,7 +205,7 @@ router.get('/:dogID/edit', isNotLoggedIn, async (req, res, next) => {
   const data = {
     dog
   };
-  res.render('matches', data);
+  res.render('editPett', data);
 });
 
 router.post('/:dogID/notification', isNotLoggedIn, async (req, res, next) => {
