@@ -107,9 +107,13 @@ const main = () => {
     if (foundOrDeleteDogButton) {
       foundOrDeleteDogButton.forEach(button => {
         button.addEventListener('click', async event => {
-          const dogIDLost = event.target.parentElement.id;
+          let dogIDLost = event.target.parentElement.id;
+          let article = event.target.parentElement;
+          if (!dogIDLost) {
+            dogIDLost = event.target.parentElement.parentElement.parentElement.id;
+            article = event.target.parentElement.parentElement.parentElement;
+          }
           await axios.post(`/pet/${dogIDLost}/delete`);
-          const article = event.target.parentElement;
           article.remove();
         });
       });
