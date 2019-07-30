@@ -105,8 +105,8 @@
 
 <section class="matches">
   {{#each matches}}
-    <article class="dog-info">
-      <div class="delete-match"><img src="/images/delete.png"></div>
+    <article class="dog-info" id="{{_id}}">
+      <div class="deleteMatch delete-match"><img src="/images/delete.png" width="30px"></div>
       <div class="dog-image">
         {{#if idFoundDog.photo}}
         <img src="{{idFoundDog.photo}}" alt="Lost dog matched image" width="300px">

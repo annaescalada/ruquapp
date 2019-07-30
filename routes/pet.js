@@ -55,7 +55,6 @@ router.post('/add', parser.single('photo'), isNotLoggedIn, isAddPetFormFilled, a
     //   req.flash('dataFrom', data);
     // }
 
-    let { photo } = req.body;
     const sizeObj = {};
     const tailObj = {};
     const earsObj = {};
@@ -141,11 +140,11 @@ router.post('/add', parser.single('photo'), isNotLoggedIn, isAddPetFormFilled, a
         unknown: true
       };
     }
-
-    if (!req.file.secure_url) {
-      photo = '/images/dog-default.png';
-    } else {
+    let photo;
+    if (req.file) {
       photo = req.file.secure_url;
+    } else {
+      photo = '/images/dog-default.png';
     }
 
     const newDog = await Dog.create({
@@ -375,6 +374,12 @@ router.post('/:dogID/delete', isNotLoggedIn, async (req, res, next) => {
   const { dogID } = req.params;
   await Dog.findByIdAndDelete(dogID);
   res.json({ message: 'Dog deleted' });
+});
+
+router.post('/matches/:matchID/delete', isNotLoggedIn, async (req, res, next) => {
+  const { matchID } = req.params;
+  await Match.findByIdAndDelete(matchID);
+  res.json({ message: 'Match deleted' });
 });
 
 module.exports = router;

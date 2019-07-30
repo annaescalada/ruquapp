@@ -142,9 +142,23 @@ const main = () => {
     }
   }
 
+  function deleteMatch () {
+    const deleteMatchButton = document.querySelectorAll('.deleteMatch');
+    if (deleteMatchButton) {
+      deleteMatchButton.forEach(button => {
+        button.addEventListener('click', async event => {
+          const article = event.target.parentElement.parentElement;
+          const currentMatchId = event.target.parentElement.parentElement.id;
+          await axios.post(`/pet/matches/${currentMatchId}/delete`);
+          article.remove();
+        });
+      });
+    }
+  }
+
   notificationsOnOff();
 
-  // delete match
+  deleteMatch();
   // send information
   // list map toggle
   // map
