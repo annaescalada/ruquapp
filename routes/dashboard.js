@@ -5,6 +5,7 @@ const router = express.Router();
 
 const User = require('../models/User.js');
 const Dog = require('../models/Dog.js');
+const Match = require('../models/Match.js');
 
 const { isNotLoggedIn } = require('../middlewares/authMiddlewares');
 
@@ -14,12 +15,36 @@ router.get('/', isNotLoggedIn, async (req, res, next) => {
   const dogs = await Dog.find({ userID: currentUserID });
   const lostDogs = [];
   const foundDogs = [];
-  dogs.forEach(dog => {
+  dogs.forEach(async dog => {
     if (dog.status === 'lost') {
       lostDogs.push(dog);
     } else {
       foundDogs.push(dog);
     }
+
+    const matches = await Match.find({ $or: [{ idFoundDog: dog._id }, { idLostDog: dog._id }] });
+
+    const totalMatches = matches.length;
+    let newMacthes = false;
+    let totalMessages;
+    let newMessages = false;
+
+    matches.forEach(match => {
+      if (match.new) {
+        newMacthes = true;
+      }
+      if (match.message) {
+        totalMessages++;
+        if (!match.messageRead) {
+          newMessages = true;
+        }
+      }
+    });
+
+    dog.totalMatches = totalMatches;
+    dog.newMacthes = newMacthes;
+    dog.totalMessages = totalMessages;
+    dog.newMessages = newMessages;
   });
   const dogsData = {
     dogs,
