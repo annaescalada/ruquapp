@@ -6,7 +6,7 @@ const router = express.Router();
 const { isNotLoggedIn } = require('../middlewares/authMiddlewares');
 const { isAddPetFormFilled } = require('../middlewares/petMiddlewares');
 const Dog = require('../models/Dog');
-const match = require('../helpers/matchLogic');
+const { match } = require('../helpers/matchLogic');
 const parser = require('../config/cloudinary');
 
 router.get('/add', isNotLoggedIn, (req, res, next) => {
