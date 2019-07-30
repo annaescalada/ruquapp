@@ -21,8 +21,17 @@ body{
 }
 
 .navigation-logo {
-  @include flex-center();
-  
+  width: 100%;
+  display: grid;
+  grid-template-columns: 60px 1fr 60px;
+  grid-template-rows: auto;
+  justify-items: center;
+  a{
+    img{
+      height: 60px;
+      width:auto;
+    }
+  }
 }
 .validation{
   margin-bottom: 20px;
