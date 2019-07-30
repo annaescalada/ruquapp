@@ -199,6 +199,14 @@
           {{/unless}}
         </div>
       </div>
+      <div class="match-contact">
+        {{#if idFoundDog.location}}
+        <button>Send contact info</button>
+        {{/if}}
+        {{#if idLostDog.location}}
+        <p>Possible owner of the dog contact info</p>
+        {{/if}}
+      </div>
     </article>  
   {{/each}}
 </section>

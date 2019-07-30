@@ -176,22 +176,29 @@ router.post('/add', parser.single('photo'), isNotLoggedIn, isAddPetFormFilled, a
 
 router.get('/:dogID/matches', isNotLoggedIn, async (req, res, next) => {
   const { dogID } = req.params;
-  console.log(dogID);
   const dog = await Dog.findById(dogID);
   const status = dog.status;
   const idLostDog = mongoose.Types.ObjectId(dogID);
   const idFoundDog = mongoose.Types.ObjectId(dogID);
   let matchesCurrentDog = [];
+  // let lost = false;
+  // let found = false;
 
   if (status === 'lost') {
-    matchesCurrentDog = await Match.find({ $or: [{ idLostDog }, { idFoundDog }] }).populate('idFoundDog');
+    matchesCurrentDog = await Match.find({ $or: [{ idLostDog }, { idFoundDog }] }).populate({'idFoundDog'});
+    // matchesCurrentDog.forEach(match => {
+    //   lost = true;
+    //   match.lost = lost;
+    // });
   } else {
-    matchesCurrentDog = await Match.find({ $or: [{ idLostDog }, { idFoundDog }] }).populate('idLostDog');
+    matchesCurrentDog = await Match.find({ $or: [{ idLostDog }, { idFoundDog }] }).populate('idLostDog'); // deberíamos popular el userID
+    console.log(matchesCurrentDog);
+    // matchesCurrentDog.forEach(match => {
+    //   found = true;
+    //   match.found = found;
+    // });
   }
-  // console.log(idLostDog, idFoundDog);
-  console.log(matchesCurrentDog);
   const data = {
-    status,
     dog,
     matches: matchesCurrentDog
   };
@@ -239,7 +246,7 @@ router.get('/:dogID/edit', isNotLoggedIn, async (req, res, next) => {
     long: dog.hair.long,
     short: dog.hair.short
   };
-  console.log(dataEdit);
+  // console.log(dataEdit);
   res.render('editPet', dataEdit);
 });
 
