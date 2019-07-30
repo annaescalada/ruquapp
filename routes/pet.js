@@ -6,11 +6,11 @@ const router = express.Router();
 const { isNotLoggedIn } = require('../middlewares/authMiddlewares');
 const { isAddPetFormFilled } = require('../middlewares/petMiddlewares');
 const Dog = require('../models/Dog');
+const Match = require('../models/Match');
 const { match } = require('../helpers/matchLogic');
 const parser = require('../config/cloudinary');
 
 router.get('/add', isNotLoggedIn, (req, res, next) => {
-  console.log(req.flash('dataFrom'));
   const data = {
     missingFields: req.flash('missingFields'),
     status: req.flash('statusRecoverAdd'),
@@ -178,7 +178,16 @@ router.post('/add', parser.single('photo'), isNotLoggedIn, isAddPetFormFilled, a
 router.get('/:dogID/matches', isNotLoggedIn, async (req, res, next) => {
   const { dogID } = req.params;
   const dog = await Dog.findById(dogID);
-  res.render('matches', dog);
+  console.log(dog);
+  const matchesCurrentDog = await Match.find({ $or: [{ idLostDog: dogID }, { idFoundDog: dogID }] });
+  console.log(matchesCurrentDog);
+
+  const data = {
+    dog,
+    matches: matchesCurrentDog
+  };
+
+  res.render('matches', data);
 });
 
 router.get('/:dogID/edit', isNotLoggedIn, async (req, res, next) => {

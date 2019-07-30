@@ -5,8 +5,9 @@ const Match = require('../models/Match');
 
 async function match (dogID) {
   try {
+    // console.log('dogID ' + dogID + '//correct');
     const currentDog = await Dog.findById(dogID);
-    console.log(currentDog);
+    // console.log(currentDog);
     let idLostDog;
     let idFoundDog;
     let dogs = [];
@@ -20,11 +21,14 @@ async function match (dogID) {
 
     if (currentDog.status === 'lost') {
       idLostDog = dogID;
+      // console.log('idFoundDog: ' + idFoundDog + ', idLostDog: ' + idLostDog);
     } else {
       idFoundDog = dogID;
+      // console.log('idFoundDog: ' + idFoundDog + ', idLostDog: ' + idLostDog);
     }
 
     if (idLostDog) {
+      // console.log('entra dentro del if idLostDog');
       dogs = await Dog.find(
         { status: 'found',
           $or: [
@@ -35,6 +39,7 @@ async function match (dogID) {
           ]
         });
     } else {
+      // console.log('entra dentro del if idFoundDog');
       dogs = await Dog.find(
         { status: 'lost',
           $or: [
@@ -45,15 +50,18 @@ async function match (dogID) {
           ]
         });
     }
-
+    // console.log('perros encontrados: ' + dogs);
     dogs.forEach(async dog => {
-      currentDogColors.forEach(currentColor => {
-        if (idFoundDog) {
-          idLostDog = dog._id;
-        } else {
-          idFoundDog = dog._id;
-        }
+      if (idFoundDog === dogID) {
+        idLostDog = dog._id;
+        // console.log('idLostDog: ' + idLostDog + '//debería salir si he hecho un perro found');
+      }
+      if (idLostDog === dogID) {
+        idFoundDog = dog._id;
+        // console.log('idFoundDog: ' + idFoundDog + '//debería salir si he hecho un perro lost');
+      }
 
+      currentDogColors.forEach(currentColor => {
         if (Object.keys(dog.color).includes(currentColor)) {
           commonAttributes.color = {};
           commonAttributes.color[currentColor] = currentColor;
@@ -109,7 +117,7 @@ async function match (dogID) {
           match.compatibility += 10;
         }
         match.commonAttributes = commonAttributes;
-        console.log(match);
+        // console.log(match);
         const newMatch = await Match.create(match);
       }
     });
