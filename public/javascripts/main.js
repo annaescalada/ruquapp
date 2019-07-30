@@ -155,10 +155,26 @@ const main = () => {
     }
   }
 
-  notificationsOnOff();
+  function sendContactInfo () {
+    const matchContactButton = document.querySelectorAll('.matchContactButton');
+    if (matchContactButton) {
+      matchContactButton.forEach(button => {
+        button.addEventListener('click', async event => {
+          const parentDiv = event.target.parentElement;
+          const currentMatchId = event.target.parentElement.parentElement.id;
+          await axios.post(`/pet/matches/${currentMatchId}/message`);
+          button.remove();
+          const p = document.createElement('p');
+          p.innerHTML = 'Contact information sent';
+          parentDiv.appendChild(p);
+        });
+      });
+    }
+  }
 
+  notificationsOnOff();
   deleteMatch();
-  // send information
+  sendContactInfo();
   // list map toggle
   // map
 

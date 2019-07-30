@@ -201,10 +201,16 @@
       </div>
       <div class="match-contact">
         {{#if idFoundDog.location}}
-        <button>Send contact info</button>
+          {{#if message}}
+          <p>Contact information sent</p>
+          {{else}}
+          <button class="matchContactButton">Send contact info</button>
+          {{/if}}
         {{/if}}
         {{#if idLostDog.location}}
         <p>Possible owner of the dog contact info</p>
+        <p>{{idLostDog.userID.email}}</p>
+        <p>{{idLostDog.userID.phone}}</p>
         {{/if}}
       </div>
     </article>  

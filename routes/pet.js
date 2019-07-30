@@ -185,13 +185,21 @@ router.get('/:dogID/matches', isNotLoggedIn, async (req, res, next) => {
   // let found = false;
 
   if (status === 'lost') {
-    matchesCurrentDog = await Match.find({ $or: [{ idLostDog }, { idFoundDog }] }).populate({'idFoundDog'});
+    matchesCurrentDog = await Match.find({ $or: [{ idLostDog }, { idFoundDog }] }).populate('idFoundDog');
+
+    console.log(matchesCurrentDog);
     // matchesCurrentDog.forEach(match => {
     //   lost = true;
     //   match.lost = lost;
     // });
   } else {
-    matchesCurrentDog = await Match.find({ $or: [{ idLostDog }, { idFoundDog }] }).populate('idLostDog'); // deberíamos popular el userID
+    matchesCurrentDog = await Match.find({ $or: [{ idLostDog }, { idFoundDog }] }).populate({
+      path: 'idLostDog',
+      populate: {
+        path: 'userID',
+        model: 'User'
+      }
+    });
     console.log(matchesCurrentDog);
     // matchesCurrentDog.forEach(match => {
     //   found = true;
@@ -388,6 +396,12 @@ router.post('/matches/:matchID/delete', isNotLoggedIn, async (req, res, next) =>
   const { matchID } = req.params;
   await Match.findByIdAndDelete(matchID);
   res.json({ message: 'Match deleted' });
+});
+
+router.post('/matches/:matchID/message', isNotLoggedIn, async (req, res, next) => {
+  const { matchID } = req.params;
+  await Match.findByIdAndUpdate(matchID, { message: true, messageRead: false });
+  res.json({ message: 'Owner contact info sent' });
 });
 
 module.exports = router;
