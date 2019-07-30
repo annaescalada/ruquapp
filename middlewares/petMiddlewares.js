@@ -148,6 +148,24 @@ const isAddPetFormFilled = (req, res, next) => {
   next();
 };
 
+const isEditPetFormFilled = (req, res, next) => {
+  const { dogID } = req.params;
+  const { status, day, month, year, hour, location, name, white, grey, black, darkBrown, lightBrown, red, size, breed, ears, tail, hair } = req.body;
+  if (status === 'lost') {
+    if (!status || !day || !month || !year || !hour || !location || !name || !size || !breed || !ears || !tail || !hair || (!white && !grey && !black && !darkBrown && !lightBrown && !red)) {
+      req.flash('missingFields', 'All fields are required');
+      return res.redirect(`/pet/${dogID}/edit`);
+    }
+  } else {
+    if (!status || !day || !month || !year || !hour || !location) {
+      req.flash('missingFields', 'Location, date and hour fields are required');
+      return res.redirect(`/pet/${dogID}/edit`);
+    }
+  }
+  next();
+};
+
 module.exports = {
-  isAddPetFormFilled
+  isAddPetFormFilled,
+  isEditPetFormFilled
 };

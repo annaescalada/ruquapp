@@ -3,11 +3,11 @@
 
 <section class="currentDogMacthes">
 <article>
-    <a href="/pet/{{_id}}/edit">Edit</a>
+    <a href="/pet/{{dog._id}}/edit">Edit</a>
     {{#if notification}}
-    <img id={{_id}} class="notifications notifications-true" src="/images/notifications-true.svg" alt="notifications on" width="80px">
+    <img id={{dog._id}} class="notifications notifications-true" src="/images/notifications-true.svg" alt="notifications on" width="80px">
     {{else}}
-    <img id={{_id}} class="notifications" src="/images/notifications-false.png" alt="notifications off" width="80px">
+    <img id={{dog._id}} class="notifications" src="/images/notifications-false.png" alt="notifications off" width="80px">
     {{/if}}
 
 

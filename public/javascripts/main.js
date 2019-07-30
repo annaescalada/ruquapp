@@ -127,10 +127,9 @@ const main = () => {
 
   function notificationsOnOff () {
     const notificationButton = document.querySelector('img.notifications');
+    console.log(notificationButton);
     if (notificationButton) {
       const dogID = notificationButton.id;
-    }
-    if (notificationButton) {
       notificationButton.addEventListener('click', async event => {
         await axios.post(`/pet/${dogID}/notification`);
         const src = notificationButton.src;

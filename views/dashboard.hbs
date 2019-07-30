@@ -37,13 +37,12 @@
       <p class="dog-name">{{name}}</p>
     {{/if}}
     <div class="when-where">
-      <p>{{hour}}h</p>
-      <p>{{day}}/{{month}}/{{year}}</p>
+      <p>{{day}}/{{month}}/{{year}}  around  {{hour}}:00 h</p>
     </div>
     <p>{{location}}</p>
     <div class="breed-hair">
       <p>{{breed}}</p>
-      {{#unless size.unknown}}
+      {{#unless hair.unknown}}
         {{#if hair.long}}
           <p>Long hair</p>
         {{/if}}
@@ -148,8 +147,7 @@
       <p class="dog-name">{{name}}</p>
     {{/if}}
     <div class="when-where">
-      <p>{{hour}}h</p>
-      <p>{{day}}/{{month}}/{{year}}</p>
+      <p>{{day}}/{{month}}/{{year}}  around  {{hour}}:00 h</p>
     </div>
     <p>{{location}}</p>
     <div class="breed-hair">

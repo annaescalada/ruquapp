@@ -127,9 +127,9 @@ async function match (dogID) {
 }
 
 async function deleteMatch (dogID) {
-  const dogs = await Match.find({ $or: [{ idLostDog: dogID, idFoundDog: dogID }] });
-  dogs.forEach(async dog => {
-    await Match.findByIdAndDelete(dog._id);
+  const matches = await Match.find({ $or: [{ idLostDog: dogID, idFoundDog: dogID }] });
+  matches.forEach(async match => {
+    await Match.findByIdAndDelete(match._id);
   });
 }
 

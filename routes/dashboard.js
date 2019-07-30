@@ -3,7 +3,6 @@
 const express = require('express');
 const router = express.Router();
 
-const User = require('../models/User.js');
 const Dog = require('../models/Dog.js');
 const Match = require('../models/Match.js');
 
@@ -15,6 +14,8 @@ router.get('/', isNotLoggedIn, async (req, res, next) => {
   const dogs = await Dog.find({ userID: currentUserID });
   const lostDogs = [];
   const foundDogs = [];
+  let dogsData;
+
   dogs.forEach(async dog => {
     const matches = await Match.find({ $or: [{ idFoundDog: dog._id }, { idLostDog: dog._id }] });
 
@@ -46,7 +47,7 @@ router.get('/', isNotLoggedIn, async (req, res, next) => {
       foundDogs.push(dog);
     }
   });
-  const dogsData = {
+  dogsData = {
     dogs,
     lostDogs,
     foundDogs

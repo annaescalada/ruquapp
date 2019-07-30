@@ -20,7 +20,7 @@
   <label for="location">When and where did it happen?</label>
   <div class="date">
     <select name="day" id="day" required>
-      {{#if day.length}}
+      {{#if day}}
       <option value="{{day}}">{{day}}</option>
       {{else}}
       <option value="" disabled selected>Day</option>
@@ -59,7 +59,7 @@
     </select>
 
     <select name="month" id="month" required>
-      {{#if month.length}}
+      {{#if month}}
       <option value="{{month}}">{{month}}</option>
       {{else}}
       <option value="" disabled selected>Month</option>
@@ -78,7 +78,7 @@
       <option value="12">Dec</option>
     </select>
 
-    {{#if year.length}}
+    {{#if year}}
     <input type="text" id="year" name="year" value={{year}} required>
     {{else}}
     <input type="text" id="year" name="year" placeholder="Year" required>
@@ -86,8 +86,8 @@
   </div>
 
   <select name="hour" id="hour" required>
-    {{#if hour.length}}
-    <option value="{{hour}}">{{hour}}</option>
+    {{#if hour}}
+    <option value="{{hour}}:00">{{hour}}:00</option>
     {{else}}
     <option value="" disabled selected>--Select an aproximated hour--</option>
     {{/if}}
@@ -133,55 +133,70 @@
 
   <label for="color">What color/s is the dog?</label>
   <div class="pet-color radio-list">
-    {{#if white.length}}
-    <input type="checkbox" name="white" value="white" checked><span class="color white"></span>
-    {{else}}
+    {{#if colorUnknown}}
     <input type="checkbox" name="white" value="white"><span class="color white"></span>
-    {{/if}}
-    {{#if grey.length}}
-    <input type="checkbox" name="grey" value="grey" checked><span class="color grey"></span>
-    {{else}}
     <input type="checkbox" name="grey" value="grey"><span class="color grey"></span>
-    {{/if}}
-    {{#if black.length}}
-    <input type="checkbox" name="black" value="black" checked><span class="color black"></span>
-    {{else}}
     <input type="checkbox" name="black" value="black"><span class="color black"></span>
-    {{/if}}
-    {{#if darkBrown.length}}
-    <input type="checkbox" name="darkBrown" value="darkBrown" checked><span class="color dark-brown"></span>
-    {{else}}
     <input type="checkbox" name="darkBrown" value="darkBrown"><span class="color dark-brown"></span>
-    {{/if}}
-    {{#if lightBrown.length}}
-    <input type="checkbox" name="lightBrown" value="lightBrown" checked><span class="color light-brown"></span>
-    {{else}}
     <input type="checkbox" name="lightBrown" value="lightBrown"><span class="color light-brown"></span>
-    {{/if}}
-    {{#if red.length}}
-    <input type="checkbox" name="red" value="red" checked><span class="color red"></span>
-    {{else}}
     <input type="checkbox" name="red" value="red"><span class="color red"></span>
+    {{else}}
+      {{#if white.length}}
+      <input type="checkbox" name="white" value="white" checked><span class="color white"></span>
+      {{else}}
+      <input type="checkbox" name="white" value="white"><span class="color white"></span>
+      {{/if}}
+      {{#if grey.length}}
+      <input type="checkbox" name="grey" value="grey" checked><span class="color grey"></span>
+      {{else}}
+      <input type="checkbox" name="grey" value="grey"><span class="color grey"></span>
+      {{/if}}
+      {{#if black.length}}
+      <input type="checkbox" name="black" value="black" checked><span class="color black"></span>
+      {{else}}
+      <input type="checkbox" name="black" value="black"><span class="color black"></span>
+      {{/if}}
+      {{#if darkBrown.length}}
+      <input type="checkbox" name="darkBrown" value="darkBrown" checked><span class="color dark-brown"></span>
+      {{else}}
+      <input type="checkbox" name="darkBrown" value="darkBrown"><span class="color dark-brown"></span>
+      {{/if}}
+      {{#if lightBrown.length}}
+      <input type="checkbox" name="lightBrown" value="lightBrown" checked><span class="color light-brown"></span>
+      {{else}}
+      <input type="checkbox" name="lightBrown" value="lightBrown"><span class="color light-brown"></span>
+      {{/if}}
+      {{#if red.length}}
+      <input type="checkbox" name="red" value="red" checked><span class="color red"></span>
+      {{else}}
+      <input type="checkbox" name="red" value="red"><span class="color red"></span>
+      {{/if}}
     {{/if}}
   </div>
   
   
   <label>What's the dog size?</label>
   <div class="pet-size radio-list">
-    {{#if small.length}}
-    <input type="radio" name="size" value="small" checked><span>Small</span>
+    {{#if sizeUnknown}}
+      <input type="radio" name="size" value="small"><span>Small</span>
+      <input type="radio" name="size" value="medium"><span>Medium</span>
+      <input type="radio" name="size" value="large"><span>Large</span>
     {{else}}
-    <input type="radio" name="size" value="small"><span>Small</span>
-    {{/if}}
-    {{#if medium.length}}
-    <input type="radio" name="size" value="medium" checked><span>Medium</span>
-    {{else}}
-    <input type="radio" name="size" value="medium"><span>Medium</span>
-    {{/if}}
-    {{#if large.length}}
-    <input type="radio" name="size" value="large" checked><span>Large</span>
-    {{else}}
-    <input type="radio" name="size" value="large"><span>Large</span>
+      {{#if small}}
+      <input type="radio" name="size" value="small" checked><span>Small</span>
+      {{else}}
+      <input type="radio" name="size" value="small"><span>Small</span>
+      {{/if}}
+      {{#if medium}}
+      <input type="radio" name="size" value="medium" checked><span>Medium</span>
+      {{else}}
+      <input type="radio" name="size" value="medium"><span>Medium</span>
+      {{/if}}
+      {{#if large}}
+      <input type="radio" name="size" value="large" checked><span>Large</span>
+      {{else}}
+      <input type="radio" name="size" value="large"><span>Large</span>
+      {{/if}}
     {{/if}}
   </div> 
   
@@ -210,40 +225,51 @@
  
   <label>What kind of ears does the dog have?</label>
   <div class="pet-ears radio-list">
-    {{#if up.length}}
-    <input type="radio" name="ears" value="up"checked><span>Up</span>
-    <input type="radio" name="ears" value="down"><span>Down</span>
-    {{else}}
-      {{#if down.length}}
+    {{#if earsUnknown}}
       <input type="radio" name="ears" value="up"><span>Up</span>
-      <input type="radio" name="ears" value="down" checked><span>Down</span>
-        {{else}}
+      <input type="radio" name="ears" value="down"><span>Down</span>
+    {{else}}
+      {{#if up}}
+      <input type="radio" name="ears" value="up"checked><span>Up</span>
+      <input type="radio" name="ears" value="down"><span>Down</span>
+      {{else}}
+        {{#if down}}
         <input type="radio" name="ears" value="up"><span>Up</span>
-        <input type="radio" name="ears" value="down"><span>Down</span>
+        <input type="radio" name="ears" value="down" checked><span>Down</span>
+          {{else}}
+          <input type="radio" name="ears" value="up"><span>Up</span>
+          <input type="radio" name="ears" value="down"><span>Down</span>
+        {{/if}}
       {{/if}}
     {{/if}}
   </div>
 
   <label for="tail">What kind of tail does the dog have?</label>
   <div class="pet-tail radio-list">
-    {{#if longTail.length}}
-    <input type="radio" name="tail" value="longTail" checked><span>Long</span>
-    <input type="radio" name="tail" value="longHairy"><span>Hairy</span>
-    <input type="radio" name="tail" value="shortTail"><span>Short</span>
+    {{#if tailUnknown}}
+      <input type="radio" name="tail" value="longTail"><span>Long</span>
+      <input type="radio" name="tail" value="longHairy"><span>Hairy</span>
+      <input type="radio" name="tail" value="shortTail"><span>Short</span>
     {{else}}
-      {{#if longHairy.length}}
-        <input type="radio" name="tail" value="longTail"><span>Long</span>
-        <input type="radio" name="tail" value="longHairy" checked><span>Hairy</span>
+      {{#if longTail}}
+        <input type="radio" name="tail" value="longTail" checked><span>Long</span>
+        <input type="radio" name="tail" value="longHairy"><span>Hairy</span>
         <input type="radio" name="tail" value="shortTail"><span>Short</span>
       {{else}}
-        {{#if shortTail.length}}
+        {{#if longHairy}}
           <input type="radio" name="tail" value="longTail"><span>Long</span>
-          <input type="radio" name="tail" value="longHairy"><span>Hairy</span>
-          <input type="radio" name="tail" value="shortTail" checked><span>Short</span>
-        {{else}}
-          <input type="radio" name="tail" value="longTail"><span>Long</span>
-          <input type="radio" name="tail" value="longHairy"><span>Hairy</span>
+          <input type="radio" name="tail" value="longHairy" checked><span>Hairy</span>
           <input type="radio" name="tail" value="shortTail"><span>Short</span>
+        {{else}}
+          {{#if shortTail}}
+            <input type="radio" name="tail" value="longTail"><span>Long</span>
+            <input type="radio" name="tail" value="longHairy"><span>Hairy</span>
+            <input type="radio" name="tail" value="shortTail" checked><span>Short</span>
+          {{else}}
+            <input type="radio" name="tail" value="longTail"><span>Long</span>
+            <input type="radio" name="tail" value="longHairy"><span>Hairy</span>
+            <input type="radio" name="tail" value="shortTail"><span>Short</span>
+          {{/if}}
         {{/if}}
       {{/if}}
     {{/if}}
@@ -251,24 +277,26 @@
 
   <label for="hair">What kind of hair does the dog have?</label>
   <div class="pet-hair radio-list">
-    {{#if short.length}}
-      <input type="radio" name="hair" value="short" checked><span>Short</span>
-      <input type="radio" name="hair" value="long"><span>Long</span>
-    {{else}}
-      {{#if long.length}}
-        <input type="radio" name="hair" value="short"><span>Short</span>
-        <input type="radio" name="hair" value="long" checked><span>Long</span>
-      {{else}}
+    {{#if hairUnknown}}
         <input type="radio" name="hair" value="short"><span>Short</span>
         <input type="radio" name="hair" value="long"><span>Long</span>
+    {{else}}
+      {{#if short}}
+        <input type="radio" name="hair" value="short" checked><span>Short</span>
+        <input type="radio" name="hair" value="long"><span>Long</span>
+      {{else}}
+        {{#if long}}
+          <input type="radio" name="hair" value="short"><span>Short</span>
+          <input type="radio" name="hair" value="long" checked><span>Long</span>
+        {{else}}
+          <input type="radio" name="hair" value="short"><span>Short</span>
+          <input type="radio" name="hair" value="long"><span>Long</span>
+        {{/if}}
       {{/if}}
     {{/if}}
   </div>
 
-  <label for="photo">Upload an image if you have any</label>
-  <input type="file" name="photo" />
-
-  <button type="submit">Add dog</button>
+  <button type="submit">Save changes</button>
 
 </form>
 
