@@ -10,6 +10,8 @@ const Match = require('../models/Match');
 const { match } = require('../helpers/matchLogic');
 const parser = require('../config/cloudinary');
 
+var mongoose = require('mongoose');
+
 router.get('/add', isNotLoggedIn, (req, res, next) => {
   const data = {
     missingFields: req.flash('missingFields'),
@@ -177,16 +179,19 @@ router.post('/add', parser.single('photo'), isNotLoggedIn, isAddPetFormFilled, a
 
 router.get('/:dogID/matches', isNotLoggedIn, async (req, res, next) => {
   const { dogID } = req.params;
+  console.log(dogID);
   const dog = await Dog.findById(dogID);
-  console.log(dog);
-  const matchesCurrentDog = await Match.find({ $or: [{ idLostDog: dogID }, { idFoundDog: dogID }] });
+  const status = dog.status;
+  const idLostDog = mongoose.Types.ObjectId(dogID);
+  const idFoundDog = mongoose.Types.ObjectId(dogID);
+  console.log(idLostDog, idFoundDog);
+  const matchesCurrentDog = await Match.find({ $or: [{ idLostDog }, { idFoundDog }] }).populate('idLostDog').populate('idFoundDog');
   console.log(matchesCurrentDog);
-
   const data = {
+    status,
     dog,
     matches: matchesCurrentDog
   };
-
   res.render('matches', data);
 });
 

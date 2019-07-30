@@ -104,13 +104,19 @@
 </section>
 
 <section class="matches">
-  {{#each}}
+  {{#each matches}}
     <article>
       <img src="" alt="dog matched image">
       <div class="matching-info">
-        <p>Date:</p>
-        <p>Location:</p>
-        
+        <p>Date: {{idFoundDog.date}}</p>
+        <p>Hour: {{idFoundDog.hour}}</p>
+        <p>Location: {{idFoundDog.location}}</p>
+        <p>Color:</p>
+        <p>Size:</p>
+        <p>Breed:</p>
+        <p>Hair:</p>
+        <p>Tail:</p>
+        <p>Ears:</p>
       </div>
     </article>  
   {{/each}}
