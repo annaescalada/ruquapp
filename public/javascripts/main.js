@@ -104,18 +104,10 @@ const main = () => {
 
   function deleteOrFoundPet () {
     const foundOrDeleteDogButton = document.querySelectorAll('.foundOrDeleteDogButton');
-<<<<<<< HEAD
-    // console.log(foundOrDeleteDogButton);
-=======
->>>>>>> 59b98d8a74f5cd61ca320a771a371702888485a2
     if (foundOrDeleteDogButton) {
       foundOrDeleteDogButton.forEach(button => {
         button.addEventListener('click', async event => {
           const dogIDLost = event.target.parentElement.id;
-<<<<<<< HEAD
-          // console.log(dogIDLost);
-=======
->>>>>>> 59b98d8a74f5cd61ca320a771a371702888485a2
           await axios.post(`/pet/${dogIDLost}/delete`);
           const article = event.target.parentElement;
           article.remove();
@@ -131,22 +123,13 @@ const main = () => {
 
   function notificationsOnOff () {
     const notificationButton = document.querySelector('img.notifications');
-<<<<<<< HEAD
-    const dogID = notificationButton.id;
-    // console.log(notificationButton);
-=======
     if (notificationButton) {
       const dogID = notificationButton.id;
     }
->>>>>>> 59b98d8a74f5cd61ca320a771a371702888485a2
     if (notificationButton) {
       notificationButton.addEventListener('click', async event => {
         await axios.post(`/pet/${dogID}/notification`);
         const src = notificationButton.src;
-<<<<<<< HEAD
-        // console.log(src);
-=======
->>>>>>> 59b98d8a74f5cd61ca320a771a371702888485a2
         if (src.includes('true')) {
           notificationButton.src = '/images/notifications-false.png';
         } else {
