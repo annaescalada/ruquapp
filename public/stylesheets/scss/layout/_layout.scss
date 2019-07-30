@@ -26,13 +26,23 @@ body{
   grid-template-columns: 60px 1fr 60px;
   grid-template-rows: auto;
   justify-items: center;
+  align-items:center;
   a{
+    @include flex-center(row);
     img{
       height: 60px;
       width:auto;
     }
   }
 }
+
+.navigation-logo {
+  img.logo-small {
+    width:50%;
+    height: auto;
+  }
+}
+
 .validation{
   margin-bottom: 20px;
   
@@ -64,4 +74,77 @@ body{
 
 .radio-list {
   @include flex-center(row);
+}
+
+.toggle {
+  width: 60%;
+  margin: 4% 4% 10%;
+  ul {
+    @include flex-center(row);
+    justify-content: space-between;
+    font-size: 1.3em;
+    font-weight: 300;
+    li {
+      cursor: pointer;
+    }
+  }
+}
+
+.foundSectionDashboard, .lostSectionDashboard {
+  width:100%;
+}
+
+.dogCardDashboard {
+  @include flex-center(column);
+  width: 100%;
+  background-color:white;
+  padding: 6%;
+  margin: 4% 0;
+  .messages-match-delete {
+    width:100%;
+    @include flex-center(row);
+    justify-content: space-evenly;
+    div {
+      @include flex-center(row);
+      justify-content: space-evenly;
+      p {
+        margin-left: 10%;
+      }
+    }
+  }
+  .dog-info {
+    @include flex-center(column);
+    .dog-image {
+      border-radius: 50%;
+      overflow: hidden;
+        img {
+          width:300px;
+        }
+    }
+    .dog-name {
+      font-size:1.3em;
+      margin: 2% 0%;
+    }
+    .pet-color {
+      width:100%;
+      @include flex-center(row);
+      margin: 2% 0%;
+      span {
+        margin: 0 4%;
+      }
+    }
+    .breed-hair, .when-where, .ears-tail-size, .found-match-buttons {
+      width:100%;
+      @include flex-center(row);
+      justify-content: space-around;
+      margin: 2% 0%;
+      a, button {
+        margin: 0% 1%;
+      }
+    }
+  }
+}
+
+.add-dog {
+  margin-top:10%;
 }

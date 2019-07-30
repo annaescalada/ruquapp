@@ -16,17 +16,11 @@ router.get('/', isNotLoggedIn, async (req, res, next) => {
   const lostDogs = [];
   const foundDogs = [];
   dogs.forEach(async dog => {
-    if (dog.status === 'lost') {
-      lostDogs.push(dog);
-    } else {
-      foundDogs.push(dog);
-    }
-
     const matches = await Match.find({ $or: [{ idFoundDog: dog._id }, { idLostDog: dog._id }] });
 
     const totalMatches = matches.length;
     let newMacthes = false;
-    let totalMessages;
+    let totalMessages = 0;
     let newMessages = false;
 
     matches.forEach(match => {
@@ -45,6 +39,12 @@ router.get('/', isNotLoggedIn, async (req, res, next) => {
     dog.newMacthes = newMacthes;
     dog.totalMessages = totalMessages;
     dog.newMessages = newMessages;
+
+    if (dog.status === 'lost') {
+      lostDogs.push(dog);
+    } else {
+      foundDogs.push(dog);
+    }
   });
   const dogsData = {
     dogs,

@@ -1,119 +1,117 @@
 <div class="navigation-logo">
-  <img src="/images/ruqu-logo.png" class="logo logo-small" alt="Ruqu lost and found logo">
-  <a href="/profile">*</a>
+  <div></div>
+  <img src="/images/ruqu-logo.png" class="logo" alt="Ruqu lost and found logo">
+  <a href="/profile"><img src="/images/profile.jpg" alt="profile icon"></a>
 </div>
-<nav>
+
+<nav class="toggle">
   <ul>
     <li class="lostToggle">LOST</li>
+    <li>|</li>
     <li class="foundToggle">FOUND</li>
   </ul>
 </nav>
+
 <section class="lostSectionDashboard">
   {{#each lostDogs}}
   <article id={{_id}} class="dogCardDashboard">
 
-    <a class="button" href="/pet/{{_id}}/matches">Matches</a>
-    <button class="foundOrDeleteDogButton">Found</button>
-    <button  class="foundOrDeleteDogButton">Delete</button>
-
-    <div class="messages-matches">
-      <img src="/images/messages.png" alt="messages" width="30px">
-      <p>number of messages</p>
-      <div class="new-messages"></div>
+  <div class="messages-match-delete">
+    <div>
       <img src="/images/matches.png" alt="matches" width="30px">
-      <p>number of matches</p>
+      <p>{{totalMatches}}</p>
+      {{#if newMatches}}
       <div class="new-matches"></div>
+      {{/if}}
     </div>
+    <div>
+      <img class="foundOrDeleteDogButton" src="/images/delete.png" alt="delete" width="30px">
+    </div>
+  </div>
 
-    <ul>
-      {{#if name}}
-      <li>{{name}}</li>
-      {{/if}}
-
-      <li>Color:</li>
-      {{#if color.unknown}}
-        <p>Unknown</p>
-      {{else}}
-        {{#if color.white }}
-          <li>White</li>
-        {{/if}}
-        {{#if color.black}}
-          <li>Black</li>
-        {{/if}}
-        {{#if color.darkBrown}}
-          <li>Dark Brown</li>
-        {{/if}}
-        {{#if color.lightBrown}}
-          <li>Ligth Brown</li>
-        {{/if}}
-        {{#if color.red}}
-          <li>Red</li>
-        {{/if}}
-        {{#if color.grey}}
-          <li>Grey</li>
-        {{/if}}
-      {{/if}}
-
-      <li>Size:</li>
-        {{#if size.unknown}}
-        <p>Unknown</p>
-        {{/if}}
-        {{#if size.small}}
-          <li>Small</li>
-        {{/if}}
-        {{#if size.medium}}
-          <li>Medium</li>
-        {{/if}}
-        {{#if size.big}}
-          <li>Big</li>
-        {{/if}}
-
-      <li>{{breed}}</li>
-
-      <li>Ears:</li>
-        {{#if ears.unknown}}
-          <p>Unknown</p>
-        {{/if}}
-        {{#if ears.up}}
-          <li>Up</li>
-        {{/if}}
-        {{#if ears.down}}
-          <li>Down</li>
-        {{/if}}
-
-      <li>Tail:</li>
-        {{#if tail.unknown}}
-        <p>Unknown</p>
-        {{/if}}
-        {{#if tail.longTail}}
-          <li>Long</li>
-        {{/if}}
-        {{#if tail.longHairy}}
-          <li>Long and hairy</li>
-        {{/if}}
-        {{#if tail.shortTail}}
-          <li>Short</li>
-        {{/if}}
-
-      <li>Hair:</li>
-        {{#if size.unknown}}
-        <p>Unknown</p>
-        {{/if}}
+  <div class="dog-info">
+    <div class="dog-image">
+      <img src="{{photo}}" alt="">
+    </div>
+    {{#if name}}
+      <p class="dog-name">{{name}}</p>
+    {{/if}}
+    <div class="when-where">
+      <p>{{hour}}h</p>
+      <p>{{day}}/{{month}}/{{year}}</p>
+    </div>
+    <p>{{location}}</p>
+    <div class="breed-hair">
+      <p>{{breed}}</p>
+      {{#unless size.unknown}}
         {{#if hair.long}}
-          <li>Long</li>
+          <p>Long hair</p>
         {{/if}}
         {{#if hair.short}}
-          <li>Short</li>
+          <p>Short hair</p>
         {{/if}}
-      
-      <li>{{photo}}</li>
-      <li>{{notification}}</li>
-      <li>{{day}}</li>
-      <li>{{month}}</li>
-      <li>{{year}}</li>
-      <li>{{hour}}</li>
-      <li>{{location}}</li>
-    </ul>
+      {{/unless}}
+    </div>
+    <div class="pet-color">
+      {{#unless color.unknown}}
+        {{#if color.white }}
+          <span class="color white"></span>
+        {{/if}}
+        {{#if color.black}}
+          <span class="color black"></span>
+        {{/if}}
+        {{#if color.darkBrown}}
+          <span class="color dark-brown"></span>
+        {{/if}}
+        {{#if color.lightBrown}}
+          <span class="color light-brown"></span>
+        {{/if}}
+        {{#if color.red}}
+          <span class="color red"></span>
+        {{/if}}
+        {{#if color.grey}}
+          <span class="color grey"></span>
+        {{/if}}
+      {{/unless}}
+    </div>
+    <div class="ears-tail-size">
+      {{#unless size.unknown}}
+        {{#if size.small}}
+        <p>Small</p>
+        {{/if}}
+        {{#if size.medium}}
+        <p>Medium</p>
+        {{/if}}
+        {{#if size.big}}
+        <p>Big</p>
+        {{/if}}
+      {{/unless}}
+      {{#unless ears.unknown}}
+          {{#if ears.up}}
+          <p>Up</p>
+          {{/if}}
+          {{#if ears.down}}
+          <p>Down</p>
+          {{/if}}
+        {{/unless}}
+        {{#unless tail.unknown}}
+          {{#if tail.longTail}}
+          <p>Long</p>
+          {{/if}}
+          {{#if tail.longHairy}}
+          <p>Long and hairy</p>
+          {{/if}}
+          {{#if tail.shortTail}}
+          <p>Short</p>
+          {{/if}}
+        {{/unless}}
+      </div>
+      <div class="found-match-buttons">
+        <a class="button" href="/pet/{{_id}}/matches">Matches</a>
+        <button class="foundOrDeleteDogButton">Found</button>
+      </div>
+    </div>
+
   </article>
   {{/each}}
 </section>
@@ -121,113 +119,113 @@
 <section class="foundSectionDashboard displayNone">
   {{#each foundDogs}}
     <article id={{_id}} class="dogCardDashboard">
-
-      <a class="button" href="/pet/{{_id}}/matches">Matches</a>
-      <button class="foundOrDeleteDogButton">Found</button>
-      <button  class="foundOrDeleteDogButton">Delete</button>
-
-    <div class="messages-matches">
-      <img src="/images/messages.png" alt="messages" width="30px">
-      <p>number of messages</p>
-      <div class="new-messages"></div>
-      <img src="/images/matches.png" alt="matches" width="30px">
-      <p>number of matches</p>
-      <div class="new-matches"></div>
+     
+    <div class="messages-match-delete">
+      <div>
+        <img src="/images/messages.png" alt="messages" width="30px">
+        <p>{{totalMessages}}</p>
+        {{#if newMatches}}
+        <div class="new-messages"></div>
+        {{/if}}
+      </div>
+      <div>
+        <img src="/images/matches.png" alt="matches" width="30px">
+        <p>{{totalMatches}}</p>
+        {{#if newMatches}}
+        <div class="new-matches"></div>
+        {{/if}}
+      </div>
+      <div>
+        <img class="foundOrDeleteDogButton" src="/images/delete.png" alt="delete" width="30px">
+      </div>
     </div>
 
-      <ul>
-        {{#if name}}
-        <li>{{name}}</li>
+  <div class="dog-info">
+    <div class="dog-image">
+      <img src="{{photo}}" alt="">
+    </div>
+    {{#if name}}
+      <p class="dog-name">{{name}}</p>
+    {{/if}}
+    <div class="when-where">
+      <p>{{hour}}h</p>
+      <p>{{day}}/{{month}}/{{year}}</p>
+    </div>
+    <p>{{location}}</p>
+    <div class="breed-hair">
+      <p>{{breed}}</p>
+      {{#unless size.unknown}}
+        {{#if hair.long}}
+          <p>Long hair</p>
         {{/if}}
-
-        <li>Color:</li>
-        {{#if color.unknown}}
-          <p>Unknown</p>
-        {{else}}
-          {{#if color.white }}
-            <li>White</li>
-          {{/if}}
-          {{#if color.black}}
-            <li>Black</li>
-          {{/if}}
-          {{#if color.darkBrown}}
-            <li>Dark Brown</li>
-          {{/if}}
-          {{#if color.lightBrown}}
-            <li>Ligth Brown</li>
-          {{/if}}
-          {{#if color.red}}
-            <li>Red</li>
-          {{/if}}
-          {{#if color.grey}}
-            <li>Grey</li>
-          {{/if}}
+        {{#if hair.short}}
+          <p>Short hair</p>
         {{/if}}
-
-        <li>Size:</li>
-          {{#if size.unknown}}
-          <p>Unknown</p>
-          {{/if}}
-          {{#if size.small}}
-            <li>Small</li>
-          {{/if}}
-          {{#if size.medium}}
-            <li>Medium</li>
-          {{/if}}
-          {{#if size.big}}
-            <li>Big</li>
-          {{/if}}
-
-        <li>{{breed}}</li>
-
-        <li>Ears:</li>
-          {{#if ears.unknown}}
-          <p>Unknown</p>
-          {{/if}}
+      {{/unless}}
+    </div>
+    <div class="pet-color">
+      {{#unless color.unknown}}
+        {{#if color.white }}
+          <span class="color white"></span>
+        {{/if}}
+        {{#if color.black}}
+          <span class="color black"></span>
+        {{/if}}
+        {{#if color.darkBrown}}
+          <span class="color dark-brown"></span>
+        {{/if}}
+        {{#if color.lightBrown}}
+          <span class="color light-brown"></span>
+        {{/if}}
+        {{#if color.red}}
+          <span class="color red"></span>
+        {{/if}}
+        {{#if color.grey}}
+          <span class="color grey"></span>
+        {{/if}}
+      {{/unless}}
+    </div>
+    <div class="ears-tail-size">
+      {{#unless size.unknown}}
+        {{#if size.small}}
+        <p>Small</p>
+        {{/if}}
+        {{#if size.medium}}
+        <p>Medium</p>
+        {{/if}}
+        {{#if size.big}}
+        <p>Big</p>
+        {{/if}}
+      {{/unless}}
+      {{#unless ears.unknown}}
           {{#if ears.up}}
-            <li>Up</li>
+          <p>Up</p>
           {{/if}}
           {{#if ears.down}}
-            <li>Down</li>
+          <p>Down</p>
           {{/if}}
-
-        <li>Tail:</li>
-          {{#if tail.unknown}}
-          <p>Unknown</p>
-          {{/if}}
+        {{/unless}}
+        {{#unless tail.unknown}}
           {{#if tail.longTail}}
-            <li>Long</li>
+          <p>Long</p>
           {{/if}}
           {{#if tail.longHairy}}
-            <li>Long and hairy</li>
+          <p>Long and hairy</p>
           {{/if}}
           {{#if tail.shortTail}}
-            <li>Short</li>
+          <p>Short</p>
           {{/if}}
-
-        <li>Hair:</li>
-          {{#if size.unknown}}
-          <p>Unknown</p>
-          {{/if}}
-          {{#if hair.long}}
-            <li>Long</li>
-          {{/if}}
-          {{#if hair.short}}
-            <li>Short</li>
-          {{/if}}
-        
-        <li>{{photo}}</li>
-        <li>{{notification}}</li>
-        <li>{{day}}</li>
-        <li>{{month}}</li>
-        <li>{{year}}</li>
-        <li>{{hour}}</li>
-        <li>{{location}}</li>
-      </ul>
+        {{/unless}}
+      </div>
+      <div class="found-match-buttons">
+        <a class="button" href="/pet/{{_id}}/matches">Matches</a>
+      </div>
+    </div>
+      
     </article>
     {{/each}}
   </section>
 
 <section class="add-dog">
-  <a href="/pet/add">+</a>
+  <a href="/pet/add"><img src="/images/add.png" width="50px" alt=""></a>
 </section>
