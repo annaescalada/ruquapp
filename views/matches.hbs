@@ -92,7 +92,7 @@
         <li>Short</li>
       {{/if}}
     
-      <li>{{dog.photo}}</li>
+      <li><img src="{{dog.photo}}" alt="my dog" width="300px"></li>
       <li>{{dog.notification}}</li>
       <li>{{dog.day}}</li>
       <li>{{dog.month}}</li>
@@ -105,18 +105,99 @@
 
 <section class="matches">
   {{#each matches}}
-    <article>
-      <img src="" alt="dog matched image">
+    <article class="dog-info">
+      <div class="delete-match"><img src="/images/delete.png"></div>
+      <div class="dog-image">
+        {{#if idFoundDog.photo}}
+        <img src="{{idFoundDog.photo}}" alt="Lost dog matched image" width="300px">
+        {{/if}}
+        {{#if idLostDog.photo}}
+        <img src="{{idLostDog.photo}}" alt="Found dog matched image"  width="300px">
+        {{/if}}
+      </div>
+
+      
       <div class="matching-info">
-        <p>Date: {{idFoundDog.date}}</p>
-        <p>Hour: {{idFoundDog.hour}}</p>
+        {{#if idFoundDog.day}}
+        <p>Date: {{idFoundDog.day}}/{{idFoundDog.month}}/{{idFoundDog.year}} at {{idFoundDog.hour}}h</p>
+        {{/if}}
+        {{#if idLostDog.day}}
+        <p>Date: {{idLostDog.day}}/{{idLostDog.month}}/{{idLostDog.year}} at {{idLostDog.hour}}h</p>
+        {{/if}}
+        {{#if idFoundDog.location}}
         <p>Location: {{idFoundDog.location}}</p>
-        <p>Color:</p>
-        <p>Size:</p>
-        <p>Breed:</p>
-        <p>Hair:</p>
-        <p>Tail:</p>
-        <p>Ears:</p>
+        {{/if}}
+        {{#if idLostDog.location}}
+        <p>Location: {{idLostDog.location}}</p>
+        {{/if}}
+
+        <div class="breed-hair">
+          <p>{{commonAttributes.breed}}</p>
+          {{#unless commonAttributes.hair.unknown}}
+            {{#if commonAttributes.hair.long}}
+              <p>Long hair</p>
+            {{/if}}
+            {{#if commonAttributes.hair.short}}
+              <p>Short hair</p>
+            {{/if}}
+          {{/unless}}
+        </div>
+
+        <div class="pet-color">
+          {{#unless commonAttributes.color.unknown}}
+            {{#if commonAttributes.color.white }}
+              <span class="color white"></span>
+            {{/if}}
+            {{#if commonAttributes.color.black}}
+              <span class="color black"></span>
+            {{/if}}
+            {{#if commonAttributes.color.darkBrown}}
+              <span class="color dark-brown"></span>
+            {{/if}}
+            {{#if commonAttributes.color.lightBrown}}
+              <span class="color light-brown"></span>
+            {{/if}}
+            {{#if commonAttributes.color.red}}
+              <span class="color red"></span>
+            {{/if}}
+            {{#if commonAttributes.color.grey}}
+              <span class="color grey"></span>
+            {{/if}}
+          {{/unless}}
+        </div>
+
+        <div class="ears-tail-size">
+          {{#unless commonAttributes.size.unknown}}
+            {{#if commonAttributes.size.small}}
+            <p>Small</p>
+            {{/if}}
+            {{#if commonAttributes.size.medium}}
+            <p>Medium</p>
+            {{/if}}
+            {{#if commonAttributes.size.big}}
+            <p>Big</p>
+            {{/if}}
+          {{/unless}}
+          {{#unless commonAttributes.ears.unknown}}
+            {{#if commonAttributes.ears.up}}
+            <p>Up</p>
+            {{/if}}
+            {{#if commonAttributes.ears.down}}
+            <p>Down</p>
+            {{/if}}
+          {{/unless}}
+          {{#unless commonAttributes.tail.unknown}}
+            {{#if commonAttributes.tail.longTail}}
+            <p>Long</p>
+            {{/if}}
+            {{#if commonAttributes.tail.longHairy}}
+            <p>Long and hairy</p>
+            {{/if}}
+            {{#if commonAttributes.tail.shortTail}}
+            <p>Short</p>
+            {{/if}}
+          {{/unless}}
+        </div>
       </div>
     </article>  
   {{/each}}

@@ -142,12 +142,10 @@ router.post('/add', parser.single('photo'), isNotLoggedIn, isAddPetFormFilled, a
       };
     }
 
-    const photoUrl = req.secure_url;
-
-    if (!photo) {
+    if (!req.file.secure_url) {
       photo = '/images/dog-default.png';
     } else {
-      photo = photoUrl;
+      photo = req.file.secure_url;
     }
 
     const newDog = await Dog.create({
@@ -184,8 +182,14 @@ router.get('/:dogID/matches', isNotLoggedIn, async (req, res, next) => {
   const status = dog.status;
   const idLostDog = mongoose.Types.ObjectId(dogID);
   const idFoundDog = mongoose.Types.ObjectId(dogID);
-  console.log(idLostDog, idFoundDog);
-  const matchesCurrentDog = await Match.find({ $or: [{ idLostDog }, { idFoundDog }] }).populate('idLostDog').populate('idFoundDog');
+  let matchesCurrentDog = [];
+
+  if (status === 'lost') {
+    matchesCurrentDog = await Match.find({ $or: [{ idLostDog }, { idFoundDog }] }).populate('idFoundDog');
+  } else {
+    matchesCurrentDog = await Match.find({ $or: [{ idLostDog }, { idFoundDog }] }).populate('idLostDog');
+  }
+  // console.log(idLostDog, idFoundDog);
   console.log(matchesCurrentDog);
   const data = {
     status,
