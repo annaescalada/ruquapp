@@ -47,7 +47,7 @@ async function match (dogID) {
         });
     }
 
-    dogs.forEach(dog => {
+    dogs.forEach(async dog => {
       currentDogColors.forEach(currentColor => {
         if (Object.keys(dog.color).includes(currentColor)) {
           commonAttributes.color = {};
@@ -105,6 +105,7 @@ async function match (dogID) {
         }
         match.commonAttributes = commonAttributes;
         console.log(match);
+        await Match.create(match);
         // create match in DB;
       }
     });
@@ -113,39 +114,14 @@ async function match (dogID) {
   }
 }
 
-module.exports = match;
+async function deleteMatch (dogID) {
+  const dogs = await Match.find({ $or: [{ idLostDog: dogID, idFoundDog: dogID }] });
+  dogs.forEach(async dog => {
+    await Match.findByIdAndDelete(dog._id);
+  });
+}
 
-// const matchSchema = new Schema({
-//   idLostDog: {
-//     type: ObjectId,
-//     ref: 'Dog',
-//     required: true
-//   },
-//   idFoundDog: {
-//     type: ObjectId,
-//     ref: 'Dog',
-//     required: true
-//   },
-//   commonAttributes: {
-//     type: Object,
-//     required: true
-//   },
-//   compatibility: {
-//     type: Number,
-//     required: true
-//   },
-//   new: {
-//     type: Boolean,
-//     required: true
-//   },
-//   message: {
-//     type: Boolean,
-//     required: true
-//   },
-//   messageRead: {
-//     type: Boolean,
-//     required: true
-//   }
-// }, {
-//   timestamps: true
-// });
+module.exports = {
+  match,
+  deleteMatch
+};
