@@ -12,97 +12,101 @@
 
 
     <ul>
-      {{#if name}}
-      <li>{{name}}</li>
+      {{#if dog.name}}
+      <li>{{dog.name}}</li>
       {{/if}}
 
       <li>Color:</li>
-      {{#if color.unknown}}
+      {{#if dog.color.unknown}}
         <p>Unknown</p>
       {{else}}
-        {{#if color.white }}
+        {{#if dog.color.white }}
           <li>White</li>
         {{/if}}
-        {{#if color.black}}
+        {{#if dog.color.black}}
           <li>Black</li>
         {{/if}}
-        {{#if color.darkBrown}}
+        {{#if dog.color.darkBrown}}
           <li>Dark Brown</li>
         {{/if}}
-        {{#if color.lightBrown}}
+        {{#if dog.color.lightBrown}}
           <li>Ligth Brown</li>
         {{/if}}
-        {{#if color.red}}
+        {{#if dog.color.red}}
           <li>Red</li>
         {{/if}}
-        {{#if color.grey}}
+        {{#if dog.color.grey}}
           <li>Grey</li>
         {{/if}}
       {{/if}}
 
       <li>Size:</li>
-      {{#if size.unknown}}
+      {{#if dog.size.unknown}}
         <p>Unknown</p>
-        {{#if size.small}}
-          <li>Small</li>
-        {{/if}}
-        {{#if size.medium}}
-          <li>Medium</li>
-        {{/if}}
-        {{#if size.big}}
-          <li>Big</li>
-        {{/if}}
+      {{/if}}
+      {{#if dog.size.small}}
+        <li>Small</li>
+      {{/if}}
+      {{#if dog.size.medium}}
+        <li>Medium</li>
+      {{/if}}
+      {{#if dog.size.big}}
+        <li>Big</li>
       {{/if}}
 
-      <li>{{breed}}</li>
+      <li>{{dog.breed}}</li>
 
       <li>Ears:</li>
-      {{#if ears.unknown}}
+      {{#if dog.ears.unknown}}
         <p>Unknown</p>
-        {{#if ears.up}}
-          <li>Up</li>
-        {{/if}}
-        {{#if ears.down}}
-          <li>Down</li>
-        {{/if}}
+      {{/if}}
+      {{#if dog.ears.up}}
+        <li>Up</li>
+      {{/if}}
+      {{#if dog.ears.down}}
+        <li>Down</li>
       {{/if}}
 
       <li>Tail:</li>
-      {{#if tail.unknown}}
+      {{#if dog.tail.unknown}}
         <p>Unknown</p>
-        {{#if tail.longTail}}
-          <li>Long</li>
-        {{/if}}
-        {{#if tail.longHairy}}
-          <li>Long and hairy</li>
-        {{/if}}
-        {{#if tail.shortTail}}
-          <li>Short</li>
-        {{/if}}
+      {{/if}}
+      {{#if dog.tail.longTail}}
+        <li>Long</li>
+      {{/if}}
+      {{#if dog.tail.longHairy}}
+        <li>Long and hairy</li>
+      {{/if}}
+      {{#if dog.tail.shortTail}}
+        <li>Short</li>
       {{/if}}
 
       <li>Hair:</li>
-      {{#if size.unknown}}
+      {{#if dog.hair.unknown}}
         <p>Unknown</p>
-        {{#if hair.long}}
-          <li>Long</li>
-        {{/if}}
-        {{#if hair.short}}
-          <li>Short</li>
-        {{/if}}
       {{/if}}
-      
-      <li>{{photo}}</li>
-      <li>{{notification}}</li>
-      <li>{{day}}</li>
-      <li>{{month}}</li>
-      <li>{{year}}</li>
-      <li>{{hour}}</li>
-      <li>{{location}}</li>
+      {{#if dog.hair.long}}
+        <li>Long</li>
+      {{/if}}
+      {{#if dog.hair.short}}
+        <li>Short</li>
+      {{/if}}
+    
+      <li>{{dog.photo}}</li>
+      <li>{{dog.notification}}</li>
+      <li>{{dog.day}}</li>
+      <li>{{dog.month}}</li>
+      <li>{{dog.year}}</li>
+      <li>{{dog.hour}}</li>
+      <li>{{dog.location}}</li>
     </ul>
   </article>
 </section>
 
 <section class="matches">
-  
+  {{#each}}
+  {{/each}}
+  <article>
+
+  </article>  
 </section>
