@@ -1,7 +1,6 @@
 'use strict';
 
 const Dog = require('../models/Dog');
-const User = require('../models/User');
 const Match = require('../models/Match');
 
 async function match (dogID) {
@@ -49,6 +48,12 @@ async function match (dogID) {
 
     dogs.forEach(async dog => {
       currentDogColors.forEach(currentColor => {
+        if (idFoundDog) {
+          idLostDog = dog._id;
+        } else {
+          idFoundDog = dog._id;
+        }
+
         if (Object.keys(dog.color).includes(currentColor)) {
           commonAttributes.color = {};
           commonAttributes.color[currentColor] = currentColor;
@@ -105,7 +110,7 @@ async function match (dogID) {
         }
         match.commonAttributes = commonAttributes;
         console.log(match);
-        await Match.create(match);
+        const newMatch = await Match.create(match);
       }
     });
   } catch (error) {

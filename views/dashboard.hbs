@@ -16,8 +16,14 @@
     <button class="foundOrDeleteDogButton">Found</button>
     <button  class="foundOrDeleteDogButton">Delete</button>
 
-    <img src="" alt="messages">
-    <img src="" alt="matches">
+    <div class="messages-matches">
+      <img src="/images/messages.png" alt="messages" width="30px">
+      <p>number of messages</p>
+      <div class="new-messages"></div>
+      <img src="/images/matches.png" alt="matches" width="30px">
+      <p>number of matches</p>
+      <div class="new-matches"></div>
+    </div>
 
     <ul>
       {{#if name}}
@@ -116,10 +122,18 @@
   {{#each foundDogs}}
     <article id={{_id}} class="dogCardDashboard">
 
-      <a href="/pet/{{_id}}/matches">Matches</a>
+      <a class="button" href="/pet/{{_id}}/matches">Matches</a>
       <button class="foundOrDeleteDogButton">Found</button>
       <button  class="foundOrDeleteDogButton">Delete</button>
 
+    <div class="messages-matches">
+      <img src="/images/messages.png" alt="messages" width="30px">
+      <p>number of messages</p>
+      <div class="new-messages"></div>
+      <img src="/images/matches.png" alt="matches" width="30px">
+      <p>number of matches</p>
+      <div class="new-matches"></div>
+    </div>
 
       <ul>
         {{#if name}}
