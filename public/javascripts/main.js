@@ -104,12 +104,10 @@ const main = () => {
 
   function deleteOrFoundPet () {
     const foundOrDeleteDogButton = document.querySelectorAll('.foundOrDeleteDogButton');
-    console.log(foundOrDeleteDogButton);
     if (foundOrDeleteDogButton) {
       foundOrDeleteDogButton.forEach(button => {
         button.addEventListener('click', async event => {
           const dogIDLost = event.target.parentElement.id;
-          console.log(dogIDLost);
           await axios.post(`/pet/${dogIDLost}/delete`);
           const article = event.target.parentElement;
           article.remove();
@@ -125,13 +123,13 @@ const main = () => {
 
   function notificationsOnOff () {
     const notificationButton = document.querySelector('img.notifications');
-    const dogID = notificationButton.id;
-    console.log(notificationButton);
+    if (notificationButton) {
+      const dogID = notificationButton.id;
+    }
     if (notificationButton) {
       notificationButton.addEventListener('click', async event => {
         await axios.post(`/pet/${dogID}/notification`);
         const src = notificationButton.src;
-        console.log(src);
         if (src.includes('true')) {
           notificationButton.src = '/images/notifications-false.png';
         } else {
