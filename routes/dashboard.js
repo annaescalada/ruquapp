@@ -16,7 +16,7 @@ router.get('/', isNotLoggedIn, async (req, res, next) => {
   const foundDogs = [];
   let dogsData;
 
-  dogs.forEach(async dog => {
+  dogs.forEach(async (dog) => {
     const matches = await Match.find({ $or: [{ idFoundDog: dog._id }, { idLostDog: dog._id }] });
 
     const totalMatches = matches.length;
