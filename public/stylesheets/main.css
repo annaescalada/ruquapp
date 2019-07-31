@@ -18,6 +18,10 @@ form label, form div label {
   display: block;
 }
 
+form button {
+  margin: 8%;
+}
+
 input[type="radio"], input[type="checkbox"] {
   -webkit-transform: scale(2);
           transform: scale(2);
