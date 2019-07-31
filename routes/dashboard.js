@@ -15,7 +15,7 @@ router.get('/', isNotLoggedIn, async (req, res, next) => {
   const lostDogs = [];
   const foundDogs = [];
 
-  dogs.forEach(async (dog) => {
+  const selectedDogs = Promise.all(dogs.map(async (dog) => {
     const matches = await Match.find({ $or: [{ idFoundDog: dog._id }, { idLostDog: dog._id }] });
 
     const totalMatches = matches.length;
@@ -42,17 +42,20 @@ router.get('/', isNotLoggedIn, async (req, res, next) => {
 
     if (dog.status === 'lost') {
       lostDogs.push(dog);
-      console.log(lostDogs);
     } else {
       foundDogs.push(dog);
-      console.log(foundDogs);
     }
-  });
-  const dogsData = {
-    lostDogs,
-    foundDogs
-  };
-  res.render('dashboard', dogsData);
+  }));
+  selectedDogs
+    .then(() => {
+      const dogsData = {
+        lostDogs,
+        foundDogs
+      };
+      res.render('dashboard', dogsData);
+    }).catch((error) => {
+      next(error);
+    });
 });
 
 module.exports = router;

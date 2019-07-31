@@ -1,6 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
+const { match } = require('../helpers/matchLogic');
 
 // setup mongoose
 mongoose.connect('mongodb://localhost/ruquDB', {
@@ -545,7 +546,12 @@ async function seedsDogs () {
   ];
   Dog.create(seeds).then((dogs) => {
     console.log(dogs);
-    mongoose.connection.close();
+    const matches = Promise.all(dogs.map(async (dog) => {
+      await match(dog._id);
+    }));
+    matches.then(() => {
+      mongoose.connection.close();
+    });
   }).catch((error) => {
     console.log(error);
   });

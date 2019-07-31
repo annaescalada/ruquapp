@@ -187,6 +187,9 @@ router.get('/:dogID/matches', isNotLoggedIn, async (req, res, next) => {
   if (status === 'lost') {
     matchesCurrentDog = await Match.find({ $or: [{ idLostDog }, { idFoundDog }] }).populate('idFoundDog');
 
+    matchesCurrentDog.forEach(async (match) => {
+      await Match.findByIdAndUpdate(match._id, { messageRead: true, new: false });
+    });
     console.log(matchesCurrentDog);
     // matchesCurrentDog.forEach(match => {
     //   lost = true;
