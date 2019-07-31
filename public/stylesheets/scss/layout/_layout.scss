@@ -96,7 +96,7 @@ body{
 .foundSectionDashboard, .lostSectionDashboard {
   width:100%;
   article:last-child{
-    margin-bottom: 30px;
+    margin-bottom: 50px;
   }
 }
 
@@ -136,10 +136,11 @@ body{
       overflow: hidden;
       margin: 15px 0;
         img {
-          width:300px;
+          width:100%;
         }
     }
     .dog-name {
+      font-weight: bold;
       font-size:1.3em;
       margin: 2% 0%;
     }
@@ -181,4 +182,34 @@ body{
   background-color: white;
   padding: 30px;
   margin-top: 20px;
+}
+
+.header-match{
+  display:flex;
+  justify-content: flex-end;
+
+  .button{
+    width: 75px;
+    border-radius: 13px;
+    background-color: #00BCD4;
+    margin-right: 10px;
+  }
+  img{
+    height: 35px;
+    width: auto;
+  }
+}
+
+.match-dog-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .dog-name{
+    font-weight: bold;
+    font-size: 1.3em;
+    margin: 2% 0%;
+  }
+  .ears-tail-size{
+    display: flex;
+  }
 }
