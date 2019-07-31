@@ -515,7 +515,25 @@ body {
 }
 
 .add-dog {
-  margin-top: 10%;
+  position: fixed;
+  bottom: 0;
+}
+
+.add-dog a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.add-dog a img {
+  width: 45%;
 }
 
 html {

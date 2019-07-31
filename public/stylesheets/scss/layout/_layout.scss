@@ -146,5 +146,16 @@ body{
 }
 
 .add-dog {
-  margin-top:10%;
+  position: fixed;
+  bottom: 0;
+  a{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    img{
+      width: 45%;
+    }
+  }
 }
+
