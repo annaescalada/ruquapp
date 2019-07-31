@@ -106,7 +106,9 @@
 <section class="matches">
   {{#each matches}}
     <article class="dog-info" id="{{_id}}">
+      {{#if idFoundDog.location}}
       <div class="deleteMatch delete-match"><img src="/images/delete.png" width="30px"></div>
+      {{/if}}
       <div class="dog-image">
         {{#if idFoundDog.photo}}
         <img src="{{idFoundDog.photo}}" alt="Lost dog matched image" width="300px">
@@ -208,9 +210,11 @@
           {{/if}}
         {{/if}}
         {{#if idLostDog.location}}
+        {{#if message}}
         <p>Possible owner of the dog contact info</p>
         <p>{{idLostDog.userID.email}}</p>
         <p>{{idLostDog.userID.phone}}</p>
+        {{/if}}
         {{/if}}
       </div>
     </article>  
