@@ -96,7 +96,7 @@ body{
 .foundSectionDashboard, .lostSectionDashboard {
   width:100%;
   article:last-child{
-    margin-bottom: 30px;
+    margin-bottom: 40px;
   }
 }
 
@@ -105,12 +105,12 @@ body{
   width: 100%;
   background-color:white;
   padding: 6%;
-  margin: 4% 0;
+  margin: 6% 0;
+  border-radius: 15px;
   .messages-match-delete {
     width:100%;
     @include flex-center(row);
     justify-content: space-evenly;
-
     .messages-icon, .matches-icon{
       img{
         height: 28px;
@@ -132,11 +132,14 @@ body{
   }
   .dog-info {
     @include flex-center(column);
+    color: $darkblue;
     .dog-image {
-      overflow: hidden;
+      width: 100%;
       margin: 15px 0;
+      overflow: hidden;
         img {
-          width:300px;
+          width:100%;
+          object-fit: contain;
         }
     }
     .dog-name {
@@ -159,6 +162,9 @@ body{
       a, button {
         margin: 0% 1%;
       }
+      img {
+        height: 35px;
+      }
     }
   }
 }
@@ -172,7 +178,7 @@ body{
     width: 100%;
     align-items: center;
     img{
-      width: 60%;
+      width: 70%;
     }
   }
 }

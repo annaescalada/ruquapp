@@ -25,7 +25,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 img.illustration {
-  height: 60px;
+  height: 55px;
 }
 
 input[type="file"] {
@@ -138,7 +138,7 @@ input[type="checkbox"] {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  border: 1px solid #085a75;
+  border: 4px solid #085a75;
 }
 
 .pet-color .white {
@@ -238,7 +238,7 @@ nav.toggle button.right {
 }
 
 a.button {
-  padding: 8px;
+  padding: 11px;
 }
 
 div.new-messages, div.new-matches {
@@ -445,7 +445,7 @@ body {
 }
 
 .foundSectionDashboard article:last-child, .lostSectionDashboard article:last-child {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .dogCardDashboard {
@@ -465,7 +465,8 @@ body {
   width: 100%;
   background-color: white;
   padding: 6%;
-  margin: 4% 0;
+  margin: 6% 0;
+  border-radius: 15px;
 }
 
 .dogCardDashboard .messages-match-delete {
@@ -533,15 +534,19 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  color: #085a75;
 }
 
 .dogCardDashboard .dog-info .dog-image {
-  overflow: hidden;
+  width: 100%;
   margin: 15px 0;
+  overflow: hidden;
 }
 
 .dogCardDashboard .dog-info .dog-image img {
-  width: 300px;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .dogCardDashboard .dog-info .dog-name {
@@ -595,6 +600,10 @@ body {
   margin: 0% 1%;
 }
 
+.dogCardDashboard .dog-info .breed-hair img, .dogCardDashboard .dog-info .when-where img, .dogCardDashboard .dog-info .ears-tail-size img, .dogCardDashboard .dog-info .found-match-buttons img {
+  height: 35px;
+}
+
 .add-dog {
   position: fixed;
   bottom: 0;
@@ -614,7 +623,7 @@ body {
 }
 
 .add-dog a img {
-  width: 60%;
+  width: 70%;
 }
 
 .currentDogMatches {

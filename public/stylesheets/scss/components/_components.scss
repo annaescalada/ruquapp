@@ -22,7 +22,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 img.illustration {
-  height:60px;
+  height:55px;
 }
 
 input[type="file"] {
@@ -110,7 +110,7 @@ input[type="checkbox"] {
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    border: 1px solid $darkblue;
+    border: 4px solid $darkblue;
   }
   .white {
     background-color: white;
@@ -175,7 +175,7 @@ nav.toggle{
 
 
 a.button {
-  padding:8px;
+  padding:11px;
 }
 
 div.new-messages, div.new-matches {
