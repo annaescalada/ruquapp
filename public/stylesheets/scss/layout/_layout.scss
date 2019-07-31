@@ -208,7 +208,18 @@ body{
     font-size: 1.3em;
     margin: 2% 0%;
   }
+  .pet-color {
+    justify-content: space-evenly;
+    width: 100%;
+  }
   .ears-tail-size{
     display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+  .breed-hair{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
   }
 }

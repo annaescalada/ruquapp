@@ -13,88 +13,83 @@
     <img id={{dog._id}} class="notifications" src="/images/notifications-false.png" alt="notifications off" width="80px">
     {{/if}}
   </div>
-    <ul class="match-dog-info">
-      <li><img src="{{dog.photo}}" alt="my dog" width="300px"></li>
+    <div class="match-dog-info">
+      <div><img src="{{dog.photo}}" alt="my dog" width="300px"></div>
       {{#if dog.name}}
-      <li class="dog-name">{{dog.name}}</li>
+      <div class="dog-name">{{dog.name}}</div>
       {{/if}}
-      <li>{{dog.day}}/{{dog.month}}/{{dog.year}} around {{dog.hour}}h</li>
-      <li>{{dog.location}}</li>
+      <div>{{dog.day}}/{{dog.month}}/{{dog.year}} around {{dog.hour}}h</div>
+      <div>{{dog.location}}</div>
 
-      <li>
-        <div class="pet-color">
-        {{#unless dog.olor.unknown}}
-          {{#if dog.color.white }}
-            <span class="color white"></span>
+      <div class="pet-color">
+      {{#unless dog.olor.unknown}}
+        {{#if dog.color.white }}
+          <span class="color white"></span>
+        {{/if}}
+        {{#if dog.color.black}}
+          <span class="color black"></span>
+        {{/if}}
+        {{#if dog.color.darkBrown}}
+          <span class="color dark-brown"></span>
+        {{/if}}
+        {{#if dog.color.lightBrown}}
+          <span class="color light-brown"></span>
+        {{/if}}
+        {{#if dog.color.red}}
+          <span class="color red"></span>
+        {{/if}}
+        {{#if dog.color.grey}}
+          <span class="color grey"></span>
+        {{/if}}
+      {{/unless}}
+      </div>
+    
+      <div class="ears-tail-size">
+        {{#unless dog.size.unknown}}
+          {{#if dog.size.small}}
+          <p>Small</p>
           {{/if}}
-          {{#if dog.color.black}}
-            <span class="color black"></span>
+          {{#if dog.size.medium}}
+          <p>Medium</p>
           {{/if}}
-          {{#if dog.color.darkBrown}}
-            <span class="color dark-brown"></span>
-          {{/if}}
-          {{#if dog.color.lightBrown}}
-            <span class="color light-brown"></span>
-          {{/if}}
-          {{#if dog.color.red}}
-            <span class="color red"></span>
-          {{/if}}
-          {{#if dog.color.grey}}
-            <span class="color grey"></span>
+          {{#if dog.size.large}}
+          <p>large</p>
           {{/if}}
         {{/unless}}
-        </div>
-      </li>
+        {{#unless dog.ears.unknown}}
+          {{#if dog.ears.up}}
+          <p>Up</p>
+          {{/if}}
+          {{#if dog.ears.down}}
+          <p>Down</p>
+          {{/if}}
+        {{/unless}}
+        {{#unless dog.tail.unknown}}
+          {{#if dog.tail.longTail}}
+          <p>Long</p>
+          {{/if}}
+          {{#if dog.tail.longHairy}}
+          <p>Long and hairy</p>
+          {{/if}}
+          {{#if dog.tail.shortTail}}
+          <p>Short</p>
+          {{/if}}
+        {{/unless}}
+      </div>
+      
+      <div class="breed-hair">
+        <p>{{dog.breed}}</p>
+        {{#unless dog.hair.unknown}}
+          {{#if dog.hair.long}}
+            <p>Long hair</p>
+          {{/if}}
+          {{#if dog.hair.short}}
+            <p>Short hair</p>
+          {{/if}}
+        {{/unless}}
+      </div>
+    </div>
 
-      <li>
-        <div class="ears-tail-size">
-          {{#unless dog.size.unknown}}
-            {{#if dog.size.small}}
-            <p>Small</p>
-            {{/if}}
-            {{#if dog.size.medium}}
-            <p>Medium</p>
-            {{/if}}
-            {{#if dog.size.large}}
-            <p>large</p>
-            {{/if}}
-          {{/unless}}
-          {{#unless dog.ears.unknown}}
-            {{#if dog.ears.up}}
-            <p>Up</p>
-            {{/if}}
-            {{#if dog.ears.down}}
-            <p>Down</p>
-            {{/if}}
-          {{/unless}}
-          {{#unless dog.tail.unknown}}
-            {{#if dog.tail.longTail}}
-            <p>Long</p>
-            {{/if}}
-            {{#if dog.tail.longHairy}}
-            <p>Long and hairy</p>
-            {{/if}}
-            {{#if dog.tail.shortTail}}
-            <p>Short</p>
-            {{/if}}
-          {{/unless}}
-        </div>
-      </li>
-
-      <li>{{dog.breed}}</li>
-
-      <li>Hair:</li>
-      {{#if dog.hair.unknown}}
-        <p>Unknown</p>
-      {{/if}}
-      {{#if dog.hair.long}}
-        <li>Long hair</li>
-      {{/if}}
-      {{#if dog.hair.short}}
-        <li>Short hair</li>
-      {{/if}}
-    
-    </ul>
   </article>
 </section>
 
