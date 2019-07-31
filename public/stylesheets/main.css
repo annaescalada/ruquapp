@@ -469,6 +469,10 @@ body {
   border-radius: 15px;
 }
 
+.dogCardDashboard p {
+  text-align: center;
+}
+
 .dogCardDashboard .messages-match-delete {
   width: 100%;
   display: -webkit-box;

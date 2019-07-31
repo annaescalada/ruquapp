@@ -107,6 +107,9 @@ body{
   padding: 6%;
   margin: 6% 0;
   border-radius: 15px;
+  p {
+    text-align: center;
+  }
   .messages-match-delete {
     width:100%;
     @include flex-center(row);
@@ -121,7 +124,6 @@ body{
         height: 35px;
       }
     }
-
     div {
       @include flex-center(row);
       justify-content: space-evenly;
