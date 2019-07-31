@@ -111,16 +111,16 @@
         <div class="deleteMatch delete-match"><img src="/images/delete.png" width="30px"></div>
         {{/if}}
         {{#if idFoundDog.day}}
-        <p>Date: {{idFoundDog.day}}/{{idFoundDog.month}}/{{idFoundDog.year}} at {{idFoundDog.hour}}h</p>
+        <p>{{idFoundDog.day}}/{{idFoundDog.month}}/{{idFoundDog.year}} - {{idFoundDog.hour}}h</p>
         {{/if}}
         {{#if idLostDog.day}}
-        <p>Date: {{idLostDog.day}}/{{idLostDog.month}}/{{idLostDog.year}} at {{idLostDog.hour}}h</p>
+        <p>{{idLostDog.day}}/{{idLostDog.month}}/{{idLostDog.year}} - {{idLostDog.hour}}h</p>
         {{/if}}
         {{#if idFoundDog.location}}
-        <p>Location: {{idFoundDog.location}}</p>
+        <p>{{idFoundDog.location}}</p>
         {{/if}}
         {{#if idLostDog.location}}
-        <p>Location: {{idLostDog.location}}</p>
+        <p>{{idLostDog.location}}</p>
         {{/if}}
 
         <div class="breed-hair">
