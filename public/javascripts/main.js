@@ -135,7 +135,7 @@ const main = () => {
         if (src.includes('true')) {
           notificationButton.src = '/images/notifications-false.png';
         } else {
-          notificationButton.src = '/images/notifications-true.svg';
+          notificationButton.src = '/images/notifications-true.png';
         }
       });
     }
