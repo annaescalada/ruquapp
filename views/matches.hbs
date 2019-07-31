@@ -47,32 +47,32 @@
       <div class="ears-tail-size">
         {{#unless dog.size.unknown}}
           {{#if dog.size.small}}
-          <p>Small</p>
+          <p><img src="/images/form-images/small.png"></p>
           {{/if}}
           {{#if dog.size.medium}}
-          <p>Medium</p>
+          <p><img src="/images/form-images/medium.png"></p>
           {{/if}}
           {{#if dog.size.large}}
-          <p>large</p>
+          <p><img src="/images/form-images/large.png"></p>
           {{/if}}
         {{/unless}}
         {{#unless dog.ears.unknown}}
           {{#if dog.ears.up}}
-          <p>Up</p>
+          <p><img src="/images/form-images/up.png"></p>
           {{/if}}
           {{#if dog.ears.down}}
-          <p>Down</p>
+          <p><img src="/images/form-images/down.png"></p>
           {{/if}}
         {{/unless}}
         {{#unless dog.tail.unknown}}
           {{#if dog.tail.longTail}}
-          <p>Long</p>
+          <p><img src="/images/form-images/longTail.png"></p>
           {{/if}}
           {{#if dog.tail.longHairy}}
-          <p>Long and hairy</p>
+          <p><img src="/images/form-images/hairy.png"></p>
           {{/if}}
           {{#if dog.tail.shortTail}}
-          <p>Short</p>
+          <p><img src="/images/form-images/short.png"></p>
           {{/if}}
         {{/unless}}
       </div>
@@ -96,9 +96,6 @@
 <section class="matches">
   {{#each matches}}
     <article class="dog-info" id="{{_id}}">
-      {{#if idFoundDog.location}}
-      <div class="deleteMatch delete-match"><img src="/images/delete.png" width="30px"></div>
-      {{/if}}
       <div class="dog-image">
         {{#if idFoundDog.photo}}
         <img src="{{idFoundDog.photo}}" alt="Lost dog matched image" width="300px">
@@ -110,6 +107,9 @@
 
       
       <div class="matching-info">
+        {{#if idFoundDog.location}}
+        <div class="deleteMatch delete-match"><img src="/images/delete.png" width="30px"></div>
+        {{/if}}
         {{#if idFoundDog.day}}
         <p>Date: {{idFoundDog.day}}/{{idFoundDog.month}}/{{idFoundDog.year}} at {{idFoundDog.hour}}h</p>
         {{/if}}

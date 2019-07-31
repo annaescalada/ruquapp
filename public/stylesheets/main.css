@@ -634,6 +634,24 @@ body {
   background-color: white;
   padding: 30px;
   margin-top: 20px;
+  width: 100%;
+  /* position: relative; */
+  left: -30px;
+  width: calc(100% + 60px);
+  border-radius: 0;
+}
+
+.matches article {
+  background-color: white;
+  padding: 30px;
+  margin: 20px 0;
+  border-radius: 15px;
+}
+
+.currentDogMatches {
+  background-color: white;
+  padding: 30px;
+  margin-top: 20px;
 }
 
 .header-match {
@@ -670,6 +688,10 @@ body {
           align-items: center;
 }
 
+.match-dog-info div {
+  margin-bottom: 10px;
+}
+
 .match-dog-info .dog-name {
   font-weight: bold;
   font-size: 1.3em;
@@ -693,6 +715,10 @@ body {
           justify-content: space-evenly;
 }
 
+.match-dog-info .ears-tail-size p img {
+  height: 35px;
+}
+
 .match-dog-info .breed-hair {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -701,6 +727,15 @@ body {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+}
+
+.delete-match {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 html {
