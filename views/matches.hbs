@@ -190,18 +190,20 @@
             {{/if}}
           {{/unless}}
         </div>
+        <p>Compatibility:</p>
+        <p class="compatibility">{{compatibility}}%</p>
       </div>
       <div class="match-contact">
         {{#if idFoundDog.location}}
           {{#if message}}
-          <p>Contact information sent</p>
+          <p>Contact information sent.</p>
           {{else}}
-          <button class="matchContactButton">Send contact info</button>
+          <button class="matchContactButton">Send contact information</button>
           {{/if}}
         {{/if}}
         {{#if idLostDog.location}}
         {{#if message}}
-        <p>Possible owner of the dog contact info</p>
+        <h3>Possible owner of the dog:</h3>
         <p>{{idLostDog.userID.email}}</p>
         <p>{{idLostDog.userID.phone}}</p>
         {{/if}}

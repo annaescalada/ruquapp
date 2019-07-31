@@ -253,6 +253,14 @@ div.new-messages, div.new-matches {
           transform: translateY(-10px);
 }
 
+.compatibility {
+  position: absolute;
+  bottom: 10px;
+  font-size: 2.3em;
+  color: #085a75;
+  right: 5px;
+}
+
 body {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -542,7 +550,6 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: #085a75;
 }
 
 .dogCardDashboard .dog-info .dog-image {
@@ -679,6 +686,21 @@ body {
   width: auto;
 }
 
+button.matchContactButton {
+  width: 100%;
+  border: none;
+  padding: 12px;
+  margin: 5% 0;
+}
+
+.match-contact > p {
+  background: #cdf9db;
+  color: #006742;
+  padding: 6%;
+  border-radius: 15px;
+  margin: 5%;
+}
+
 .match-dog-info {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -693,7 +715,29 @@ body {
 }
 
 .match-dog-info div {
+  margin: 2% 0;
+}
+
+.match-dog-info div:first-child {
   margin-bottom: 10px;
+  width: 300px;
+  height: 300px;
+  border-radius: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 5%;
+}
+
+.match-dog-info div:first-child img {
+  width: 400px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  min-width: 100%;
 }
 
 .match-dog-info .dog-name {
@@ -785,6 +829,10 @@ h2 {
   font-size: 1.4em;
   text-align: center;
   font-weight: 300;
+}
+
+h3 {
+  font-size: 1.1em;
 }
 
 ul {
