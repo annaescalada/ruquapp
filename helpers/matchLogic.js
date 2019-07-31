@@ -115,7 +115,11 @@ async function match (dogID) {
         // console.log(match);
         const newMatch = await Match.create(match);
       }
+<<<<<<< HEAD
       // }
+=======
+    }
+>>>>>>> 747c693b086dc24c92436bbf3db2b15228fa4482
     });
   } catch (error) {
     console.error(error);

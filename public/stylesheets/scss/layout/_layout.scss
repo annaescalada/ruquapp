@@ -3,6 +3,7 @@ body{
 }
 
 .main-container{
+  padding: 30px;
   @include flex-center(column);
   form{
     @include flex-center(column);
@@ -17,7 +18,7 @@ body{
 }
 
 .logo-small {
-  width: 50%;
+  width: 60%;
 }
 
 .navigation-logo {
@@ -30,15 +31,16 @@ body{
   a{
     @include flex-center(row);
     img{
-      height: 60px;
-      width:auto;
+      height: 35px;
+      width: auto;
+      margin-top: 6px;
     }
   }
 }
 
 .navigation-logo {
   img.logo-small {
-    width:50%;
+    width:60%;
     height: auto;
   }
 }
@@ -92,6 +94,9 @@ body{
 
 .foundSectionDashboard, .lostSectionDashboard {
   width:100%;
+  article:last-child{
+    margin-bottom: 30px;
+  }
 }
 
 .dogCardDashboard {
@@ -104,6 +109,18 @@ body{
     width:100%;
     @include flex-center(row);
     justify-content: space-evenly;
+
+    .messages-icon, .matches-icon{
+      img{
+        height: 28px;
+      }
+    }
+    .delete-icon{
+      img{
+        height: 35px;
+      }
+    }
+
     div {
       @include flex-center(row);
       justify-content: space-evenly;
@@ -115,8 +132,8 @@ body{
   .dog-info {
     @include flex-center(column);
     .dog-image {
-      border-radius: 50%;
       overflow: hidden;
+      margin: 15px 0;
         img {
           width:300px;
         }
@@ -146,7 +163,7 @@ body{
 }
 
 .add-dog {
-  // position: fixed;
+  position: fixed;
   bottom: 0;
   a{
     display: flex;
@@ -154,8 +171,13 @@ body{
     width: 100%;
     align-items: center;
     img{
-      width: 45%;
+      width: 60%;
     }
   }
 }
 
+.currentDogMatches{
+  background-color: white;
+  padding: 30px;
+  margin-top: 20px;
+}
