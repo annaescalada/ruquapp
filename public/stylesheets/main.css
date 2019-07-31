@@ -726,12 +726,22 @@ body {
 }
 
 .delete-match {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  position: absolute;
+  right: -9px;
+  top: -15px;
+}
+
+.matching-info {
+  position: relative;
+}
+
+.dog-image img {
+  position: relative;
+  top: -30px;
+  left: -30px;
+  width: calc(100% + 60px);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
 html {
