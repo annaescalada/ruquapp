@@ -45,7 +45,7 @@ async function match (dogID) {
         });
     }
 
-    const userIDMatch;
+    let userIDMatch;
 
     dogs.forEach(async dog => {
       if (idFoundDog === dogID) {
@@ -57,7 +57,7 @@ async function match (dogID) {
         userIDMatch = dog.UserID;
       }
 
-      if (!currentDog.UserID === userIDMatch) {
+      // if (!currentDog.UserID === userIDMatch) {
 
       currentDogColors.forEach(currentColor => {
         if (Object.keys(dog.color).includes(currentColor)) {
@@ -118,7 +118,7 @@ async function match (dogID) {
         // console.log(match);
         const newMatch = await Match.create(match);
       }
-    }
+    // }
     });
   } catch (error) {
     console.error(error);
