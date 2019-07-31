@@ -124,7 +124,7 @@
   <input type="text" id="location" name="location" placeholder="C/Balmes, Barcelona, 08026" required>
   {{/if}}
 
-  <label class="name" for="name">Name of the dog</label>
+  <label class="name" for="name">What's the dog name?</label>
   {{#if name.length}}
   <input type="text" id="name" name="name" value={{name}}>
   {{else}}
@@ -169,19 +169,19 @@
   <label>What's the dog size?</label>
   <div class="pet-size radio-list">
     {{#if small.length}}
-    <input type="radio" name="size" value="small" checked><span>Small</span>
+    <input type="radio" name="size" value="small" checked><img class="illustration" src="/images/form-images/small.png" alt="small">
     {{else}}
-    <input type="radio" name="size" value="small"><span>Small</span>
+    <input type="radio" name="size" value="small"><img class="illustration" src="/images/form-images/small.png" alt="small">
     {{/if}}
     {{#if medium.length}}
-    <input type="radio" name="size" value="medium" checked><span>Medium</span>
+    <input type="radio" name="size" value="medium" checked><img class="illustration" src="/images/form-images/medium.png" alt="medium">
     {{else}}
-    <input type="radio" name="size" value="medium"><span>Medium</span>
+    <input type="radio" name="size" value="medium"><img class="illustration" src="/images/form-images/medium.png" alt="medium">
     {{/if}}
     {{#if large.length}}
-    <input type="radio" name="size" value="large" checked><span>Large</span>
+    <input type="radio" name="size" value="large" checked><img class="illustration" src="/images/form-images/large.png" alt="large">
     {{else}}
-    <input type="radio" name="size" value="large"><span>Large</span>
+    <input type="radio" name="size" value="large"><img class="illustration" src="/images/form-images/large.png" alt="large">
     {{/if}}
   </div> 
   
@@ -211,15 +211,15 @@
   <label>What kind of ears does the dog have?</label>
   <div class="pet-ears radio-list">
     {{#if up.length}}
-    <input type="radio" name="ears" value="up"checked><span>Up</span>
-    <input type="radio" name="ears" value="down"><span>Down</span>
+    <input type="radio" name="ears" value="up"checked><img class="illustration" src="/images/form-images/up.png" alt="up">
+    <input type="radio" name="ears" value="down"><img class="illustration" src="/images/form-images/down.png" alt="down">
     {{else}}
       {{#if down.length}}
-      <input type="radio" name="ears" value="up"><span>Up</span>
-      <input type="radio" name="ears" value="down" checked><span>Down</span>
+      <input type="radio" name="ears" value="up"><img class="illustration" src="/images/form-images/up.png" alt="up">
+      <input type="radio" name="ears" value="down" checked><img class="illustration" src="/images/form-images/down.png" alt="down">
         {{else}}
-        <input type="radio" name="ears" value="up"><span>Up</span>
-        <input type="radio" name="ears" value="down"><span>Down</span>
+        <input type="radio" name="ears" value="up"><img class="illustration" src="/images/form-images/up.png" alt="up">
+        <input type="radio" name="ears" value="down"><img class="illustration" src="/images/form-images/down.png" alt="down">
       {{/if}}
     {{/if}}
   </div>
@@ -227,23 +227,23 @@
   <label for="tail">What kind of tail does the dog have?</label>
   <div class="pet-tail radio-list">
     {{#if longTail.length}}
-    <input type="radio" name="tail" value="longTail" checked><span>Long</span>
-    <input type="radio" name="tail" value="longHairy"><span>Hairy</span>
-    <input type="radio" name="tail" value="shortTail"><span>Short</span>
+    <input type="radio" name="tail" value="longTail" checked><img class="illustration" src="/images/form-images/short.png" alt="short">
+    <input type="radio" name="tail" value="longHairy"><img class="illustration" src="/images/form-images/hairy.png" alt="hairy">
+    <input type="radio" name="tail" value="shortTail"><img class="illustration" src="/images/form-images/longTail.png" alt="longTail">
     {{else}}
       {{#if longHairy.length}}
-        <input type="radio" name="tail" value="longTail"><span>Long</span>
-        <input type="radio" name="tail" value="longHairy" checked><span>Hairy</span>
-        <input type="radio" name="tail" value="shortTail"><span>Short</span>
+        <input type="radio" name="tail" value="longTail"><img class="illustration" src="/images/form-images/short.png" alt="short">
+        <input type="radio" name="tail" value="longHairy" checked><img class="illustration" src="/images/form-images/hairy.png" alt="hairy">
+        <input type="radio" name="tail" value="shortTail"><img class="illustration" src="/images/form-images/longTail.png" alt="longTail">
       {{else}}
         {{#if shortTail.length}}
-          <input type="radio" name="tail" value="longTail"><span>Long</span>
-          <input type="radio" name="tail" value="longHairy"><span>Hairy</span>
-          <input type="radio" name="tail" value="shortTail" checked><span>Short</span>
+          <input type="radio" name="tail" value="longTail"><img class="illustration" src="/images/form-images/short.png" alt="short">
+          <input type="radio" name="tail" value="longHairy"><img class="illustration" src="/images/form-images/hairy.png" alt="hairy">
+          <input type="radio" name="tail" value="shortTail" checked><img class="illustration" src="/images/form-images/longTail.png" alt="longTail">
         {{else}}
-          <input type="radio" name="tail" value="longTail"><span>Long</span>
-          <input type="radio" name="tail" value="longHairy"><span>Hairy</span>
-          <input type="radio" name="tail" value="shortTail"><span>Short</span>
+          <input type="radio" name="tail" value="longTail"><img class="illustration" src="/images/form-images/short.png" alt="short">
+          <input type="radio" name="tail" value="longHairy"><img class="illustration" src="/images/form-images/hairy.png" alt="hairy">
+          <input type="radio" name="tail" value="shortTail"><img class="illustration" src="/images/form-images/longTail.png" alt="longTail">
         {{/if}}
       {{/if}}
     {{/if}}

@@ -1,7 +1,10 @@
 form{
   width:100%;
   margin: 20px 0;
-  font-size: 1.2em;
+  font-size: 1.1em;
+  span {
+    color: $darkblue;
+  }
   label, div label{
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -9,9 +12,24 @@ form{
     font-weight: 100;
     text-align: center;
     margin: 5% 0;
+    display: block;
   }
 }
-input[type="text"], input[type="email"], input[type="password"]{
+
+input[type="radio"], input[type="checkbox"] {
+  transform: scale(2);
+  margin: 5%;
+}
+
+img.illustration {
+  height:60px;
+}
+
+input[type="file"] {
+  height:50px;
+  font-size: 0.7em;
+}
+input[type="text"], input[type="email"], input[type="password"] {
   text-align: center;
   background: none;
   border: 0;
@@ -64,7 +82,7 @@ input[type="checkbox"] {
   display: flex;
   justify-content: space-evenly;
   input, select{
-    width:22%;
+    width:28%;
   }
 
   input{
@@ -72,7 +90,7 @@ input[type="checkbox"] {
   }
 
   input:focus{
-    width:22%;
+    width:28%;
   }
 }
 
@@ -83,9 +101,10 @@ input[type="checkbox"] {
 .pet-color {
   @include flex-center(row)
   justify-content:space-between;
+  flex-wrap: wrap;
   .color {
-    width: 15px;
-    height: 15px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     border: 1px solid $darkblue;
   }
