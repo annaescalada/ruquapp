@@ -96,12 +96,12 @@
 <section class="matches">
   {{#each matches}}
     <article class="dog-info" id="{{_id}}">
-      <div class="dog-image">
+      <div class="dog-image dog-match-image">
         {{#if idFoundDog.photo}}
-        <img src="{{idFoundDog.photo}}" alt="Lost dog matched image" width="300px">
+        <img src="{{idFoundDog.photo}}" alt="Lost dog matched image">
         {{/if}}
         {{#if idLostDog.photo}}
-        <img src="{{idLostDog.photo}}" alt="Found dog matched image"  width="300px">
+        <img src="{{idLostDog.photo}}" alt="Found dog matched image">
         {{/if}}
       </div>
 
@@ -161,32 +161,32 @@
         <div class="ears-tail-size">
           {{#unless commonAttributes.size.unknown}}
             {{#if commonAttributes.size.small}}
-            <p>Small</p>
+            <p><img src="/images/form-images/small.png" width="30px"></p>
             {{/if}}
             {{#if commonAttributes.size.medium}}
-            <p>Medium</p>
+            <p><img src="/images/form-images/medium.png" width="30px"></p>
             {{/if}}
             {{#if commonAttributes.size.big}}
-            <p>Big</p>
+            <p><img src="/images/form-images/large.png" width="30px"></p>
             {{/if}}
           {{/unless}}
           {{#unless commonAttributes.ears.unknown}}
             {{#if commonAttributes.ears.up}}
-            <p>Up</p>
+            <p><img src="/images/form-images/up.png" width="30px"></p>
             {{/if}}
             {{#if commonAttributes.ears.down}}
-            <p>Down</p>
+            <p><img src="/images/form-images/down.png" width="30px"></p>
             {{/if}}
           {{/unless}}
           {{#unless commonAttributes.tail.unknown}}
             {{#if commonAttributes.tail.longTail}}
-            <p>Long</p>
+            <p><img src="/images/form-images/longTail.png" width="30px"></p>
             {{/if}}
             {{#if commonAttributes.tail.longHairy}}
-            <p>Long and hairy</p>
+            <p><img src="/images/form-images/hairy.png" width="30px"></p>
             {{/if}}
             {{#if commonAttributes.tail.shortTail}}
-            <p>Short</p>
+            <p><img src="/images/form-images/short.png" width="30px"></p>
             {{/if}}
           {{/unless}}
         </div>

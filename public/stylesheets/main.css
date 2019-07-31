@@ -739,7 +739,24 @@ body {
   position: relative;
 }
 
-.dog-image img {
+.matching-info .ears-tail-size {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin-bottom: 30px;
+}
+
+.matching-info .breed-hair {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 20px 0;
+}
+
+.dog-match-image img {
   position: relative;
   top: -30px;
   left: -30px;
