@@ -182,3 +182,44 @@ body{
   padding: 30px;
   margin-top: 20px;
 }
+
+.header-match{
+  display:flex;
+  justify-content: flex-end;
+
+  .button{
+    width: 75px;
+    border-radius: 13px;
+    background-color: #00BCD4;
+    margin-right: 10px;
+  }
+  img{
+    height: 35px;
+    width: auto;
+  }
+}
+
+.match-dog-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .dog-name{
+    font-weight: bold;
+    font-size: 1.3em;
+    margin: 2% 0%;
+  }
+  .pet-color {
+    justify-content: space-evenly;
+    width: 100%;
+  }
+  .ears-tail-size{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+  .breed-hair{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+}
