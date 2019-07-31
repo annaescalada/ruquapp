@@ -76,6 +76,7 @@ body{
 
 .radio-list {
   @include flex-center(row);
+  width:80%;
 }
 
 .toggle {

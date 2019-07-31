@@ -93,12 +93,16 @@ const main = () => {
         if (lostSectionDashboard.classList.contains('displayNone')) {
           lostSectionDashboard.classList.toggle('displayNone');
           foundSectionDashboard.classList.toggle('displayNone');
+          lostButton.classList.toggle('selected');
+          foundButton.classList.toggle('selected');
         }
       });
       foundButton.addEventListener('click', event => {
         if (foundSectionDashboard.classList.contains('displayNone')) {
           lostSectionDashboard.classList.toggle('displayNone');
           foundSectionDashboard.classList.toggle('displayNone');
+          foundButton.classList.toggle('selected');
+          lostButton.classList.toggle('selected');
         }
       });
     }

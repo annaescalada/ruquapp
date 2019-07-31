@@ -26,8 +26,11 @@ img.illustration {
 }
 
 input[type="file"] {
-  height:50px;
   font-size: 0.7em;
+  background: white;
+  margin:6%;
+  color: $darkblue;
+  padding:3%;
 }
 input[type="text"], input[type="email"], input[type="password"] {
   text-align: center;
@@ -41,6 +44,7 @@ input[type="text"], input[type="email"], input[type="password"] {
   -webkit-transition: all 1s; /* Safari prior 6.1 */
   transition: all 1s;
   font-size: 0.8em;
+  color: $darkblue;
 }
 
 input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus{
@@ -99,7 +103,7 @@ input[type="checkbox"] {
 }
  
 .pet-color {
-  @include flex-center(row)
+  @include flex-center(row);
   justify-content:space-between;
   flex-wrap: wrap;
   .color {
@@ -135,17 +139,40 @@ input[type="checkbox"] {
 
 button, .button{
   width: 80%;
-  padding: 10px;
+  padding: 15px;
   border: 0;
   background: $darkblue;
   color: white;
   text-align: center;
-  font-size: 0.8em;
+  font-size: 0.9em;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 2px;
   min-height: 40px;
 }
+
+nav.toggle{
+  @include flex-center(row);
+  width:100%;
+  margin:8%;
+  button {
+    font-size:1em;
+    background-color: white;
+    color:$darkblue;
+    width:50%;
+  }
+  button.selected {
+    background-color:$darkblue;
+    color:white;
+  }
+  button.left {
+    border-radius: 15px  0 0 15px;
+  }
+  button.right {
+    border-radius: 0 15px 15px 0;
+  }
+}
+
 
 a.button {
   padding:8px;

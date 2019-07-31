@@ -5,11 +5,8 @@
 </div>
 
 <nav class="toggle">
-  <ul>
-    <li class="lostToggle">LOST</li>
-    <li>|</li>
-    <li class="foundToggle">FOUND</li>
-  </ul>
+    <button class="lostToggle left selected">LOST</button>
+    <button class="foundToggle right">FOUND</button>
 </nav>
 
 <section class="lostSectionDashboard">
@@ -152,7 +149,7 @@
     <p>{{location}}</p>
     <div class="breed-hair">
       <p>{{breed}}</p>
-      {{#unless size.unknown}}
+      {{#unless hair.unknown}}
         {{#if hair.long}}
           <p>Long hair</p>
         {{/if}}
