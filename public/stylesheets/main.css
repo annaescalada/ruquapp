@@ -445,7 +445,7 @@ body {
 }
 
 .foundSectionDashboard article:last-child, .lostSectionDashboard article:last-child {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .dogCardDashboard {
@@ -541,11 +541,10 @@ body {
 }
 
 .dogCardDashboard .dog-info .dog-image img {
-  width: 100%;
+  width: 300px;
 }
 
 .dogCardDashboard .dog-info .dog-name {
-  font-weight: bold;
   font-size: 1.3em;
   margin: 2% 0%;
 }
@@ -622,52 +621,6 @@ body {
   background-color: white;
   padding: 30px;
   margin-top: 20px;
-}
-
-.header-match {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-}
-
-.header-match .button {
-  width: 75px;
-  border-radius: 13px;
-  background-color: #00BCD4;
-  margin-right: 10px;
-}
-
-.header-match img {
-  height: 35px;
-  width: auto;
-}
-
-.match-dog-info {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.match-dog-info .dog-name {
-  font-weight: bold;
-  font-size: 1.3em;
-  margin: 2% 0%;
-}
-
-.match-dog-info .ears-tail-size {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 html {
