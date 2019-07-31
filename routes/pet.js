@@ -6,6 +6,7 @@ const router = express.Router();
 const { isNotLoggedIn } = require('../middlewares/authMiddlewares');
 const { isAddPetFormFilled, isEditPetFormFilled } = require('../middlewares/petMiddlewares');
 const { match, deleteMatch } = require('../helpers/matchLogic');
+const { sendContactMail } = require('../helpers/nodemailer');
 const Dog = require('../models/Dog');
 const Match = require('../models/Match');
 const parser = require('../config/cloudinary');
@@ -213,6 +214,7 @@ router.get('/:dogID/matches', isNotLoggedIn, async (req, res, next) => {
     dog,
     matches: matchesCurrentDog
   };
+  console.log(dog);
   res.render('matches', data);
 });
 
@@ -404,6 +406,17 @@ router.post('/matches/:matchID/delete', isNotLoggedIn, async (req, res, next) =>
 router.post('/matches/:matchID/message', isNotLoggedIn, async (req, res, next) => {
   const { matchID } = req.params;
   await Match.findByIdAndUpdate(matchID, { message: true, messageRead: false });
+  const matchInfo = await Match.findById(matchID).populate({
+    path: 'idFoundDog',
+    populate: {
+      path: 'userID',
+      model: 'User'
+    }
+  });
+  const lostDogInfo = await Match.findById(matchID).populate('idLostDog');
+  if (matchInfo.idFoundDog.notification) {
+    sendContactMail(matchInfo.idFoundDog.userID.email, matchInfo.idFoundDog.userID.name, lostDogInfo.idLostDog.name);
+  }
   res.json({ message: 'Owner contact info sent' });
 });
 
