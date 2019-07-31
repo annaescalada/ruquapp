@@ -299,9 +299,18 @@ button.matchContactButton {
 
 .matching-info{
   position: relative;
+  .ears-tail-size{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 30px;
+  }
+  .breed-hair{
+    display: flex;
+    margin: 20px 0;
+  }
 }
 
-.dog-image img{
+.dog-match-image img{
   position: relative;
   top: -30px;
   left: -30px;
