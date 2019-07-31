@@ -152,8 +152,8 @@ const main = () => {
     if (deleteMatchButton) {
       deleteMatchButton.forEach(button => {
         button.addEventListener('click', async event => {
-          const article = event.target.parentElement.parentElement;
-          const currentMatchId = event.target.parentElement.parentElement.id;
+          const article = event.target.parentElement.parentElement.parentElement;
+          const currentMatchId = event.target.parentElement.parentElement.parentElement.id;
           await axios.post(`/pet/matches/${currentMatchId}/delete`);
           article.remove();
         });
@@ -163,6 +163,7 @@ const main = () => {
 
   function sendContactInfo () {
     const matchContactButton = document.querySelectorAll('.matchContactButton');
+    console.log(matchContactButton);
     if (matchContactButton) {
       matchContactButton.forEach(button => {
         button.addEventListener('click', async event => {

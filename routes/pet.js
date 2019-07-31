@@ -477,8 +477,6 @@ router.post('/matches/:matchID/message', isNotLoggedIn, async (req, res, next) =
     if (!match) {
       next();
     }
-    await Match.findById(matchID, { message: true, messageRead: false });
-    await Match.findByIdAndDelete(matchID);
     await Match.findByIdAndUpdate(matchID, { message: true, messageRead: false });
     const matchInfo = await Match.findById(matchID).populate({
       path: 'idFoundDog',
