@@ -5,9 +5,7 @@ const Match = require('../models/Match');
 
 async function match (dogID) {
   try {
-    // console.log('dogID ' + dogID + '//correct');
     const currentDog = await Dog.findById(dogID);
-    // console.log(currentDog);
     let idLostDog;
     let idFoundDog;
     let dogs = [];
@@ -21,14 +19,11 @@ async function match (dogID) {
 
     if (currentDog.status === 'lost') {
       idLostDog = dogID;
-      // console.log('idFoundDog: ' + idFoundDog + ', idLostDog: ' + idLostDog);
     } else {
       idFoundDog = dogID;
-      // console.log('idFoundDog: ' + idFoundDog + ', idLostDog: ' + idLostDog);
     }
 
     if (idLostDog) {
-      // console.log('entra dentro del if idLostDog');
       dogs = await Dog.find(
         { status: 'found',
           $or: [
@@ -39,7 +34,6 @@ async function match (dogID) {
           ]
         });
     } else {
-      // console.log('entra dentro del if idFoundDog');
       dogs = await Dog.find(
         { status: 'lost',
           $or: [
@@ -50,16 +44,20 @@ async function match (dogID) {
           ]
         });
     }
-    // console.log('perros encontrados: ' + dogs);
+
+    const userIDMatch;
+
     dogs.forEach(async dog => {
       if (idFoundDog === dogID) {
         idLostDog = dog._id;
-        // console.log('idLostDog: ' + idLostDog + '//debería salir si he hecho un perro found');
+        userIDMatch = dog.UserID;
       }
       if (idLostDog === dogID) {
         idFoundDog = dog._id;
-        // console.log('idFoundDog: ' + idFoundDog + '//debería salir si he hecho un perro lost');
+        userIDMatch = dog.UserID;
       }
+
+      if (!currentDog.UserID === userIDMatch) {
 
       currentDogColors.forEach(currentColor => {
         if (Object.keys(dog.color).includes(currentColor)) {
@@ -120,6 +118,7 @@ async function match (dogID) {
         // console.log(match);
         const newMatch = await Match.create(match);
       }
+    }
     });
   } catch (error) {
     console.error(error);
