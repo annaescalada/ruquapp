@@ -176,11 +176,11 @@ a.button {
 }
 
 div.new-messages, div.new-matches {
-  background-color: red;
+  background-color: #e65835;
   border-radius: 50%;
-  width: 10px;
-  height: 10px;
-  margin-bottom: 10px;
+  padding: 6px;
+  -webkit-transform: translateY(-10px);
+          transform: translateY(-10px);
 }
 
 body {
@@ -200,6 +200,7 @@ body {
 }
 
 .main-container {
+  padding: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -239,7 +240,7 @@ body {
 }
 
 .logo-small {
-  width: 50%;
+  width: 60%;
 }
 
 .navigation-logo {
@@ -273,12 +274,13 @@ body {
 }
 
 .navigation-logo a img {
-  height: 60px;
+  height: 35px;
   width: auto;
+  margin-top: 6px;
 }
 
 .navigation-logo img.logo-small {
-  width: 50%;
+  width: 60%;
   height: auto;
 }
 
@@ -375,6 +377,10 @@ body {
   width: 100%;
 }
 
+.foundSectionDashboard article:last-child, .lostSectionDashboard article:last-child {
+  margin-bottom: 30px;
+}
+
 .dogCardDashboard {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -413,6 +419,14 @@ body {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+}
+
+.dogCardDashboard .messages-match-delete .messages-icon img, .dogCardDashboard .messages-match-delete .matches-icon img {
+  height: 28px;
+}
+
+.dogCardDashboard .messages-match-delete .delete-icon img {
+  height: 35px;
 }
 
 .dogCardDashboard .messages-match-delete div {
@@ -455,8 +469,8 @@ body {
 }
 
 .dogCardDashboard .dog-info .dog-image {
-  border-radius: 50%;
   overflow: hidden;
+  margin: 15px 0;
 }
 
 .dogCardDashboard .dog-info .dog-image img {
@@ -515,6 +529,7 @@ body {
 }
 
 .add-dog {
+  position: fixed;
   bottom: 0;
 }
 
@@ -532,7 +547,13 @@ body {
 }
 
 .add-dog a img {
-  width: 45%;
+  width: 60%;
+}
+
+.currentDogMatches {
+  background-color: white;
+  padding: 30px;
+  margin-top: 20px;
 }
 
 html {
@@ -556,7 +577,6 @@ body {
   font-size: 1em;
   line-height: 147%;
   background-color: #88d6d6;
-  padding: 30px;
 }
 
 p {

@@ -17,15 +17,15 @@
   <article id={{_id}} class="dogCardDashboard">
 
   <div class="messages-match-delete">
-    <div>
-      <img src="/images/matches.png" alt="matches" width="30px">
+    <div class="matches-icon">
+      <img src="/images/matches.png" alt="matches">
       <p>{{totalMatches}}</p>
       {{#if newMacthes}}
       <div class="new-matches"></div>
       {{/if}}
     </div>
-    <div>
-      <img class="foundOrDeleteDogButton" src="/images/delete.png" alt="delete" width="30px">
+    <div class="delete-icon">
+      <img class="foundOrDeleteDogButton" src="/images/delete.png" alt="delete">
     </div>
   </div>
 
@@ -86,30 +86,30 @@
         {{/if}}
       {{/unless}}
       {{#unless ears.unknown}}
-          {{#if ears.up}}
-          <p>Up</p>
-          {{/if}}
-          {{#if ears.down}}
-          <p>Down</p>
-          {{/if}}
-        {{/unless}}
-        {{#unless tail.unknown}}
-          {{#if tail.longTail}}
-          <p>Long</p>
-          {{/if}}
-          {{#if tail.longHairy}}
-          <p>Long and hairy</p>
-          {{/if}}
-          {{#if tail.shortTail}}
-          <p>Short</p>
-          {{/if}}
-        {{/unless}}
-      </div>
-      <div class="found-match-buttons">
-        <a class="button" href="/pet/{{_id}}/matches">Matches</a>
-        <button class="foundOrDeleteDogButton">Found</button>
-      </div>
+        {{#if ears.up}}
+        <p>Up</p>
+        {{/if}}
+        {{#if ears.down}}
+        <p>Down</p>
+        {{/if}}
+      {{/unless}}
+      {{#unless tail.unknown}}
+        {{#if tail.longTail}}
+        <p>Long</p>
+        {{/if}}
+        {{#if tail.longHairy}}
+        <p>Long and hairy</p>
+        {{/if}}
+        {{#if tail.shortTail}}
+        <p>Short</p>
+        {{/if}}
+      {{/unless}}
     </div>
+    <div class="found-match-buttons">
+      <a class="button" href="/pet/{{_id}}/matches">Matches</a>
+      <button class="foundOrDeleteDogButton">Found</button>
+    </div>
+  </div>
 
   </article>
   {{/each}}
@@ -120,22 +120,22 @@
     <article id={{_id}} class="dogCardDashboard">
      
     <div class="messages-match-delete">
-      <div>
-        <img src="/images/messages.png" alt="messages" width="30px">
+      <div class="messages-icon">
+        <img src="/images/messages.png" alt="messages">
         <p>{{totalMessages}}</p>
         {{#if newMessages}}
         <div class="new-messages"></div>
         {{/if}}
       </div>
-      <div>
-        <img src="/images/matches.png" alt="matches" width="30px">
+      <div class="matches-icon">
+        <img src="/images/matches.png" alt="matches">
         <p>{{totalMatches}}</p>
         {{#if newMacthes}}
         <div class="new-matches"></div>
         {{/if}}
       </div>
-      <div>
-        <img class="foundOrDeleteDogButton" src="/images/delete.png" alt="delete" width="30px">
+      <div class="delete-icon">
+        <img class="foundOrDeleteDogButton" src="/images/delete.png" alt="delete">
       </div>
     </div>
 
@@ -225,5 +225,5 @@
   </section>
 
 <section class="add-dog">
-  <a href="/pet/add"><img src="/images/add.png" width="50px" alt=""></a>
+  <a href="/pet/add"><img src="/images/add.png" alt=""></a>
 </section>
