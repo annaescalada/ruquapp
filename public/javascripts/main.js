@@ -15,6 +15,7 @@ const main = () => {
         const a = document.createElement('a');
         a.setAttribute('href', '/profile');
         a.innerHTML = 'Cancel';
+        a.setAttribute('class', 'button');
         button.setAttribute('type', 'submit');
         button.innerHTML = 'Save changes';
         const formInfo = document.querySelector('.edit-info-form');
@@ -36,6 +37,7 @@ const main = () => {
         const a = document.createElement('a');
         a.setAttribute('href', '/profile');
         a.innerHTML = 'Cancel';
+        a.setAttribute('class', 'button');
         button.setAttribute('type', 'submit');
         button.innerHTML = 'Save changes';
         const formPassword = document.querySelector('.edit-password-form');

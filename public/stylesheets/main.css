@@ -1,14 +1,16 @@
 form {
   width: 100%;
   margin: 20px 0;
-  font-size: 1em;
+  font-size: 1.2em;
 }
 
-form label {
+form label, form div label {
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: white;
+  color: #3e4142;
   font-weight: 100;
+  text-align: center;
+  margin: 5% 0;
 }
 
 input[type="text"], input[type="email"], input[type="password"] {
@@ -23,7 +25,7 @@ input[type="text"], input[type="email"], input[type="password"] {
   -webkit-transition: all 1s;
   /* Safari prior 6.1 */
   transition: all 1s;
-  font-size: 1em;
+  font-size: 0.8em;
 }
 
 input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
@@ -47,7 +49,7 @@ select {
   -webkit-transition: all 1s;
   transition: all 1s;
   color: #085a75;
-  font-size: 1em;
+  font-size: 0.8em;
 }
 
 select:focus {
@@ -574,13 +576,21 @@ body {
 /* ---- typography ---- */
 body {
   font-family: 'Lato', sans-serif;
-  font-size: 1em;
+  font-size: 1.3em;
   line-height: 147%;
   background-color: #88d6d6;
 }
 
 p {
   margin: 0;
+  font-size: 1.3em;
+}
+
+h2 {
+  color: #3e4142;
+  font-size: 1.4em;
+  text-align: center;
+  font-weight: 300;
 }
 
 ul {

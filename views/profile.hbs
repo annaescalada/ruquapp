@@ -3,12 +3,7 @@
   <img src="/images/ruqu-logo.png" class="logo logo-small" alt="Ruqu lost and found logo">
 </div>
 
-<form action="/profile/logout" method="POST">
-  <button type=submit>Log out</button>
-</form>
 
-<p>Edit contact information</p>
-<button class="edit-info">Edit</button>
 <form class="edit-info-form" action="/profile/edit" method="POST">
   <label for="name">Name</label>
   <input class="edit-info-input" name="name" type="text" id="name" placeholder="Your name" value="{{user.name}}" required disabled>
@@ -19,6 +14,7 @@
   <label for="email">Email</label>
   <input type="email" id="email" name="email" placeholder="Your email" value="{{user.email}}" required disabled>
 </form>
+<button class="edit-info">Edit</button>
 
 
 {{#if errorInfo.length}}
@@ -27,15 +23,18 @@
 </ul>
 {{/if}}
 
-<p>Edit password</p>
-<button class="edit-password">Edit password</button>
 <form class="edit-password-form" action="/profile/edit-password" method="POST">
   <label for="password">Password</label>
   <input class="edit-password-input" type="password" name="password" id="password" placeholder="Your new password" value="*****" required disabled>
 </form>
+<button class="edit-password">Edit password</button>
 
 {{#if errorPass.length}}
 <ul class="validation">
   {{#each errorPass}}<li>{{this}}</li>{{/each}}
 </ul>
 {{/if}}
+
+<form action="/profile/logout" method="POST">
+  <button type=submit>Log out</button>
+</form>
