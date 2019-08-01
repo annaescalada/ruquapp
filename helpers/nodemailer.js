@@ -13,7 +13,7 @@ function sendContactMail (mail, name, dogName) {
   const mailOptions = {
     from: 'ruquApp@gmail.com',
     to: mail,
-    subject: '',
+    subject: 'New message in Ruqu App',
     text: '',
     html: `<img src="https://res.cloudinary.com/ruquapp/image/upload/v1564566601/ruqu%20resources/ruqu-logo_lushya.png" width="200px">
       <p>Hi ${name},</p>
