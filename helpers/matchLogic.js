@@ -1,8 +1,6 @@
 'use strict';
-
 const Dog = require('../models/Dog');
 const Match = require('../models/Match');
-
 async function match (dogID) {
   try {
     const currentDog = await Dog.findById(dogID);
@@ -16,13 +14,11 @@ async function match (dogID) {
     const currentDogTail = Object.keys(currentDog.tail);
     const currentDogEars = Object.keys(currentDog.ears);
     const commonAttributes = {};
-
     if (currentDog.status === 'lost') {
       idLostDog = dogID;
     } else {
       idFoundDog = dogID;
     }
-
     if (idLostDog) {
       dogs = await Dog.find(
         { status: 'found',
@@ -44,9 +40,7 @@ async function match (dogID) {
           ]
         });
     }
-
     let userIDMatch;
-
     await Promise.all(dogs.map(async dog => {
       if (idFoundDog === dogID) {
         idLostDog = dog._id;
@@ -56,7 +50,6 @@ async function match (dogID) {
         idFoundDog = dog._id;
         userIDMatch = dog.userID;
       }
-
       if (currentDog.userID !== userIDMatch) {
         currentDogColors.forEach(currentColor => {
           if (Object.keys(dog.color).includes(currentColor)) {
@@ -72,7 +65,6 @@ async function match (dogID) {
             }
           });
         }
-
         if (commonAttributes.color && commonAttributes.size) {
           match = {
             idLostDog,
@@ -122,14 +114,12 @@ async function match (dogID) {
     console.error(error);
   }
 }
-
 async function deleteMatch (dogID) {
   const matches = await Match.find({ $or: [{ idLostDog: dogID, idFoundDog: dogID }] });
   matches.forEach(async match => {
     await Match.findByIdAndDelete(match._id);
   });
 }
-
 module.exports = {
   match,
   deleteMatch
