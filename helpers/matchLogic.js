@@ -57,67 +57,66 @@ async function match (dogID) {
         userIDMatch = dog.userID;
       }
 
-      // if (!currentDog.UserID === userIDMatch) {
+      if (!currentDog.UserID === userIDMatch) {
+        currentDogColors.forEach(currentColor => {
+          if (Object.keys(dog.color).includes(currentColor)) {
+            commonAttributes.color = {};
+            commonAttributes.color[currentColor] = currentColor;
+          }
+        });
+        if (commonAttributes.color) {
+          currentDogSize.forEach(currentSize => {
+            if (Object.keys(dog.size).includes(currentSize)) {
+              commonAttributes.size = {};
+              commonAttributes.size[currentSize] = currentSize;
+            }
+          });
+        }
 
-      currentDogColors.forEach(currentColor => {
-        if (Object.keys(dog.color).includes(currentColor)) {
-          commonAttributes.color = {};
-          commonAttributes.color[currentColor] = currentColor;
-        }
-      });
-      if (commonAttributes.color) {
-        currentDogSize.forEach(currentSize => {
-          if (Object.keys(dog.size).includes(currentSize)) {
-            commonAttributes.size = {};
-            commonAttributes.size[currentSize] = currentSize;
+        if (commonAttributes.color && commonAttributes.size) {
+          match = {
+            idLostDog,
+            idFoundDog,
+            compatibility: 60,
+            new: true,
+            message: false,
+            messageRead: true
+          };
+          if (currentDog.breed === dog.breed) {
+            match.compatibility += 10;
+            commonAttributes.breed = dog.breed;
           }
-        });
+          currentDogHair.forEach(currentHair => {
+            if (Object.keys(dog.hair).includes(currentHair)) {
+              commonAttributes.hair = {};
+              commonAttributes.hair[currentHair] = currentHair;
+            }
+          });
+          if (commonAttributes.hair && !currentDog.hair.unknown) {
+            match.compatibility += 10;
+          }
+          currentDogTail.forEach(currentTail => {
+            if (Object.keys(dog.tail).includes(currentTail)) {
+              commonAttributes.tail = {};
+              commonAttributes.tail[currentTail] = currentTail;
+            }
+          });
+          if (commonAttributes.tail && !currentDog.tail.unknown) {
+            match.compatibility += 10;
+          }
+          currentDogEars.forEach(currentEars => {
+            if (Object.keys(dog.ears).includes(currentEars)) {
+              commonAttributes.ears = {};
+              commonAttributes.ears[currentEars] = currentEars;
+            }
+          });
+          if (commonAttributes.ears && !currentDog.ears.unknown) {
+            match.compatibility += 10;
+          }
+          match.commonAttributes = commonAttributes;
+          await Match.create(match);
+        }
       }
-
-      if (commonAttributes.color && commonAttributes.size) {
-        match = {
-          idLostDog,
-          idFoundDog,
-          compatibility: 60,
-          new: true,
-          message: false,
-          messageRead: true
-        };
-        if (currentDog.breed === dog.breed) {
-          match.compatibility += 10;
-          commonAttributes.breed = dog.breed;
-        }
-        currentDogHair.forEach(currentHair => {
-          if (Object.keys(dog.hair).includes(currentHair)) {
-            commonAttributes.hair = {};
-            commonAttributes.hair[currentHair] = currentHair;
-          }
-        });
-        if (commonAttributes.hair && !currentDog.hair.unknown) {
-          match.compatibility += 10;
-        }
-        currentDogTail.forEach(currentTail => {
-          if (Object.keys(dog.tail).includes(currentTail)) {
-            commonAttributes.tail = {};
-            commonAttributes.tail[currentTail] = currentTail;
-          }
-        });
-        if (commonAttributes.tail && !currentDog.tail.unknown) {
-          match.compatibility += 10;
-        }
-        currentDogEars.forEach(currentEars => {
-          if (Object.keys(dog.ears).includes(currentEars)) {
-            commonAttributes.ears = {};
-            commonAttributes.ears[currentEars] = currentEars;
-          }
-        });
-        if (commonAttributes.ears && !currentDog.ears.unknown) {
-          match.compatibility += 10;
-        }
-        match.commonAttributes = commonAttributes;
-        await Match.create(match);
-      }
-      // }
     }));
   } catch (error) {
     console.error(error);
