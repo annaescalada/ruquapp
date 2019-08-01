@@ -189,6 +189,7 @@ div.new-messages, div.new-matches {
     border-radius: 50%;
     padding: 6px;
     transform: translateY(-10px);
+    animation: jumping 0.6s infinite;
 }
 
 .compatibility {
@@ -197,4 +198,10 @@ div.new-messages, div.new-matches {
   font-size: 2.3em;
   color: #085a75;
   right: 5px;
+}
+
+@keyframes jumping {
+  0% { transform: translateY(-10px); }
+  50% {transform: translateY(-14px);}
+  100% { transform: translateY(-10px); }
 }
