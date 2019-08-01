@@ -544,16 +544,11 @@ async function seedsDogs () {
       location: 'C/Roser 8'
     }
   ];
-  Dog.create(seeds).then((dogs) => {
-    console.log(dogs);
-    const matches = Promise.all(dogs.map(async (dog) => {
+  Dog.create(seeds).then(async (dogs) => {
+    await Promise.all(dogs.map(async (dog) => {
       await match(dog._id);
     }));
-    matches.then(() => {
-      mongoose.connection.close();
-    });
-  }).catch((error) => {
-    console.log(error);
+    mongoose.connection.close();
   });
 }
 
