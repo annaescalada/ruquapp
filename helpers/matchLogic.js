@@ -47,7 +47,7 @@ async function match (dogID) {
 
     let userIDMatch;
 
-    dogs.forEach(async dog => {
+    await Promise.all(dogs.map(async dog => {
       if (idFoundDog === dogID) {
         idLostDog = dog._id;
         userIDMatch = dog.UserID;
@@ -115,10 +115,10 @@ async function match (dogID) {
           match.compatibility += 10;
         }
         match.commonAttributes = commonAttributes;
-        const newMatch = await Match.create(match);
+        await Match.create(match);
       }
-    // }
-    });
+      // }
+    }));
   } catch (error) {
     console.error(error);
   }

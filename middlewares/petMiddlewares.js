@@ -1,4 +1,6 @@
 'use strict';
+var mongoose = require('mongoose');
+const ObjectId = mongoose.Types.ObjectId;
 
 const isAddPetFormFilled = (req, res, next) => {
   const { status, day, month, year, hour, location, name, white, grey, black, darkBrown, lightBrown, red, size, breed, ears, tail, hair } = req.body;
@@ -165,7 +167,27 @@ const isEditPetFormFilled = (req, res, next) => {
   next();
 };
 
+const isIdValid = (req, res, next) => {
+  const { dogID } = req.params;
+  if (!ObjectId.isValid(dogID)) {
+    return res.redirect('/');
+  } else {
+    next();
+  }
+};
+
+const isMatchIdValid = (req, res, next) => {
+  const { matchID } = req.params;
+  if (!ObjectId.isValid(matchID)) {
+    return res.redirect('/');
+  } else {
+    next();
+  }
+};
+
 module.exports = {
   isAddPetFormFilled,
-  isEditPetFormFilled
+  isEditPetFormFilled,
+  isIdValid,
+  isMatchIdValid
 };

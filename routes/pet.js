@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 const { isNotLoggedIn } = require('../middlewares/authMiddlewares');
-const { isAddPetFormFilled, isEditPetFormFilled } = require('../middlewares/petMiddlewares');
+const { isAddPetFormFilled, isEditPetFormFilled, isIdValid, isMatchIdValid } = require('../middlewares/petMiddlewares');
 const { match, deleteMatch } = require('../helpers/matchLogic');
 const { sendContactMail } = require('../helpers/nodemailer');
 const Dog = require('../models/Dog');
@@ -176,22 +176,14 @@ router.post('/add', parser.single('photo'), isNotLoggedIn, isAddPetFormFilled, a
   }
 });
 
-router.get('/:dogID/matches', isNotLoggedIn, async (req, res, next) => {
+router.get('/:dogID/matches', isNotLoggedIn, isIdValid, async (req, res, next) => {
   try {
     const { dogID } = req.params;
-    if (!ObjectId.isValid(dogID)) {
-      next();
-    }
     const dog = await Dog.findById(dogID);
-    if (!dog) {
-      next();
-    }
     const status = dog.status;
     const idLostDog = mongoose.Types.ObjectId(dogID);
     const idFoundDog = mongoose.Types.ObjectId(dogID);
     let matchesCurrentDog = [];
-    // let lost = false;
-    // let found = false;
 
     if (status === 'lost') {
       matchesCurrentDog = await Match.find({ $or: [{ idLostDog }, { idFoundDog }] }).populate('idFoundDog');
@@ -200,10 +192,6 @@ router.get('/:dogID/matches', isNotLoggedIn, async (req, res, next) => {
         await Match.findByIdAndUpdate(match._id, { messageRead: true, new: false });
       });
       console.log(matchesCurrentDog);
-      // matchesCurrentDog.forEach(match => {
-      //   lost = true;
-      //   match.lost = lost;
-      // });
     } else {
       matchesCurrentDog = await Match.find({ $or: [{ idLostDog }, { idFoundDog }] }).populate({
         path: 'idLostDog',
@@ -213,10 +201,6 @@ router.get('/:dogID/matches', isNotLoggedIn, async (req, res, next) => {
         }
       });
       console.log(matchesCurrentDog);
-      // matchesCurrentDog.forEach(match => {
-      //   found = true;
-      //   match.found = found;
-      // });
     }
     const data = {
       dog,
@@ -229,13 +213,10 @@ router.get('/:dogID/matches', isNotLoggedIn, async (req, res, next) => {
   }
 });
 
-router.get('/:dogID/edit', isNotLoggedIn, async (req, res, next) => {
+router.get('/:dogID/edit', isNotLoggedIn, isIdValid, async (req, res, next) => {
   try {
     let dataEdit = {};
     const { dogID } = req.params;
-    if (!ObjectId.isValid(dogID)) {
-      next();
-    }
     const dog = await Dog.findById(dogID);
     if (!dog) {
       next();
@@ -287,16 +268,10 @@ router.get('/:dogID/edit', isNotLoggedIn, async (req, res, next) => {
   }
 });
 
-router.post('/:dogID/edit', isNotLoggedIn, isEditPetFormFilled, async (req, res, next) => {
+router.post('/:dogID/edit', isNotLoggedIn, isIdValid, isEditPetFormFilled, async (req, res, next) => {
   try {
-    const { dogID } = req.params;
-    if (!ObjectId.isValid(dogID)) {
-      next();
-    }
-    const dog = await Dog.findById(dogID);
-    if (!dog) {
-      next();
-    }
+    // const { dogID } = req.params;
+
     const { status, day, month, year, hour, location, name, white, grey, black, darkBrown, lightBrown, red, size, breed, ears, tail, hair } = req.body;
     const currentDogId = req.params.dogID;
     const sizeObj = {};
@@ -412,12 +387,9 @@ router.post('/:dogID/edit', isNotLoggedIn, isEditPetFormFilled, async (req, res,
   }
 });
 
-router.post('/:dogID/notification', isNotLoggedIn, async (req, res, next) => {
+router.post('/:dogID/notification', isNotLoggedIn, isIdValid, async (req, res, next) => {
   try {
     const { dogID } = req.params;
-    if (!ObjectId.isValid(dogID)) {
-      next();
-    }
     const dog = await Dog.findById(dogID);
     if (!dog) {
       next();
@@ -433,12 +405,10 @@ router.post('/:dogID/notification', isNotLoggedIn, async (req, res, next) => {
   }
 });
 
-router.post('/:dogID/delete', isNotLoggedIn, async (req, res, next) => {
+router.post('/:dogID/delete', isNotLoggedIn, isIdValid, async (req, res, next) => {
   try {
     const { dogID } = req.params;
-    if (!ObjectId.isValid(dogID)) {
-      next();
-    }
+
     const dog = await Dog.findById(dogID);
     if (!dog) {
       next();
@@ -450,7 +420,7 @@ router.post('/:dogID/delete', isNotLoggedIn, async (req, res, next) => {
   }
 });
 
-router.post('/matches/:matchID/delete', isNotLoggedIn, async (req, res, next) => {
+router.post('/matches/:matchID/delete', isNotLoggedIn, isMatchIdValid, async (req, res, next) => {
   try {
     const { matchID } = req.params;
     if (!ObjectId.isValid(matchID)) {
@@ -467,7 +437,7 @@ router.post('/matches/:matchID/delete', isNotLoggedIn, async (req, res, next) =>
   }
 });
 
-router.post('/matches/:matchID/message', isNotLoggedIn, async (req, res, next) => {
+router.post('/matches/:matchID/message', isNotLoggedIn, isMatchIdValid, async (req, res, next) => {
   try {
     const { matchID } = req.params;
     if (!ObjectId.isValid(matchID)) {
