@@ -57,7 +57,7 @@ async function match (dogID) {
         userIDMatch = dog.userID;
       }
 
-      if (!currentDog.UserID === userIDMatch) {
+      if (currentDog.userID !== userIDMatch) {
         currentDogColors.forEach(currentColor => {
           if (Object.keys(dog.color).includes(currentColor)) {
             commonAttributes.color = {};
