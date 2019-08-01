@@ -10,7 +10,13 @@ async function match (dogID) {
     let idFoundDog;
     let dogs = [];
     let match = {};
-    const currentDogColors = Object.keys(currentDog.color);
+    const currentDogColors = [];
+
+    for (const color in currentDog.color) {
+      if (currentDog.color[color]) {
+        currentDogColors.push(color);
+      }
+    }
     const currentDogSize = Object.keys(currentDog.size);
     const currentDogHair = Object.keys(currentDog.hair);
     const currentDogTail = Object.keys(currentDog.tail);
@@ -56,24 +62,30 @@ async function match (dogID) {
         idFoundDog = dog._id;
         userIDMatch = dog.userID;
       }
+      let somethingInColors = false;
+      let somethingInSize = false;
 
       if (currentDog.userID !== userIDMatch) {
+        commonAttributes.color = {};
         currentDogColors.forEach(currentColor => {
           if (Object.keys(dog.color).includes(currentColor)) {
-            commonAttributes.color = {};
-            commonAttributes.color[currentColor] = currentColor;
+            if (currentColor !== 'unknown') {
+              commonAttributes.color[currentColor] = currentColor;
+              somethingInColors = true;
+            }
           }
         });
-        if (commonAttributes.color) {
+        if (somethingInColors) {
           currentDogSize.forEach(currentSize => {
             if (Object.keys(dog.size).includes(currentSize)) {
               commonAttributes.size = {};
               commonAttributes.size[currentSize] = currentSize;
+              somethingInSize = true;
             }
           });
         }
 
-        if (commonAttributes.color && commonAttributes.size) {
+        if (somethingInColors && somethingInSize) {
           match = {
             idLostDog,
             idFoundDog,
