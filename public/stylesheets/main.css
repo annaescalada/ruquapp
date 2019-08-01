@@ -852,6 +852,12 @@ button.matchContactButton {
   display: -ms-flexbox;
   display: flex;
   margin: 20px 0;
+<<<<<<< HEAD
+=======
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+>>>>>>> 83f43db29e5c09fc67b78bd15cd42d51efd8cece
 }
 
 .dog-match-image img {
