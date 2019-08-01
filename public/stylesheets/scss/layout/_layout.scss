@@ -76,6 +76,7 @@ body{
 
 .radio-list {
   @include flex-center(row);
+  width:80%;
 }
 
 .toggle {
@@ -95,7 +96,7 @@ body{
 .foundSectionDashboard, .lostSectionDashboard {
   width:100%;
   article:last-child{
-    margin-bottom: 30px;
+    margin-bottom: 100px;
   }
 }
 
@@ -104,12 +105,15 @@ body{
   width: 100%;
   background-color:white;
   padding: 6%;
-  margin: 4% 0;
+  margin: 6% 0;
+  border-radius: 15px;
+  p {
+    text-align: center;
+  }
   .messages-match-delete {
     width:100%;
     @include flex-center(row);
     justify-content: space-evenly;
-
     .messages-icon, .matches-icon{
       img{
         height: 28px;
@@ -120,7 +124,6 @@ body{
         height: 35px;
       }
     }
-
     div {
       @include flex-center(row);
       justify-content: space-evenly;
@@ -132,10 +135,12 @@ body{
   .dog-info {
     @include flex-center(column);
     .dog-image {
-      overflow: hidden;
+      width: 100%;
       margin: 15px 0;
+      overflow: hidden;
         img {
-          width:300px;
+          width:100%;
+          object-fit: contain;
         }
     }
     .dog-name {
@@ -158,6 +163,9 @@ body{
       a, button {
         margin: 0% 1%;
       }
+      img {
+        height: 35px;
+      }
     }
   }
 }
@@ -165,14 +173,50 @@ body{
 .add-dog {
   position: fixed;
   bottom: 0;
+  display: flex;
+  justify-content: center;
+  z-index:2;
   a{
     display: flex;
-    justify-content: center;
-    width: 100%;
-    align-items: center;
+    width: 45%;
+    z-index:2;
     img{
-      width: 60%;
+      width: 100%;
+      margin-bottom: 35px;
     }
+  }
+
+  .semicircle{
+    width: 270px;
+    height: 270px;
+    background-color: white;
+    position: fixed;
+    bottom: -196px;
+    z-index: 1;
+    border-radius: 100% 100% 0 0;
+    box-shadow: #89b2b791 0px 0px 20px;
+  }
+}
+
+  
+.currentDogMatches {
+  background-color: white;
+  padding: 30px;
+  margin-top: 20px;
+  width: 100%;
+  /* position: relative; */
+  left: -30px;
+  width: calc(100% + 60px);
+  border-radius: 0;
+}
+
+
+.matches {
+  article {
+  background-color: white;
+  padding: 30px;
+  margin: 20px 0;
+  border-radius: 15px;
   }
 }
 
@@ -181,3 +225,116 @@ body{
   padding: 30px;
   margin-top: 20px;
 }
+
+.header-match{
+  display:flex;
+  justify-content: flex-end;
+
+  .button{
+    width: 75px;
+    border-radius: 13px;
+    background-color: #00BCD4;
+    margin-right: 10px;
+  }
+  img{
+    height: 35px;
+    width: auto;
+  }
+}
+
+button.matchContactButton {
+  width: 100%;
+  border: none;
+  padding: 12px;
+  margin: 5% 0;
+}
+
+.match-contact > p {    
+  background: #cdf9db;
+  color: #006742;
+  padding: 6%;
+  border-radius: 15px;
+  margin: 5%;
+}
+
+.match-dog-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  div {
+    margin: 2% 0;
+  }
+  div:first-child{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    margin: 5%;
+    img {
+      width:100%;
+      transform: scale(1.7);
+    }
+  }
+  .dog-name{
+    font-weight: bold;
+    font-size: 1.3em;
+    margin: 2% 0%;
+  }
+  .pet-color {
+    justify-content: space-evenly;
+    width: 100%;
+  }
+  .ears-tail-size{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+  .breed-hair{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+}
+
+.delete-match {
+  position: absolute;
+  right: -9px;
+  top: -15px;
+}
+
+.matching-info{
+  position: relative;
+  .ears-tail-size{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 30px;
+  }
+  .breed-hair{
+    display: flex;
+    margin: 20px 0;
+    justify-content: space-evenly;
+  }
+}
+
+.dog-match-image img{
+  position: relative;
+  top: -30px;
+  left: -30px;
+  width: calc(100% + 60px);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.error-and-404{
+  color: $darkblue;
+  text-align:center;
+  img{
+    width:80%;
+  }
+  p{
+    margin-bottom:20px;
+  }
+}
+

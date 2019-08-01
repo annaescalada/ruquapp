@@ -44,8 +44,10 @@ async function match (dogID) {
           ]
         });
     }
+
     let userIDMatch;
-    dogs.forEach(async dog => {
+
+    await Promise.all(dogs.map(async dog => {
       if (idFoundDog === dogID) {
         idLostDog = dog._id;
         userIDMatch = dog.userID;
@@ -55,7 +57,8 @@ async function match (dogID) {
         userIDMatch = dog.userID;
       }
 
-      // if (!currentDog.userID === userIDMatch) {
+      // if (!currentDog.UserID === userIDMatch) {
+
       currentDogColors.forEach(currentColor => {
         if (Object.keys(dog.color).includes(currentColor)) {
           commonAttributes.color = {};
@@ -112,15 +115,10 @@ async function match (dogID) {
           match.compatibility += 10;
         }
         match.commonAttributes = commonAttributes;
-        // console.log(match);
-        const newMatch = await Match.create(match);
+        await Match.create(match);
       }
-<<<<<<< HEAD
       // }
-=======
-    }
->>>>>>> 747c693b086dc24c92436bbf3db2b15228fa4482
-    });
+    }));
   } catch (error) {
     console.error(error);
   }

@@ -37,7 +37,7 @@ async function seedsDogs () {
       hair: {
         short: true
       },
-      photo: '/images/seeds/seeds1.jpeg',
+      photo: '/images/seeds/seeds1.jpg',
       notification: true,
       userID: users[0]._id,
       status: 'lost',
@@ -66,7 +66,7 @@ async function seedsDogs () {
       hair: {
         long: true
       },
-      photo: '/images/seeds2.jpeg',
+      photo: '/images/seeds/seeds2.jpg',
       notification: true,
       userID: users[1]._id,
       status: 'lost',
@@ -95,7 +95,7 @@ async function seedsDogs () {
       hair: {
         short: true
       },
-      photo: '/images/seeds3.jpeg',
+      photo: '/images/seeds/seeds3.jpg',
       notification: true,
       userID: users[2]._id,
       status: 'lost',
@@ -123,7 +123,7 @@ async function seedsDogs () {
       hair: {
         short: true
       },
-      photo: '/images/seeds4.jpeg',
+      photo: '/images/seeds/seeds4.jpg',
       notification: true,
       userID: users[3]._id,
       status: 'lost',
@@ -151,7 +151,7 @@ async function seedsDogs () {
       hair: {
         short: true
       },
-      photo: '/images/seeds5.jpeg',
+      photo: '/images/seeds/seeds5.jpg',
       notification: true,
       userID: users[4]._id,
       status: 'lost',
@@ -178,7 +178,7 @@ async function seedsDogs () {
       hair: {
         long: true
       },
-      photo: '/images/seeds6.jpeg',
+      photo: '/images/seeds/seeds6.jpg',
       notification: true,
       userID: users[5]._id,
       status: 'lost',
@@ -544,16 +544,11 @@ async function seedsDogs () {
       location: 'C/Roser 8'
     }
   ];
-  Dog.create(seeds).then((dogs) => {
-    console.log(dogs);
-    const matches = Promise.all(dogs.map(async (dog) => {
+  Dog.create(seeds).then(async (dogs) => {
+    await Promise.all(dogs.map(async (dog) => {
       await match(dog._id);
     }));
-    matches.then(() => {
-      mongoose.connection.close();
-    });
-  }).catch((error) => {
-    console.log(error);
+    mongoose.connection.close();
   });
 }
 

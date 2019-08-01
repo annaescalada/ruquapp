@@ -59,14 +59,14 @@ const seeds = [
     name: 'Anna',
     surname: 'Escalada',
     phone: '634 832 721',
-    email: 'anna@mail.com',
+    email: 'annaescalada@gmail.com',
     password: '$2b$10$mcPy3Qtj58w1q0dtQ8DJse0J3RKrMLx0eXCsLHHEEScTogvutdkFS'
   },
   {
     name: 'Esther',
     surname: 'Bernal',
-    phone: '634 832 721',
-    email: 'esther@mail.com',
+    phone: '600 822 123',
+    email: 'ruquapp@gmail.com',
     password: '$2b$10$mcPy3Qtj58w1q0dtQ8DJse0J3RKrMLx0eXCsLHHEEScTogvutdkFS'
   }
 

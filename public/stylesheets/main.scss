@@ -19,7 +19,7 @@ body {
 
 body {
   font-family: 'Lato', sans-serif;
-  font-size: 1em;
+  font-size: 1.3em;
   line-height: 147%;
   background: { 
     color: $lightblue, 
@@ -28,6 +28,18 @@ body {
 
 p {
   margin: 0;
+  font-size: 1em;
+}
+
+h2 {
+  color: $darkgrey;
+  font-size: 1.4em;
+  text-align: center;
+  font-weight: 300;
+}
+
+h3 {
+  font-size: 1.1em;
 }
 
 ul {

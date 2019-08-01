@@ -15,6 +15,7 @@ const main = () => {
         const a = document.createElement('a');
         a.setAttribute('href', '/profile');
         a.innerHTML = 'Cancel';
+        a.setAttribute('class', 'button');
         button.setAttribute('type', 'submit');
         button.innerHTML = 'Save changes';
         const formInfo = document.querySelector('.edit-info-form');
@@ -36,6 +37,7 @@ const main = () => {
         const a = document.createElement('a');
         a.setAttribute('href', '/profile');
         a.innerHTML = 'Cancel';
+        a.setAttribute('class', 'button');
         button.setAttribute('type', 'submit');
         button.innerHTML = 'Save changes';
         const formPassword = document.querySelector('.edit-password-form');
@@ -91,12 +93,16 @@ const main = () => {
         if (lostSectionDashboard.classList.contains('displayNone')) {
           lostSectionDashboard.classList.toggle('displayNone');
           foundSectionDashboard.classList.toggle('displayNone');
+          lostButton.classList.toggle('selected');
+          foundButton.classList.toggle('selected');
         }
       });
       foundButton.addEventListener('click', event => {
         if (foundSectionDashboard.classList.contains('displayNone')) {
           lostSectionDashboard.classList.toggle('displayNone');
           foundSectionDashboard.classList.toggle('displayNone');
+          foundButton.classList.toggle('selected');
+          lostButton.classList.toggle('selected');
         }
       });
     }
@@ -146,8 +152,8 @@ const main = () => {
     if (deleteMatchButton) {
       deleteMatchButton.forEach(button => {
         button.addEventListener('click', async event => {
-          const article = event.target.parentElement.parentElement;
-          const currentMatchId = event.target.parentElement.parentElement.id;
+          const article = event.target.parentElement.parentElement.parentElement;
+          const currentMatchId = event.target.parentElement.parentElement.parentElement.id;
           await axios.post(`/pet/matches/${currentMatchId}/delete`);
           article.remove();
         });
@@ -157,6 +163,7 @@ const main = () => {
 
   function sendContactInfo () {
     const matchContactButton = document.querySelectorAll('.matchContactButton');
+    console.log(matchContactButton);
     if (matchContactButton) {
       matchContactButton.forEach(button => {
         button.addEventListener('click', async event => {

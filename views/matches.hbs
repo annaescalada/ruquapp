@@ -5,138 +5,128 @@
 
 <section class="currentDogMatches">
 <article>
-    <a href="/pet/{{dog._id}}/edit">Edit</a>
+  <div class="header-match">
+    <a href="/pet/{{dog._id}}/edit" class="button">Edit</a>
     {{#if dog.notification}}
     <img id={{dog._id}} class="notifications notifications-true" src="/images/notifications-true.png" alt="notifications on" width="80px">
     {{else}}
     <img id={{dog._id}} class="notifications" src="/images/notifications-false.png" alt="notifications off" width="80px">
     {{/if}}
-
-
-    <ul>
+  </div>
+    <div class="match-dog-info">
+      <div><img src="{{dog.photo}}" alt="my dog"></div>
       {{#if dog.name}}
-      <li>{{dog.name}}</li>
+      <div class="dog-name">{{dog.name}}</div>
       {{/if}}
+      <div>{{dog.day}}/{{dog.month}}/{{dog.year}} around {{dog.hour}}h</div>
+      <div>{{dog.location}}</div>
 
-      <li>Color:</li>
-      {{#if dog.color.unknown}}
-        <p>Unknown</p>
-      {{else}}
+      <div class="pet-color">
+      {{#unless dog.color.unknown}}
         {{#if dog.color.white }}
-          <li>White</li>
+          <span class="color white"></span>
         {{/if}}
         {{#if dog.color.black}}
-          <li>Black</li>
+          <span class="color black"></span>
         {{/if}}
         {{#if dog.color.darkBrown}}
-          <li>Dark Brown</li>
+          <span class="color dark-brown"></span>
         {{/if}}
         {{#if dog.color.lightBrown}}
-          <li>Ligth Brown</li>
+          <span class="color light-brown"></span>
         {{/if}}
         {{#if dog.color.red}}
-          <li>Red</li>
+          <span class="color red"></span>
         {{/if}}
         {{#if dog.color.grey}}
-          <li>Grey</li>
+          <span class="color grey"></span>
         {{/if}}
-      {{/if}}
-
-      <li>Size:</li>
-      {{#if dog.size.unknown}}
-        <p>Unknown</p>
-      {{/if}}
-      {{#if dog.size.small}}
-        <li>Small</li>
-      {{/if}}
-      {{#if dog.size.medium}}
-        <li>Medium</li>
-      {{/if}}
-      {{#if dog.size.big}}
-        <li>Big</li>
-      {{/if}}
-
-      <li>{{dog.breed}}</li>
-
-      <li>Ears:</li>
-      {{#if dog.ears.unknown}}
-        <p>Unknown</p>
-      {{/if}}
-      {{#if dog.ears.up}}
-        <li>Up</li>
-      {{/if}}
-      {{#if dog.ears.down}}
-        <li>Down</li>
-      {{/if}}
-
-      <li>Tail:</li>
-      {{#if dog.tail.unknown}}
-        <p>Unknown</p>
-      {{/if}}
-      {{#if dog.tail.longTail}}
-        <li>Long</li>
-      {{/if}}
-      {{#if dog.tail.longHairy}}
-        <li>Long and hairy</li>
-      {{/if}}
-      {{#if dog.tail.shortTail}}
-        <li>Short</li>
-      {{/if}}
-
-      <li>Hair:</li>
-      {{#if dog.hair.unknown}}
-        <p>Unknown</p>
-      {{/if}}
-      {{#if dog.hair.long}}
-        <li>Long</li>
-      {{/if}}
-      {{#if dog.hair.short}}
-        <li>Short</li>
-      {{/if}}
+      {{/unless}}
+      </div>
     
-      <li><img src="{{dog.photo}}" alt="my dog" width="300px"></li>
-      <li>{{dog.notification}}</li>
-      <li>{{dog.day}}</li>
-      <li>{{dog.month}}</li>
-      <li>{{dog.year}}</li>
-      <li>{{dog.hour}}</li>
-      <li>{{dog.location}}</li>
-    </ul>
+      <div class="ears-tail-size">
+        {{#unless dog.size.unknown}}
+          {{#if dog.size.small}}
+          <p><img class="illustration" src="/images/form-images/small.png"></p>
+          {{/if}}
+          {{#if dog.size.medium}}
+          <p><img class="illustration" src="/images/form-images/medium.png"></p>
+          {{/if}}
+          {{#if dog.size.large}}
+          <p><img class="illustration" src="/images/form-images/large.png"></p>
+          {{/if}}
+        {{/unless}}
+        {{#unless dog.ears.unknown}}
+          {{#if dog.ears.up}}
+          <p><img class="illustration" src="/images/form-images/up.png"></p>
+          {{/if}}
+          {{#if dog.ears.down}}
+          <p><img class="illustration" src="/images/form-images/down.png"></p>
+          {{/if}}
+        {{/unless}}
+        {{#unless dog.tail.unknown}}
+          {{#if dog.tail.longTail}}
+          <p><img class="illustration" src="/images/form-images/longTail.png"></p>
+          {{/if}}
+          {{#if dog.tail.longHairy}}
+          <p><img class="illustration" src="/images/form-images/hairy.png"></p>
+          {{/if}}
+          {{#if dog.tail.shortTail}}
+          <p><img class="illustration" src="/images/form-images/short.png"></p>
+          {{/if}}
+        {{/unless}}
+      </div>
+      
+      <div class="breed-hair">
+        <p>{{dog.breed}}</p>
+        {{#unless dog.hair.unknown}}
+          {{#if dog.hair.long}}
+            <p>Long hair</p>
+          {{/if}}
+          {{#if dog.hair.short}}
+            <p>Short hair</p>
+          {{/if}}
+        {{/unless}}
+      </div>
+    </div>
+
   </article>
 </section>
 
 <section class="matches">
   {{#each matches}}
     <article class="dog-info" id="{{_id}}">
-      {{#if idFoundDog.location}}
-      <div class="deleteMatch delete-match"><img src="/images/delete.png" width="30px"></div>
-      {{/if}}
-      <div class="dog-image">
+      <div class="dog-image dog-match-image">
         {{#if idFoundDog.photo}}
-        <img src="{{idFoundDog.photo}}" alt="Lost dog matched image" width="300px">
+        <img src="{{idFoundDog.photo}}" alt="Lost dog matched image">
         {{/if}}
         {{#if idLostDog.photo}}
-        <img src="{{idLostDog.photo}}" alt="Found dog matched image"  width="300px">
+        <img src="{{idLostDog.photo}}" alt="Found dog matched image">
         {{/if}}
       </div>
 
       
       <div class="matching-info">
+        {{#if idFoundDog.location}}
+        <div class="deleteMatch delete-match"><img src="/images/delete.png" width="30px"></div>
+        {{/if}}
         {{#if idFoundDog.day}}
-        <p>Date: {{idFoundDog.day}}/{{idFoundDog.month}}/{{idFoundDog.year}} at {{idFoundDog.hour}}h</p>
+        <p>{{idFoundDog.day}}/{{idFoundDog.month}}/{{idFoundDog.year}} - {{idFoundDog.hour}}h</p>
         {{/if}}
         {{#if idLostDog.day}}
-        <p>Date: {{idLostDog.day}}/{{idLostDog.month}}/{{idLostDog.year}} at {{idLostDog.hour}}h</p>
+        <p>{{idLostDog.day}}/{{idLostDog.month}}/{{idLostDog.year}} - {{idLostDog.hour}}h</p>
         {{/if}}
         {{#if idFoundDog.location}}
-        <p>Location: {{idFoundDog.location}}</p>
+        <p>{{idFoundDog.location}}</p>
         {{/if}}
         {{#if idLostDog.location}}
-        <p>Location: {{idLostDog.location}}</p>
+        <p>{{idLostDog.location}}</p>
         {{/if}}
 
         <div class="breed-hair">
+          {{#if commonAttributes.breed}}
           <p>{{commonAttributes.breed}}</p>
+          {{/if}}
           {{#unless commonAttributes.hair.unknown}}
             {{#if commonAttributes.hair.long}}
               <p>Long hair</p>
@@ -173,47 +163,49 @@
         <div class="ears-tail-size">
           {{#unless commonAttributes.size.unknown}}
             {{#if commonAttributes.size.small}}
-            <p>Small</p>
+            <p><img class="illustration" src="/images/form-images/small.png"></p>
             {{/if}}
             {{#if commonAttributes.size.medium}}
-            <p>Medium</p>
+            <p><img class="illustration" src="/images/form-images/medium.png"></p>
             {{/if}}
             {{#if commonAttributes.size.big}}
-            <p>Big</p>
+            <p><img class="illustration" src="/images/form-images/large.png"></p>
             {{/if}}
           {{/unless}}
           {{#unless commonAttributes.ears.unknown}}
             {{#if commonAttributes.ears.up}}
-            <p>Up</p>
+            <p><img class="illustration" src="/images/form-images/up.png"></p>
             {{/if}}
             {{#if commonAttributes.ears.down}}
-            <p>Down</p>
+            <p><img class="illustration" src="/images/form-images/down.png"></p>
             {{/if}}
           {{/unless}}
           {{#unless commonAttributes.tail.unknown}}
             {{#if commonAttributes.tail.longTail}}
-            <p>Long</p>
+            <p><img class="illustration" src="/images/form-images/longTail.png"></p>
             {{/if}}
             {{#if commonAttributes.tail.longHairy}}
-            <p>Long and hairy</p>
+            <p><img class="illustration" src="/images/form-images/hairy.png"></p>
             {{/if}}
             {{#if commonAttributes.tail.shortTail}}
-            <p>Short</p>
+            <p><img class="illustration" src="/images/form-images/short.png"></p>
             {{/if}}
           {{/unless}}
         </div>
+        <p>Compatibility:</p>
+        <p class="compatibility">{{compatibility}}%</p>
       </div>
       <div class="match-contact">
         {{#if idFoundDog.location}}
           {{#if message}}
-          <p>Contact information sent</p>
+          <p>Contact information sent.</p>
           {{else}}
-          <button class="matchContactButton">Send contact info</button>
+          <button class="matchContactButton">Send contact information</button>
           {{/if}}
         {{/if}}
         {{#if idLostDog.location}}
         {{#if message}}
-        <p>Possible owner of the dog contact info</p>
+        <h3>Possible owner of the dog:</h3>
         <p>{{idLostDog.userID.email}}</p>
         <p>{{idLostDog.userID.phone}}</p>
         {{/if}}

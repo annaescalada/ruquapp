@@ -1,15 +1,41 @@
 form{
   width:100%;
   margin: 20px 0;
-  font-size: 1em;
-  label{
+  font-size: 1.1em;
+  span {
+    color: $darkblue;
+  }
+  label, div label{
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: white;
+    color: $darkgrey;
     font-weight: 100;
+    text-align: center;
+    margin: 5% 0;
+    display: block;
+  }
+  button {
+    margin: 8%;
   }
 }
-input[type="text"], input[type="email"], input[type="password"]{
+
+input[type="radio"], input[type="checkbox"] {
+  transform: scale(2);
+  margin: 5%;
+}
+
+img.illustration {
+  height:35px;
+}
+
+input[type="file"] {
+  font-size: 0.7em;
+  background: white;
+  margin:6%;
+  color: $darkblue;
+  padding:3%;
+}
+input[type="text"], input[type="email"], input[type="password"] {
   text-align: center;
   background: none;
   border: 0;
@@ -20,7 +46,8 @@ input[type="text"], input[type="email"], input[type="password"]{
   margin-bottom: 30px;
   -webkit-transition: all 1s; /* Safari prior 6.1 */
   transition: all 1s;
-  font-size: 1em;
+  font-size: 0.8em;
+  color: $darkblue;
 }
 
 input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus{
@@ -30,7 +57,10 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
   -webkit-transition: all 0.5s; /* Safari prior 6.1 */
   transition: all 0.5s;
 }
-
+input[type="text"]:disabled, input[type="email"]:disabled, input[type="password"]:disabled {
+  background-color: #94cbcf;
+  color: cadetblue;
+}
 select{
   text-align: center;
   background: none;
@@ -43,7 +73,7 @@ select{
   -webkit-transition: all 1s;
   transition: all 1s;
   color: $darkblue;
-  font-size: 1em;
+  font-size: 0.8em;
 }
 
 select:focus{
@@ -62,7 +92,7 @@ input[type="checkbox"] {
   display: flex;
   justify-content: space-evenly;
   input, select{
-    width:22%;
+    width:28%;
   }
 
   input{
@@ -70,7 +100,7 @@ input[type="checkbox"] {
   }
 
   input:focus{
-    width:22%;
+    width:28%;
   }
 }
 
@@ -79,13 +109,15 @@ input[type="checkbox"] {
 }
  
 .pet-color {
-  @include flex-center(row)
-  justify-content:space-between;
+  @include flex-center(row);
+  justify-content:space-evenly;
+  flex-wrap: wrap;
+  margin: 20px 0;
   .color {
-    width: 15px;
-    height: 15px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
-    border: 1px solid $darkblue;
+    border: 4px solid $darkblue;
   }
   .white {
     background-color: white;
@@ -114,20 +146,43 @@ input[type="checkbox"] {
 
 button, .button{
   width: 80%;
-  padding: 10px;
+  padding: 15px;
   border: 0;
   background: $darkblue;
   color: white;
   text-align: center;
-  font-size: 0.8em;
+  font-size: 0.9em;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 2px;
   min-height: 40px;
 }
 
+nav.toggle{
+  @include flex-center(row);
+  width:100%;
+  margin:8%;
+  button {
+    font-size:1em;
+    background-color: white;
+    color:$darkblue;
+    width:50%;
+  }
+  button.selected {
+    background-color:$darkblue;
+    color:white;
+  }
+  button.left {
+    border-radius: 15px  0 0 15px;
+  }
+  button.right {
+    border-radius: 0 15px 15px 0;
+  }
+}
+
+
 a.button {
-  padding:8px;
+  padding:11px;
 }
 
 div.new-messages, div.new-matches {
@@ -135,4 +190,19 @@ div.new-messages, div.new-matches {
     border-radius: 50%;
     padding: 6px;
     transform: translateY(-10px);
+    animation: jumping 0.6s infinite;
+}
+
+.compatibility {
+  position: absolute;
+  bottom: 10px;
+  font-size: 2.3em;
+  color: #085a75;
+  right: 5px;
+}
+
+@keyframes jumping {
+  0% { transform: translateY(-10px); }
+  50% {transform: translateY(-14px);}
+  100% { transform: translateY(-10px); }
 }
