@@ -25,7 +25,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 img.illustration {
-  height:55px;
+  height:35px;
 }
 
 input[type="file"] {
@@ -110,8 +110,9 @@ input[type="checkbox"] {
  
 .pet-color {
   @include flex-center(row);
-  justify-content:space-between;
+  justify-content:space-evenly;
   flex-wrap: wrap;
+  margin: 20px 0;
   .color {
     width: 25px;
     height: 25px;

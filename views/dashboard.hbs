@@ -92,7 +92,9 @@
       {{/unless}}
     </div>
     <div class="breed-hair">
-      <p>{{breed}}</p>
+      {{#if breed}}
+        <p>{{breed}}</p>
+      {{/if}}
       {{#unless hair.unknown}}
         {{#if hair.long}}
           <p>Long hair</p>
@@ -172,37 +174,39 @@
     <div class="ears-tail-size">
       {{#unless size.unknown}}
         {{#if size.small}}
-        <p>Small</p>
+        <img class="illustration" src="/images/form-images/small.png" alt="small">
         {{/if}}
         {{#if size.medium}}
-        <p>Medium</p>
+        <img class="illustration" src="/images/form-images/medium.png" alt="medium">
         {{/if}}
         {{#if size.large}}
-        <p>large</p>
+        <img class="illustration" src="/images/form-images/large.png" alt="large">
         {{/if}}
       {{/unless}}
       {{#unless ears.unknown}}
           {{#if ears.up}}
-          <p>Up</p>
+          <img class="illustration" src="/images/form-images/up.png" alt="up">
           {{/if}}
           {{#if ears.down}}
-          <p>Down</p>
+          <img class="illustration" src="/images/form-images/down.png" alt="down">
           {{/if}}
         {{/unless}}
         {{#unless tail.unknown}}
           {{#if tail.longTail}}
-          <p>Long</p>
+          <img class="illustration" src="/images/form-images/longTail.png" alt="longTail">
           {{/if}}
           {{#if tail.longHairy}}
-          <p>Long and hairy</p>
+          <img class="illustration" src="/images/form-images/hairy.png" alt="hairy">
           {{/if}}
           {{#if tail.shortTail}}
-          <p>Short</p>
+          <img class="illustration" src="/images/form-images/short.png" alt="short">
           {{/if}}
         {{/unless}}
       </div>
       <div class="breed-hair">
-      <p>{{breed}}</p>
+      {{#if breed}}
+        <p>{{breed}}</p>
+      {{/if}}
       {{#unless hair.unknown}}
         {{#if hair.long}}
           <p>Long hair</p>

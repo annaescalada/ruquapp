@@ -14,7 +14,7 @@
     {{/if}}
   </div>
     <div class="match-dog-info">
-      <div><img src="{{dog.photo}}" alt="my dog" width="300px"></div>
+      <div><img src="{{dog.photo}}" alt="my dog"></div>
       {{#if dog.name}}
       <div class="dog-name">{{dog.name}}</div>
       {{/if}}
@@ -47,32 +47,32 @@
       <div class="ears-tail-size">
         {{#unless dog.size.unknown}}
           {{#if dog.size.small}}
-          <p><img src="/images/form-images/small.png"></p>
+          <p><img class="illustration" src="/images/form-images/small.png"></p>
           {{/if}}
           {{#if dog.size.medium}}
-          <p><img src="/images/form-images/medium.png"></p>
+          <p><img class="illustration" src="/images/form-images/medium.png"></p>
           {{/if}}
           {{#if dog.size.large}}
-          <p><img src="/images/form-images/large.png"></p>
+          <p><img class="illustration" src="/images/form-images/large.png"></p>
           {{/if}}
         {{/unless}}
         {{#unless dog.ears.unknown}}
           {{#if dog.ears.up}}
-          <p><img src="/images/form-images/up.png"></p>
+          <p><img class="illustration" src="/images/form-images/up.png"></p>
           {{/if}}
           {{#if dog.ears.down}}
-          <p><img src="/images/form-images/down.png"></p>
+          <p><img class="illustration" src="/images/form-images/down.png"></p>
           {{/if}}
         {{/unless}}
         {{#unless dog.tail.unknown}}
           {{#if dog.tail.longTail}}
-          <p><img src="/images/form-images/longTail.png"></p>
+          <p><img class="illustration" src="/images/form-images/longTail.png"></p>
           {{/if}}
           {{#if dog.tail.longHairy}}
-          <p><img src="/images/form-images/hairy.png"></p>
+          <p><img class="illustration" src="/images/form-images/hairy.png"></p>
           {{/if}}
           {{#if dog.tail.shortTail}}
-          <p><img src="/images/form-images/short.png"></p>
+          <p><img class="illustration" src="/images/form-images/short.png"></p>
           {{/if}}
         {{/unless}}
       </div>
@@ -163,32 +163,32 @@
         <div class="ears-tail-size">
           {{#unless commonAttributes.size.unknown}}
             {{#if commonAttributes.size.small}}
-            <p><img src="/images/form-images/small.png" width="30px"></p>
+            <p><img class="illustration" src="/images/form-images/small.png"></p>
             {{/if}}
             {{#if commonAttributes.size.medium}}
-            <p><img src="/images/form-images/medium.png" width="30px"></p>
+            <p><img class="illustration" src="/images/form-images/medium.png"></p>
             {{/if}}
             {{#if commonAttributes.size.big}}
-            <p><img src="/images/form-images/large.png" width="30px"></p>
+            <p><img class="illustration" src="/images/form-images/large.png"></p>
             {{/if}}
           {{/unless}}
           {{#unless commonAttributes.ears.unknown}}
             {{#if commonAttributes.ears.up}}
-            <p><img src="/images/form-images/up.png" width="30px"></p>
+            <p><img class="illustration" src="/images/form-images/up.png"></p>
             {{/if}}
             {{#if commonAttributes.ears.down}}
-            <p><img src="/images/form-images/down.png" width="30px"></p>
+            <p><img class="illustration" src="/images/form-images/down.png"></p>
             {{/if}}
           {{/unless}}
           {{#unless commonAttributes.tail.unknown}}
             {{#if commonAttributes.tail.longTail}}
-            <p><img src="/images/form-images/longTail.png" width="30px"></p>
+            <p><img class="illustration" src="/images/form-images/longTail.png"></p>
             {{/if}}
             {{#if commonAttributes.tail.longHairy}}
-            <p><img src="/images/form-images/hairy.png" width="30px"></p>
+            <p><img class="illustration" src="/images/form-images/hairy.png"></p>
             {{/if}}
             {{#if commonAttributes.tail.shortTail}}
-            <p><img src="/images/form-images/short.png" width="30px"></p>
+            <p><img class="illustration" src="/images/form-images/short.png"></p>
             {{/if}}
           {{/unless}}
         </div>

@@ -265,16 +265,16 @@ button.matchContactButton {
     margin: 2% 0;
   }
   div:first-child{
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      margin: 5%;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    margin: 5%;
     img {
-    min-width: 100%;
-    transform: scale(1.7);
+      width:100%;
+      transform: scale(1.7);
     }
   }
   .dog-name{
@@ -290,11 +290,6 @@ button.matchContactButton {
     display: flex;
     width: 100%;
     justify-content: space-evenly;
-    p{
-      img{
-        height:35px;
-      }
-    }
   }
   .breed-hair{
     display: flex;
