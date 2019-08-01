@@ -65,6 +65,11 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
   transition: all 0.5s;
 }
 
+input[type="text"]:disabled, input[type="email"]:disabled, input[type="password"]:disabled {
+  background-color: #94cbcf;
+  color: cadetblue;
+}
+
 select {
   text-align: center;
   background: none;
@@ -457,7 +462,7 @@ body {
 }
 
 .foundSectionDashboard article:last-child, .lostSectionDashboard article:last-child {
-  margin-bottom: 40px;
+  margin-bottom: 100px;
 }
 
 .dogCardDashboard {
@@ -622,23 +627,38 @@ body {
 .add-dog {
   position: fixed;
   bottom: 0;
-}
-
-.add-dog a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 100%;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  z-index: 2;
+}
+
+.add-dog a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 45%;
+  z-index: 2;
 }
 
 .add-dog a img {
-  width: 70%;
+  width: 100%;
+  margin-bottom: 35px;
+}
+
+.add-dog .semicircle {
+  width: 270px;
+  height: 270px;
+  background-color: white;
+  position: fixed;
+  bottom: -196px;
+  z-index: 1;
+  border-radius: 100% 100% 0 0;
+  -webkit-box-shadow: #89b2b791 0px 0px 20px;
+          box-shadow: #89b2b791 0px 0px 20px;
 }
 
 .currentDogMatches {
@@ -719,10 +739,9 @@ button.matchContactButton {
 }
 
 .match-dog-info div:first-child {
-  margin-bottom: 10px;
   width: 300px;
   height: 300px;
-  border-radius: 100%;
+  border-radius: 50%;
   overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -734,10 +753,9 @@ button.matchContactButton {
 }
 
 .match-dog-info div:first-child img {
-  width: 400px;
-  -o-object-fit: contain;
-     object-fit: contain;
   min-width: 100%;
+  -webkit-transform: scale(1.7);
+          transform: scale(1.7);
 }
 
 .match-dog-info .dog-name {
@@ -811,6 +829,19 @@ button.matchContactButton {
   width: calc(100% + 60px);
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
+}
+
+.error-and-404 {
+  color: #085a75;
+  text-align: center;
+}
+
+.error-and-404 img {
+  width: 80%;
+}
+
+.error-and-404 p {
+  margin-bottom: 20px;
 }
 
 html {
