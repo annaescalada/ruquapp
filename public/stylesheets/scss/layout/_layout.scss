@@ -96,7 +96,7 @@ body{
 .foundSectionDashboard, .lostSectionDashboard {
   width:100%;
   article:last-child{
-    margin-bottom: 40px;
+    margin-bottom: 100px;
   }
 }
 
@@ -173,14 +173,28 @@ body{
 .add-dog {
   position: fixed;
   bottom: 0;
+  display: flex;
+  justify-content: center;
+  z-index:2;
   a{
     display: flex;
-    justify-content: center;
-    width: 100%;
-    align-items: center;
+    width: 45%;
+    z-index:2;
     img{
-      width: 70%;
+      width: 100%;
+      margin-bottom: 35px;
     }
+  }
+
+  .semicircle{
+    width: 270px;
+    height: 270px;
+    background-color: white;
+    position: fixed;
+    bottom: -196px;
+    z-index: 1;
+    border-radius: 100% 100% 0 0;
+    box-shadow: #89b2b791 0px 0px 20px;
   }
 }
 
@@ -251,18 +265,16 @@ button.matchContactButton {
     margin: 2% 0;
   }
   div:first-child{
-    margin-bottom: 10px;
-    width: 300px;
-    height: 300px;
-    border-radius: 100%;
-    overflow: hidden;
-    display:flex;
-    align-items: center;
-    margin:5%;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      margin: 5%;
     img {
-      width:400px;
-      object-fit: contain;
-      min-width: 100%;
+    min-width: 100%;
+    transform: scale(1.7);
     }
   }
   .dog-name{
@@ -317,5 +329,16 @@ button.matchContactButton {
   width: calc(100% + 60px);
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
+}
+
+.error-and-404{
+  color: $darkblue;
+  text-align:center;
+  img{
+    width:80%;
+  }
+  p{
+    margin-bottom:20px;
+  }
 }
 
