@@ -48,32 +48,39 @@ async function match (dogID) {
     let userIDMatch;
 
     await Promise.all(dogs.map(async dog => {
+      userIDMatch = dog.userID;
       if (idFoundDog === dogID) {
         idLostDog = dog._id;
-        userIDMatch = dog.userID;
       }
       if (idLostDog === dogID) {
         idFoundDog = dog._id;
-        userIDMatch = dog.userID;
       }
 
-      if (currentDog.userID !== userIDMatch) {
+      let commonColor = false;
+      let commonSize = false;
+      let commonHair = false;
+      let commonTail = false;
+      let commonEars = false;
+
+      if (JSON.stringify(currentDog.userID) !== JSON.stringify(userIDMatch)) {
         currentDogColors.forEach(currentColor => {
-          if (Object.keys(dog.color).includes(currentColor)) {
-            commonAttributes.color = {};
+          commonAttributes.color = {};
+          if (Object.keys(dog.color).includes(currentColor) && (currentColor !== 'unknown')) {
             commonAttributes.color[currentColor] = currentColor;
+            commonColor = true;
           }
         });
-        if (commonAttributes.color) {
+        if (commonColor) {
           currentDogSize.forEach(currentSize => {
-            if (Object.keys(dog.size).includes(currentSize)) {
+            if (Object.keys(dog.size).includes(currentSize) && (currentSize !== 'unknown')) {
               commonAttributes.size = {};
               commonAttributes.size[currentSize] = currentSize;
+              commonSize = true;
             }
           });
         }
 
-        if (commonAttributes.color && commonAttributes.size) {
+        if (commonColor && commonSize) {
           match = {
             idLostDog,
             idFoundDog,
@@ -87,30 +94,33 @@ async function match (dogID) {
             commonAttributes.breed = dog.breed;
           }
           currentDogHair.forEach(currentHair => {
-            if (Object.keys(dog.hair).includes(currentHair)) {
-              commonAttributes.hair = {};
+            commonAttributes.hair = {};
+            if (Object.keys(dog.hair).includes(currentHair) && (currentHair !== 'unknown') && (!dog.hair.unknown) && (!currentDog.hair.unknown)) {
               commonAttributes.hair[currentHair] = currentHair;
+              commonHair = true;
             }
           });
-          if (commonAttributes.hair && !currentDog.hair.unknown) {
+          if (commonHair) {
             match.compatibility += 10;
           }
+          commonAttributes.tail = {};
           currentDogTail.forEach(currentTail => {
-            if (Object.keys(dog.tail).includes(currentTail)) {
-              commonAttributes.tail = {};
+            if (Object.keys(dog.tail).includes(currentTail) && (currentTail !== 'unknown') && (!dog.tail.unknown) && (!currentDog.tail.unknown)) {
               commonAttributes.tail[currentTail] = currentTail;
+              commonTail = true;
             }
           });
-          if (commonAttributes.tail && !currentDog.tail.unknown) {
+          if (commonTail) {
             match.compatibility += 10;
           }
+          commonAttributes.ears = {};
           currentDogEars.forEach(currentEars => {
-            if (Object.keys(dog.ears).includes(currentEars)) {
-              commonAttributes.ears = {};
+            if (Object.keys(dog.ears).includes(currentEars) && (currentEars !== 'unknown') && (!dog.ears.unknown) && (!currentDog.ears.unknown)) {
               commonAttributes.ears[currentEars] = currentEars;
+              commonEars = true;
             }
           });
-          if (commonAttributes.ears && !currentDog.ears.unknown) {
+          if (commonEars) {
             match.compatibility += 10;
           }
           match.commonAttributes = commonAttributes;

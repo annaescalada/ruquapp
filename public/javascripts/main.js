@@ -113,8 +113,8 @@ const main = () => {
     if (foundOrDeleteDogButton) {
       foundOrDeleteDogButton.forEach(button => {
         button.addEventListener('click', async event => {
-          let dogIDLost = event.target.parentElement.id;
-          let article = event.target.parentElement;
+          let dogIDLost = event.target.parentElement.parentElement.parentElement.id;
+          let article = event.target.parentElement.parentElement.parentElement;
           if (!dogIDLost) {
             dogIDLost = event.target.parentElement.parentElement.parentElement.id;
             article = event.target.parentElement.parentElement.parentElement;
