@@ -220,8 +220,8 @@ The url to your repository and to your deployed project
 https://github.com/annaescalada/ruquapp
 
 #Deploy Link
+http://ruqqu.herokuapp.com/
 
 #Slides
 The url to your presentation slides
-
-#Slides Link
+https://docs.google.com/presentation/d/1SnDWsNcUO4ccGbkfEV0Q_p8ac6wKnjOIBv9vPFCZCO4/edit#slide=id.p
